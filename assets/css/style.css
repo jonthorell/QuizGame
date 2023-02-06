@@ -1,0 +1,18 @@
+body {
+    /* default values for the body */
+    background-color: #777777;
+  }
+
+  #welcome {
+    font-size: xx-large;
+    color: burlywood;
+    text-align: center;
+  }
+
+  #header-text {
+    font-size: 24px;
+    color:white;
+    text-align: justify;
+    text-transform: capitalize;
+    text-align: center;
+  }
