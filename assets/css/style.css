@@ -16,3 +16,46 @@ body {
     text-transform: capitalize;
     text-align: center;
   }
+
+  #game-title {
+    color:white;
+    font-size: xx-large;
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  .table-center {
+    /* make sure tables are centered */
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  
+  table td {
+    /* Remove double borders on tables */
+    border-collapse: collapse;
+    text-align: center;
+  }
+
+  .question {
+    /* creates a border around the element, centers the text within it and makes the "box" centered */
+    border-width:3px; 
+    border-style:solid; 
+    border-color:#FF0000;
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  #message {
+    /* creates a border around the element, centers the text within it and makes the "box" centered */
+    border-width:3px; 
+    border-style:solid; 
+    border-color:#FF0000;
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: x-large;
+  }
