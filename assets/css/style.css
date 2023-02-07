@@ -59,3 +59,14 @@ body {
     margin-right: 10%;
     font-size: x-large;
   }
+
+  #option1,
+  #option2,
+  #option3,
+  #option4 {
+    border-width:3px; 
+    border-style:solid; 
+    border-color:#FF0000;
+    background-color: #00FF00;
+    color: black;
+  }

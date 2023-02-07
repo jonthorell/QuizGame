@@ -2,13 +2,16 @@
 
 const welcomePhrase = "Another visitor!\nStay a while, stay forever!";
 const gameTitle = "the quiz master";
-var gameQuestion = "Dummy question";
-var message = "Sorry, that was the wrong answer."
+
+
 
 document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
-document.getElementById('question').innerText = gameQuestion;
-document.getElementById('message').innerText = message; //will not be here later. Will be updated in main loop
+
+
+
+
+
 
 runGame();
 
@@ -20,7 +23,24 @@ runGame();
 function runGame() {
     let runQuestions=createQuestions();
     let questions = 10; //countdown to keep track of how many questions has been answered
-    document.getElementById('question').innerText = runQuestions[0].Question;
+    var message = "Sorry, that was the wrong answer."
+    var currentQuestion=24; // used to display the question as well as the corresponding answers
+
+    document.getElementById('message').innerText = message; //The following will not be here later. Will be updated in main loop
+    document.getElementById('question').innerText = runQuestions[currentQuestion].Question;
+    document.getElementById('option1').innerText = runQuestions[currentQuestion].Option1;
+    document.getElementById('option2').innerText = runQuestions[currentQuestion].Option2;
+    document.getElementById('option3').innerText = runQuestions[currentQuestion].Option3;
+    document.getElementById('option4').innerText = runQuestions[currentQuestion].Option4;
+    
+    let statusMess="Question number: "+questions;
+    let numberQuestions=runQuestions.length;
+    statusMess=statusMess+"\nNumber of questions:"+numberQuestions;
+    statusMess=statusMess+"\nCurrent Question:"+currentQuestion;
+    statusMess=statusMess+"\nCorrect answer:"+runQuestions[currentQuestion].Correct;
+    statusMess=statusMess+"\nBeen answered: "+runQuestions[currentQuestion].Answered;
+
+    document.getElementById('status').innerText=statusMess;
 }
 
 /**
@@ -54,8 +74,9 @@ function createQuestions() {
             Option1:option1Array[i],
             Option2:option2Array[i],
             Option3:option3Array[i],
-            Option4:option1Array[i],
-            Correct:rightArray[i]
+            Option4:option4Array[i],
+            Correct:rightArray[i],
+            Answered:false
         };
         myQuestionsArray.push(myQuestion);
     }
