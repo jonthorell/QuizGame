@@ -44,8 +44,8 @@ function runGame() {
 
     printStatusMessage(message);
 
-    getQuestion(runQuestions); // get a random question to display
-
+    let qrow=getQuestion(runQuestions); // get a random question to display
+    checkAnswer(qrow); // check if the answer is correct
 }
 
 /**
@@ -93,8 +93,8 @@ function createQuestions() {
  * Update the answered: property to true so the question can not be selected again.
  */
 
-function checkAnswer() {
-
+function checkAnswer(checkQuestion) {
+    console.log(checkQuestion);
 }
 
 /**
@@ -131,31 +131,35 @@ function getQuestion(runQuestions) {
     let currentQuestion = 0; //declare the variables beforehand to empty values
     let questionRow = "";
     let questionAnswered = "";
-    //do {
-    currentQuestion = randomIntFromInterval(0, numberQuestions - 1);
-    questionAnswered = runQuestions[currentQuestion].Answered;
-    questionRow = runQuestions[currentQuestion];
-    if (questionAnswered === false) {
-        console.log('The question has not been answered');
-        document.getElementById('question').innerText = runQuestions[currentQuestion].Question;
-        document.getElementById('option1').innerText = runQuestions[currentQuestion].Option1;
-        document.getElementById('option2').innerText = runQuestions[currentQuestion].Option2;
-        document.getElementById('option3').innerText = runQuestions[currentQuestion].Option3;
-        document.getElementById('option4').innerText = runQuestions[currentQuestion].Option4;
+    let finished = false;
+    do {
+        currentQuestion = randomIntFromInterval(0, numberQuestions - 1);
+        questionAnswered = runQuestions[currentQuestion].Answered;
+        questionRow = runQuestions[currentQuestion];
+        if (questionAnswered === false) {
+            console.log('The question has not been answered');
+            document.getElementById('question').innerText = runQuestions[currentQuestion].Question;
+            document.getElementById('option1').innerText = runQuestions[currentQuestion].Option1;
+            document.getElementById('option2').innerText = runQuestions[currentQuestion].Option2;
+            document.getElementById('option3').innerText = runQuestions[currentQuestion].Option3;
+            document.getElementById('option4').innerText = runQuestions[currentQuestion].Option4;
+            //runQuestions[currentQuestion].Answered=true;
+            finished=true;
 
-        //let statusMess = "Question number: " + questions;
-        let statusMess = "\nNumber of questions:" + numberQuestions;
-        statusMess = statusMess + "\nCurrent Question:" + currentQuestion;
-        statusMess = statusMess + "\nCorrect answer:" + runQuestions[currentQuestion].Correct;
-        statusMess = statusMess + "\nBeen answered: " + runQuestions[currentQuestion].Answered;
+            //let statusMess = "Question number: " + questions;
+            let statusMess = "\nNumber of questions:" + numberQuestions;
+            statusMess = statusMess + "\nCurrent Question:" + currentQuestion;
+            statusMess = statusMess + "\nCorrect answer:" + runQuestions[currentQuestion].Correct;
+            statusMess = statusMess + "\nBeen answered: " + runQuestions[currentQuestion].Answered;
 
-        //temporary text that outputs variable name/values to the browser
+            //temporary text that outputs variable name/values to the browser
 
-        document.getElementById('status').innerText = statusMess;
-    } else {
-        console.log('The question has been answered');
-    }
-    //} while (questionAnswered === false);
+            document.getElementById('status').innerText = statusMess;
+        } else {
+            console.log('The question has been answered');
+        }
+    } while (finished === false);
+    return questionRow;
 }
 
 /**
