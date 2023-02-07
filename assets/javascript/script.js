@@ -2,16 +2,17 @@
 
 const welcomePhrase = "Another visitor!\nStay a while, stay forever!";
 const gameTitle = "the quiz master";
+const professor="Professor Elvin Atombender thinks you won't escape.\nBonuspoint if you know where the quote comes from!";
+
+var score=15; // correct answers. Dummy value for now
+var wrong=2; // incorrect answers. Dummy value for now
 
 
 
 document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
 
-
-
-
-
+printScore(score,wrong);
 
 runGame();
 
@@ -24,7 +25,7 @@ function runGame() {
     let runQuestions=createQuestions();
     let questions = 10; //countdown to keep track of how many questions has been answered
     var message = "Sorry, that was the wrong answer."
-    var currentQuestion=24; // used to display the question as well as the corresponding answers
+    var currentQuestion=37; // used to display the question as well as the corresponding answers
 
     document.getElementById('message').innerText = message; //The following will not be here later. Will be updated in main loop
     document.getElementById('question').innerText = runQuestions[currentQuestion].Question;
@@ -83,18 +84,69 @@ function createQuestions() {
     return myQuestionsArray
 }
 
+/**
+ * Checks if the clicked answer corresponds with the correct answer using the Correct: property
+ */
+
 function checkAnswer() {
 
 }
+
+/**
+ * Updates the correct answer point
+ */
 
 function updateScore() {
 
 }
 
+/**
+ * Updates the wrong answer point
+ */
+
 function updateWrong() {
 
 }
 
+/**
+ * Prints a status message below the answer-boxes 
+ */
+
 function printStatusMessage() {
 
+}
+
+/**
+ * Gets the question to be answered. Makes sure questions can not be selected twice by using the answered: property
+ */
+
+function getQuestion() {
+
+}
+
+
+
+/**
+ * Update the score display
+ */
+function printScore(correct,incorrect) {
+    let myScore="Correct Answers: "+correct;
+    myScore=myScore+", Incorrect Answers: "+incorrect;
+    document.getElementById('score').innerText=myScore;
+}
+
+/**
+ * Silly easter egg on welcome message
+ */
+
+function impossibleMissionOver() {
+    document.getElementById('welcome').innerText=professor;
+}
+
+/**
+ * Reverts to standard welcome message
+ */
+
+function impossibleMissionLeave() {
+    document.getElementById('welcome').innerText=welcomePhrase;
 }

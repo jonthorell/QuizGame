@@ -7,6 +7,7 @@ body {
     font-size: xx-large;
     color: burlywood;
     text-align: center;
+    align-content: center;
   }
 
   #header-text {
@@ -46,6 +47,7 @@ body {
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
+    font-size: xx-large;
   }
 
   #message {
@@ -69,4 +71,11 @@ body {
     border-color:#FF0000;
     background-color: #00FF00;
     color: black;
+  }
+
+  #score {
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: larger;
   }
