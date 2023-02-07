@@ -1,5 +1,7 @@
 body {
-    /* default values for the body */
+  /* default values for the body */
+  background-image: url("../images/backdrop.png");
+  /* in case background can not be loaded, set a background color */
     background-color: #777777;
   }
 

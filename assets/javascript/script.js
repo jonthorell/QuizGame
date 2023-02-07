@@ -1,20 +1,36 @@
-
 const welcomePhrase = "Another visitor!\nStay a while, stay forever!";
 const gameTitle = "the music quiz master";
-const maxQuestions=10;
-const professor="Professor Elvin Atombender thinks you won't escape.\nBonuspoint if you know where the quote comes from!";
+const maxQuestions = 10;
+const professor = "Professor Elvin Atombender thinks you won't escape.\nBonuspoint if you know where the quote comes from!";
 
-var score=15; // correct answers. Dummy value for now. Will be 0 initially.
-var wrong=2; // incorrect answers. Dummy value for now. Will be 0 initially.
-var currentQuestion=28; // used to display the question as well as the corresponding answers. Dummy value for now
-var currentId=1; //which one 1 out of 10. Dumy for now
+var score = 15; // correct answers. Dummy value for now. Will be 0 initially.
+var wrong = 2; // incorrect answers. Dummy value for now. Will be 0 initially.
+var currentQuestion = 25; // used to display the question as well as the corresponding answers. Dummy value for now
+var currentId = 1; //which one 1 out of 10. Dumy for now
 
+document.addEventListener("DOMContentLoaded", function () {
+    let buttons = document.getElementsByTagName("td");
 
+    for (let button of buttons) {
+        button.addEventListener("click", function () {
+            let answerButton = this.getAttribute("data-type");
+            let answerTxt = ", which contain the answer:" + this.innerText;
+            alert(`You clicked ${answerButton+answerTxt}`);
+        });
+    }
+
+    //let welcome =document.getElementById('welcome');
+    //welcome.addEventListener('mouseover', function () {
+    //    document.getElementById('welcome').innerText = professor;
+    //}
+});
+
+//<p id="welcome" onmouseover="impossibleMissionOver();" onmouseleave="impossibleMissionLeave();">0</p>
 
 document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
 
-printScore(score,wrong,currentQuestion,maxQuestions,currentId);
+printScore(score, wrong, currentQuestion, maxQuestions, currentId);
 
 runGame();
 
@@ -24,28 +40,28 @@ runGame();
  */
 
 function runGame() {
-    let runQuestions=createQuestions();
+    let runQuestions = createQuestions();
     let questions = 1; //countdown to keep track of how many questions has been answered. Max = 10
     var message = "Welcome to the game! Please click an answer to proceed." //start message
-   
+
     printStatusMessage(message);
 
-     //The following will not be here later. Will be updated in main loop
+    //The following will not be here later. Will be updated in main loop
     document.getElementById('question').innerText = runQuestions[currentQuestion].Question;
     document.getElementById('option1').innerText = runQuestions[currentQuestion].Option1;
     document.getElementById('option2').innerText = runQuestions[currentQuestion].Option2;
     document.getElementById('option3').innerText = runQuestions[currentQuestion].Option3;
     document.getElementById('option4').innerText = runQuestions[currentQuestion].Option4;
-    
-    //temporary text that outputs variable name/values to the browser
-    let statusMess="Question number: "+questions;
-    let numberQuestions=runQuestions.length;
-    statusMess=statusMess+"\nNumber of questions:"+numberQuestions;
-    statusMess=statusMess+"\nCurrent Question:"+currentQuestion;
-    statusMess=statusMess+"\nCorrect answer:"+runQuestions[currentQuestion].Correct;
-    statusMess=statusMess+"\nBeen answered: "+runQuestions[currentQuestion].Answered;
 
-    document.getElementById('status').innerText=statusMess;
+    //temporary text that outputs variable name/values to the browser
+    let statusMess = "Question number: " + questions;
+    let numberQuestions = runQuestions.length;
+    statusMess = statusMess + "\nNumber of questions:" + numberQuestions;
+    statusMess = statusMess + "\nCurrent Question:" + currentQuestion;
+    statusMess = statusMess + "\nCorrect answer:" + runQuestions[currentQuestion].Correct;
+    statusMess = statusMess + "\nBeen answered: " + runQuestions[currentQuestion].Answered;
+
+    document.getElementById('status').innerText = statusMess;
 }
 
 /**
@@ -75,13 +91,13 @@ function createQuestions() {
 
     for (let i = 0; i < numberQuestions; i++) {
         let myQuestion = {
-            Question:questionArray[i],
-            Option1:option1Array[i],
-            Option2:option2Array[i],
-            Option3:option3Array[i],
-            Option4:option4Array[i],
-            Correct:rightArray[i],
-            Answered:false
+            Question: questionArray[i],
+            Option1: option1Array[i],
+            Option2: option2Array[i],
+            Option3: option3Array[i],
+            Option4: option4Array[i],
+            Correct: rightArray[i],
+            Answered: false
         };
         myQuestionsArray.push(myQuestion);
     }
@@ -134,27 +150,27 @@ function getQuestion() {
 /**
  * Update the score display
  */
-function printScore(correct,incorrect,currentQ,maxQ) {
-    let myScore="Correct Answers: "+correct;
-    myScore=myScore+", Incorrect Answers: "+incorrect;
-    myScore=myScore+"\nCurrent question (id):"+currentQ; //id
-    myScore=myScore+"\nCurrent question (loop):"+currentId; //id
-    myScore=myScore+"(out of) "+maxQ;
-    document.getElementById('score').innerText=myScore;
+function printScore(correct, incorrect, currentQ, maxQ) {
+    let myScore = "Correct Answers: " + correct;
+    myScore = myScore + ", Incorrect Answers: " + incorrect;
+    myScore = myScore + "\nCurrent question (id):" + currentQ; //id
+    myScore = myScore + "\nCurrent question (loop):" + currentId; //id
+    myScore = myScore + "(out of) " + maxQ;
+    document.getElementById('score').innerText = myScore;
 }
 
 /**
  * Silly easter egg on welcome message
  */
 
-function impossibleMissionOver() {
-    document.getElementById('welcome').innerText=professor;
-}
+//function impossibleMissionOver() {
+//    document.getElementById('welcome').innerText = professor;
+//}
 
 /**
  * Reverts to standard welcome message
  */
 
 function impossibleMissionLeave() {
-    document.getElementById('welcome').innerText=welcomePhrase;
+    document.getElementById('welcome').innerText = welcomePhrase;
 }
