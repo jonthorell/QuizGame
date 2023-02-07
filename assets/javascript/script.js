@@ -1,17 +1,20 @@
 
 const welcomePhrase = "Another visitor!\nStay a while, stay forever!";
-const gameTitle = "the quiz master";
+const gameTitle = "the music quiz master";
+const maxQuestions=10;
 const professor="Professor Elvin Atombender thinks you won't escape.\nBonuspoint if you know where the quote comes from!";
 
-var score=15; // correct answers. Dummy value for now
-var wrong=2; // incorrect answers. Dummy value for now
+var score=15; // correct answers. Dummy value for now. Will be 0 initially.
+var wrong=2; // incorrect answers. Dummy value for now. Will be 0 initially.
+var currentQuestion=28; // used to display the question as well as the corresponding answers. Dummy value for now
+var currentId=1; //which one 1 out of 10. Dumy for now
 
 
 
 document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
 
-printScore(score,wrong);
+printScore(score,wrong,currentQuestion,maxQuestions,currentId);
 
 runGame();
 
@@ -22,9 +25,9 @@ runGame();
 
 function runGame() {
     let runQuestions=createQuestions();
-    let questions = 10; //countdown to keep track of how many questions has been answered
+    let questions = 1; //countdown to keep track of how many questions has been answered. Max = 10
     var message = "Welcome to the game! Please click an answer to proceed." //start message
-    var currentQuestion=22; // used to display the question as well as the corresponding answers. Dummy value for now
+   
     printStatusMessage(message);
 
      //The following will not be here later. Will be updated in main loop
@@ -131,9 +134,12 @@ function getQuestion() {
 /**
  * Update the score display
  */
-function printScore(correct,incorrect) {
+function printScore(correct,incorrect,currentQ,maxQ) {
     let myScore="Correct Answers: "+correct;
     myScore=myScore+", Incorrect Answers: "+incorrect;
+    myScore=myScore+"\nCurrent question (id):"+currentQ; //id
+    myScore=myScore+"\nCurrent question (loop):"+currentId; //id
+    myScore=myScore+"(out of) "+maxQ;
     document.getElementById('score').innerText=myScore;
 }
 
