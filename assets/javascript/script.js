@@ -23,8 +23,8 @@ runGame();
 function runGame() {
     let runQuestions=createQuestions();
     let questions = 10; //countdown to keep track of how many questions has been answered
-    var message = "Dummy message text. Just to test status message function"
-    var currentQuestion=37; // used to display the question as well as the corresponding answers. Dummy value for now
+    var message = "Welcome to the game! Please click an answer to proceed." //start message
+    var currentQuestion=22; // used to display the question as well as the corresponding answers. Dummy value for now
     printStatusMessage(message);
 
      //The following will not be here later. Will be updated in main loop
@@ -86,7 +86,8 @@ function createQuestions() {
 }
 
 /**
- * Checks if the clicked answer corresponds with the correct answer using the Correct: property
+ * Checks if the clicked answer corresponds with the correct answer using the Correct: property.
+ * Update the answered: property to true so the question can not be selected again.
  */
 
 function checkAnswer() {
