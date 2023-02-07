@@ -39,28 +39,13 @@ function runGame() {
     let runQuestions = createQuestions();
     let questions = 1; //countdown to keep track of how many questions has been answered. Max = 10
     let message = "Welcome to the game! Please click an answer to proceed." //start message
-    let score=0;
-    let wrong=0;
-    let currentQuestion=10; // dummy for now to just get a question 
+    let score = 0;
+    let wrong = 0;
 
     printStatusMessage(message);
 
-    //The following will not be here later. Will be updated in main loop
-    document.getElementById('question').innerText = runQuestions[currentQuestion].Question;
-    document.getElementById('option1').innerText = runQuestions[currentQuestion].Option1;
-    document.getElementById('option2').innerText = runQuestions[currentQuestion].Option2;
-    document.getElementById('option3').innerText = runQuestions[currentQuestion].Option3;
-    document.getElementById('option4').innerText = runQuestions[currentQuestion].Option4;
+    getQuestion(runQuestions); // get a random question to display
 
-    //temporary text that outputs variable name/values to the browser
-    let statusMess = "Question number: " + questions;
-    let numberQuestions = runQuestions.length;
-    statusMess = statusMess + "\nNumber of questions:" + numberQuestions;
-    statusMess = statusMess + "\nCurrent Question:" + currentQuestion;
-    statusMess = statusMess + "\nCorrect answer:" + runQuestions[currentQuestion].Correct;
-    statusMess = statusMess + "\nBeen answered: " + runQuestions[currentQuestion].Answered;
-
-    document.getElementById('status').innerText = statusMess;
 }
 
 /**
@@ -140,11 +125,46 @@ function printStatusMessage(newMessage) {
  * Gets the question to be answered. Makes sure questions can not be selected twice by using the answered: property
  */
 
-function getQuestion() {
+function getQuestion(runQuestions) {
 
+    let numberQuestions = runQuestions.length;
+    let currentQuestion = 0; //declare the variables beforehand to empty values
+    let questionRow = "";
+    let questionAnswered = "";
+    //do {
+    currentQuestion = randomIntFromInterval(0, numberQuestions - 1);
+    questionAnswered = runQuestions[currentQuestion].Answered;
+    questionRow = runQuestions[currentQuestion];
+    if (questionAnswered === false) {
+        console.log('The question has not been answered');
+        document.getElementById('question').innerText = runQuestions[currentQuestion].Question;
+        document.getElementById('option1').innerText = runQuestions[currentQuestion].Option1;
+        document.getElementById('option2').innerText = runQuestions[currentQuestion].Option2;
+        document.getElementById('option3').innerText = runQuestions[currentQuestion].Option3;
+        document.getElementById('option4').innerText = runQuestions[currentQuestion].Option4;
+
+        //let statusMess = "Question number: " + questions;
+        let statusMess = "\nNumber of questions:" + numberQuestions;
+        statusMess = statusMess + "\nCurrent Question:" + currentQuestion;
+        statusMess = statusMess + "\nCorrect answer:" + runQuestions[currentQuestion].Correct;
+        statusMess = statusMess + "\nBeen answered: " + runQuestions[currentQuestion].Answered;
+
+        //temporary text that outputs variable name/values to the browser
+
+        document.getElementById('status').innerText = statusMess;
+    } else {
+        console.log('The question has been answered');
+    }
+    //} while (questionAnswered === false);
 }
 
+/**
+ * Random number between max and min, to get a random question
+ */
 
+function randomIntFromInterval(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
 
 /**
  * Update the score display
