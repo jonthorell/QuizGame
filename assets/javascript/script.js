@@ -1,4 +1,3 @@
-//this javascript file is generic and will be used by all three pages. Routines used for the game proper is in game.js and is only linkd into the game.html file
 
 const welcomePhrase = "Another visitor!\nStay a while, stay forever!";
 const gameTitle = "the quiz master";
@@ -24,16 +23,18 @@ runGame();
 function runGame() {
     let runQuestions=createQuestions();
     let questions = 10; //countdown to keep track of how many questions has been answered
-    var message = "Sorry, that was the wrong answer."
-    var currentQuestion=37; // used to display the question as well as the corresponding answers
+    var message = "Dummy message text. Just to test status message function"
+    var currentQuestion=37; // used to display the question as well as the corresponding answers. Dummy value for now
+    printStatusMessage(message);
 
-    document.getElementById('message').innerText = message; //The following will not be here later. Will be updated in main loop
+     //The following will not be here later. Will be updated in main loop
     document.getElementById('question').innerText = runQuestions[currentQuestion].Question;
     document.getElementById('option1').innerText = runQuestions[currentQuestion].Option1;
     document.getElementById('option2').innerText = runQuestions[currentQuestion].Option2;
     document.getElementById('option3').innerText = runQuestions[currentQuestion].Option3;
     document.getElementById('option4').innerText = runQuestions[currentQuestion].Option4;
     
+    //temporary text that outputs variable name/values to the browser
     let statusMess="Question number: "+questions;
     let numberQuestions=runQuestions.length;
     statusMess=statusMess+"\nNumber of questions:"+numberQuestions;
@@ -112,8 +113,8 @@ function updateWrong() {
  * Prints a status message below the answer-boxes 
  */
 
-function printStatusMessage() {
-
+function printStatusMessage(newMessage) {
+    document.getElementById('message').innerText = newMessage;
 }
 
 /**
