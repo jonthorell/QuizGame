@@ -3,12 +3,15 @@ const gameTitle = "the music quiz master";
 const maxQuestions = 10;
 const professor = "Professor Elvin Atombender thinks you won't escape.\nBonuspoint if you know where the quote comes from!";
 
-var score = 15; // correct answers. Dummy value for now. Will be 0 initially.
-var wrong = 2; // incorrect answers. Dummy value for now. Will be 0 initially.
-var currentQuestion = 25; // used to display the question as well as the corresponding answers. Dummy value for now
-var currentId = 1; //which one 1 out of 10. Dumy for now
-
 document.addEventListener("DOMContentLoaded", function () {
+    let welcomeEvent = document.getElementById('welcome');
+    welcomeEvent.addEventListener('mouseover', function () {
+        document.getElementById('welcome').innerText = professor;
+    });
+    welcomeEvent.addEventListener('mouseout', function () {
+        document.getElementById('welcome').innerText = welcomePhrase;
+    });
+
     let buttons = document.getElementsByTagName("td");
 
     for (let button of buttons) {
@@ -18,19 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
             alert(`You clicked ${answerButton+answerTxt}`);
         });
     }
-
-    //let welcome =document.getElementById('welcome');
-    //welcome.addEventListener('mouseover', function () {
-    //    document.getElementById('welcome').innerText = professor;
-    //}
 });
-
-//<p id="welcome" onmouseover="impossibleMissionOver();" onmouseleave="impossibleMissionLeave();">0</p>
 
 document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
 
-printScore(score, wrong, currentQuestion, maxQuestions, currentId);
+printScore(0, 0); // initial score display
 
 runGame();
 
@@ -42,7 +38,10 @@ runGame();
 function runGame() {
     let runQuestions = createQuestions();
     let questions = 1; //countdown to keep track of how many questions has been answered. Max = 10
-    var message = "Welcome to the game! Please click an answer to proceed." //start message
+    let message = "Welcome to the game! Please click an answer to proceed." //start message
+    let score=0;
+    let wrong=0;
+    let currentQuestion=10; // dummy for now to just get a question 
 
     printStatusMessage(message);
 
@@ -150,27 +149,8 @@ function getQuestion() {
 /**
  * Update the score display
  */
-function printScore(correct, incorrect, currentQ, maxQ) {
+function printScore(correct, incorrect) {
     let myScore = "Correct Answers: " + correct;
     myScore = myScore + ", Incorrect Answers: " + incorrect;
-    myScore = myScore + "\nCurrent question (id):" + currentQ; //id
-    myScore = myScore + "\nCurrent question (loop):" + currentId; //id
-    myScore = myScore + "(out of) " + maxQ;
     document.getElementById('score').innerText = myScore;
-}
-
-/**
- * Silly easter egg on welcome message
- */
-
-//function impossibleMissionOver() {
-//    document.getElementById('welcome').innerText = professor;
-//}
-
-/**
- * Reverts to standard welcome message
- */
-
-function impossibleMissionLeave() {
-    document.getElementById('welcome').innerText = welcomePhrase;
 }
