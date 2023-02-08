@@ -33,7 +33,7 @@ window.onclick = function (event) {
 document.addEventListener("DOMContentLoaded", function () {
     let startEvent = document.getElementById('myStart');
     startEvent.addEventListener('click', function () {
-        turnOnHidden(); //show the hidden elements
+        // turnOnHidden(); //show the hidden elements. Turn on when everything else is ready
     });
     let welcomeEvent = document.getElementById('welcome');
     welcomeEvent.addEventListener('mouseover', function () {

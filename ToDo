@@ -2,3 +2,10 @@ The create-question part could be better. It would be far better to get the data
 statically in the js file.
 
 Remember for final: enable display: none on question, score,message,gameTable. And reverse on image
+
+add back to css
+#gameTable {
+    /* display: none; hidden by default. Will be revealed at game start */
+  }
+
+  // turnOnHidden(); //show the hidden elements. Turn on when everything else is ready
