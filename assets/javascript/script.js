@@ -2,15 +2,17 @@ const welcomePhrase = "Another visitor!\nStay a while, stay forever!";
 const gameTitle = "the music quiz master";
 const maxQuestions = 10;
 const professor = "Professor Elvin Atombender thinks you won't escape.\nBonuspoint if you know where the quote comes from!";
+const myQuestionsArray = []; // empty combined array moved to const
+var currentQuestion=0;      // should be converted to local
 
 // Get the modal - rules
-var modal = document.getElementById("myModal");
+let modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+let btn = document.getElementById("myBtn");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+let span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
 btn.onclick = function () {
@@ -51,10 +53,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let buttons = document.getElementsByTagName("td");
 
     for (let button of buttons) {
-        button.addEventListener("click", function () {
+        button.addEventListener("click", function (myQuestionsArray) {
             let answerButton = this.getAttribute("data-type");
-            let answerTxt = ", which contain the answer:" + this.innerText;
-            alert(`You clicked ${answerButton+answerTxt}`);
+            checkAnswer(answerButton);
         });
         button.addEventListener('mouseover', function () {
             // change background color to blue on mouseover
@@ -70,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
 
-printScore(0, 0); // initial score display
+printScore(0, 0,maxQuestions); // initial score display
 
 runGame();
 
@@ -85,11 +86,11 @@ function runGame() {
     let message = "Welcome to the game! Please click an answer to proceed." //start message
     let score = 0;
     let wrong = 0;
+    setAllQuestionsToGreen()    // set all boxes to green
 
     printStatusMessage(message);
 
     let qrow = getQuestion(runQuestions); // get a random question to display
-    checkAnswer(qrow); // check if the answer is correct
 }
 
 /**
@@ -115,7 +116,7 @@ function createQuestions() {
 
     //lets combine the arrays into one array with object properties
 
-    const myQuestionsArray = []; // empty combined array
+    //const myQuestionsArray = []; // empty combined array moved to global
 
     for (let i = 0; i < numberQuestions; i++) {
         let myQuestion = {
@@ -137,8 +138,22 @@ function createQuestions() {
  * Update the answered: property to true so the question can not be selected again.
  */
 
-function checkAnswer(checkQuestion) {
-    console.log(checkQuestion);
+function checkAnswer(buttonClicked) {
+    buttonClicked=buttonClicked.toLowerCase(); //provides the optionNR from the button clicked. Converted to lowercase for easy comparison
+    let correct=myQuestionsArray[currentQuestion].Correct;
+    correct=correct.toLowerCase();
+
+    let newMess="";
+    console.log(buttonClicked);
+    console.log(correct);
+    
+    if (buttonClicked === correct) {
+        newMess="That is correct. Great job!";
+    } else {
+        newMess="Sorry, you got that wrong.";
+    }
+    alert(newMess);
+    //checkAnswer(answerButton,answer,correct,current);
 }
 
 /**
@@ -172,7 +187,7 @@ function printStatusMessage(newMessage) {
 function getQuestion(runQuestions) {
 
     let numberQuestions = runQuestions.length;
-    let currentQuestion = 0; //declare the variables beforehand to empty values
+    //let currentQuestion = 0; //declare the variables beforehand to empty values
     let questionRow = "";
     let questionAnswered = "";
     let finished = false;
@@ -217,8 +232,10 @@ function randomIntFromInterval(min, max) { // min and max included
 /**
  * Update the score display
  */
-function printScore(correct, incorrect) {
-    let myScore = "Correct Answers: " + correct;
+function printScore(correct, incorrect,currentQ) {
+    let myScore="Current question:"+currentQ;
+    myScore=myScore+("out of ")+maxQuestions;
+    myScore = "Correct Answers: " + correct;
     myScore = myScore + ", Incorrect Answers: " + incorrect;
     document.getElementById('score').innerText = myScore;
 }
@@ -241,4 +258,16 @@ function turnOnHidden() {
     messageElement.style.display = "block";
     let tableElement=document.getElementById('gameTable');
     tableElement.style.display="block";
+}
+
+function setAllQuestionsToGreen() {
+    //make sure all answer boxes are green when new question is started
+   let option1=document.getElementById('option1');
+   option1.style.backgroundColor="#00FF00"
+   let option2=document.getElementById('option2');
+   option1.style.backgroundColor="#00FF00"
+   let option3=document.getElementById('option3');
+   option1.style.backgroundColor="#00FF00"
+   let option4=document.getElementById('option4');
+   option1.style.backgroundColor="#00FF00"
 }

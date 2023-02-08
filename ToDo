@@ -9,3 +9,7 @@ add back to css
   }
 
   // turnOnHidden(); //show the hidden elements. Turn on when everything else is ready
+
+  CHange table to ordinary buttons to improve responsiveness
+
+  The completed questions array is global. See if it can be somewhat easily be scoped to local
