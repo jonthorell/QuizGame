@@ -63,10 +63,6 @@ body {
     background-color: #00FF00;
   }
 
-  #gameTable {
-    /* display: none; hidden by default. Will be revealed at game start */
-  }
-
   #message {
     /* creates a border around the element, centers the text within it and makes the "box" centered. Invisible by default */
     /* display: none; */
