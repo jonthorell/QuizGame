@@ -5,6 +5,11 @@ body {
     background-color: #777777;
   }
 
+#quizImage,
+#quizImageDiv {
+  display: none; /* remember to change when game complete */
+}
+
   #welcome {
     font-size: xx-large;
     color: burlywood;
@@ -42,7 +47,7 @@ body {
 
   .question {
     /* Styles the question */
-    display: none;  /* hidden by default. Will be turned on by start button */
+    /* display: none;  hidden by default. Will be turned on by start button */
     text-align: center;
     font-style: italic;
     font-size: xx-large;
@@ -58,9 +63,13 @@ body {
     background-color: #00FF00;
   }
 
+  #gameTable {
+    /* display: none; hidden by default. Will be revealed at game start */
+  }
+
   #message {
     /* creates a border around the element, centers the text within it and makes the "box" centered. Invisible by default */
-    display: none;
+    /* display: none; */
     border-width:3px; 
     border-style:solid; 
     border-color:black;
@@ -85,12 +94,10 @@ body {
   }
 
   #score {
-    display: none; /* invisible by default. Turns at start */
+    /* display: none; invisible by default. Turns at start */
     text-align: center;
     color: black;
     font-weight: bold;
-    font-size: larger;
-
     border-width:3px; 
     border-style:solid; 
     border-color:black;
@@ -162,6 +169,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.rcorners2 {
+  /* makes page logo (bibliography) circular(ish) */
+  border-radius: 25px;
+  padding: 20px;
 }
 
 #myBtn,

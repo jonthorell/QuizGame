@@ -217,6 +217,13 @@ function printScore(correct, incorrect) {
 
 
 function turnOnHidden() {
+    // turn off start image
+    let picElement=document.getElementById('quizImage');
+    picElement.style.display="none";
+    let picElementDiv=document.getElementById('quizImageDiv');
+    picElement.style.display="none";
+    
+
     // turns on the hidden elements
     let questionElement = document.getElementById("question");
     questionElement.style.display ="block";
@@ -224,4 +231,6 @@ function turnOnHidden() {
     scoreElement.style.display = "block";
     let messageElement = document.getElementById('message');
     messageElement.style.display = "block";
+    let tableElement=document.getElementById('gameTable');
+    tableElement.style.display="block";
 }

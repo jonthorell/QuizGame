@@ -1,2 +1,4 @@
 The create-question part could be better. It would be far better to get the data from a database or csv-file, but that is for the future. As it is they are stored 
 statically in the js file.
+
+Remember for final: enable display: none on question, score,message,gameTable. And reverse on image
