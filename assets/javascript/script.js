@@ -56,6 +56,14 @@ document.addEventListener("DOMContentLoaded", function () {
             let answerTxt = ", which contain the answer:" + this.innerText;
             alert(`You clicked ${answerButton+answerTxt}`);
         });
+        button.addEventListener('mouseover', function () {
+            // change background color to blue on mouseover
+            this.style.backgroundColor="#009DC4";
+        });
+        button.addEventListener('mouseout', function () {
+            // change background color back to green on mouseout
+            this.style.backgroundColor="#00FF00";
+        });
     }
 });
 
