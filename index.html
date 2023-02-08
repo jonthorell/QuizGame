@@ -9,12 +9,36 @@
     <meta name="keywords" content="music quiz game">
     <meta name="author" content="Jonas Thorell">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>QuizMaster</title>
+    <title>QuizMaster: This world is totally Fugazi</title>
 </head>
 
 <body>
     <p id="game-title">0</p>
+
+    <!-- Trigger/Open The Modal -->
+
+    <div class="flex-center"><button id="myBtn">Rules</button></div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1 class="center-text">Rules of the Game</h1>
+            <p class="center-text">You will answer 10 randomly chosen questions regarding music.</p>
+            <p class="center-text">The game is timed, so you will have 30 seconds per question to answer it.</p>
+            <p class="center-text">The game is scored as follows:</p>
+            <p class="center-text">1. Every question answered correctly will give you an added score of time-remaining *
+                10</p>
+            <p class="center-text">2. Every question answered incorrectly will deduct the same amount of points with an
+                added penalty of 50 to discourage from just guessing.</p>
+        </div>
+
+    </div>
     <p id="welcome">0</p>
+
+
 
     <p id="question" class="question">0</p>
 
