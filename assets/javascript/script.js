@@ -3,7 +3,7 @@ const gameTitle = "the music quiz master";
 const maxQuestions = 10;
 const professor = "Professor Elvin Atombender thinks you won't escape.\nBonuspoint if you know where the quote comes from!";
 
-// Get the modal
+// Get the modal - rules
 var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
@@ -13,21 +13,22 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
+btn.onclick = function () {
+    modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+span.onclick = function () {
+    modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
+
 
 document.addEventListener("DOMContentLoaded", function () {
     let welcomeEvent = document.getElementById('welcome');
@@ -36,6 +37,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     welcomeEvent.addEventListener('mouseout', function () {
         document.getElementById('welcome').innerText = welcomePhrase;
+    });
+
+    let btn2Event = document.getElementById('myBtn2');
+    btn2Event.addEventListener('click', function () {
+        alert("The game is written by:\nJonas Thorell");
     });
 
     let buttons = document.getElementsByTagName("td");
@@ -70,7 +76,7 @@ function runGame() {
 
     printStatusMessage(message);
 
-    let qrow=getQuestion(runQuestions); // get a random question to display
+    let qrow = getQuestion(runQuestions); // get a random question to display
     checkAnswer(qrow); // check if the answer is correct
 }
 
@@ -170,7 +176,7 @@ function getQuestion(runQuestions) {
             document.getElementById('option3').innerText = runQuestions[currentQuestion].Option3;
             document.getElementById('option4').innerText = runQuestions[currentQuestion].Option4;
             //runQuestions[currentQuestion].Answered=true;
-            finished=true;
+            finished = true;
 
             //let statusMess = "Question number: " + questions;
             let statusMess = "\nNumber of questions:" + numberQuestions;

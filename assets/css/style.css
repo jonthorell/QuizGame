@@ -161,7 +161,8 @@ body {
   align-items: center;
 }
 
-#myBtn {
+#myBtn,
+#myBtn2 {
   background-color: #4CAF50; /* Green */
   border: solid;
   color: black;
