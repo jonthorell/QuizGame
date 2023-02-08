@@ -31,6 +31,10 @@ window.onclick = function (event) {
 
 
 document.addEventListener("DOMContentLoaded", function () {
+    let startEvent = document.getElementById('myStart');
+    startEvent.addEventListener('click', function () {
+        turnOnHidden(); //show the hidden elements
+    });
     let welcomeEvent = document.getElementById('welcome');
     welcomeEvent.addEventListener('mouseover', function () {
         document.getElementById('welcome').innerText = professor;
@@ -209,4 +213,15 @@ function printScore(correct, incorrect) {
     let myScore = "Correct Answers: " + correct;
     myScore = myScore + ", Incorrect Answers: " + incorrect;
     document.getElementById('score').innerText = myScore;
+}
+
+
+function turnOnHidden() {
+    // turns on the hidden elements
+    let questionElement = document.getElementById("question");
+    questionElement.style.display ="block";
+    let scoreElement = document.getElementById('score');
+    scoreElement.style.display = "block";
+    let messageElement = document.getElementById('message');
+    messageElement.style.display = "block";
 }

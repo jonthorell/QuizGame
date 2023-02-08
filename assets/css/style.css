@@ -42,6 +42,7 @@ body {
 
   .question {
     /* Styles the question */
+    display: none;  /* hidden by default. Will be turned on by start button */
     text-align: center;
     font-style: italic;
     font-size: xx-large;
@@ -58,7 +59,8 @@ body {
   }
 
   #message {
-    /* creates a border around the element, centers the text within it and makes the "box" centered */
+    /* creates a border around the element, centers the text within it and makes the "box" centered. Invisible by default */
+    display: none;
     border-width:3px; 
     border-style:solid; 
     border-color:black;
@@ -83,6 +85,7 @@ body {
   }
 
   #score {
+    display: none; /* invisible by default. Turns at start */
     text-align: center;
     color: black;
     font-weight: bold;
@@ -162,7 +165,8 @@ body {
 }
 
 #myBtn,
-#myBtn2 {
+#myBtn2,
+#myStart {
   background-color: #4CAF50; /* Green */
   border: solid;
   color: black;
