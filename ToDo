@@ -3,6 +3,10 @@ statically in the js file.
 
 Remember for final: enable display: none on question, score,message,gameTable. And reverse on image
 
+Add flowchart
+Validate code
+Create readme
+
 add back to css
 #gameTable {
     /* display: none; hidden by default. Will be revealed at game start */
@@ -13,14 +17,16 @@ add back to css
   CHange table to ordinary buttons to improve responsiveness
 
   The completed questions array is global. See if it can be somewhat easily be scoped to local
-
-  Random status messages (say 6 different "great job" and 6 "you can do better")
+  Refactor other global variables (not many)
+  
 
   Check why the "all to green" is not working
   Mark question as answered correctly (yellow maybe?)
 
- CHeck and  Fix scoring
+  CHeck and  Fix scoring
 
   Add some styling to the "you answerd" resoponse.
 
   Add loop
+  Add timer
+  Disable eventlistener after question answered. When moved to next question, enable again. To disable multiple answers and multiple red boxes.
