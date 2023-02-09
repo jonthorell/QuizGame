@@ -157,9 +157,11 @@ function checkAnswer(buttonClicked) {
     let answerText = document.getElementById(buttonClicked).buttonClicked;
     correct = correct.toLowerCase();
     let myAnswerText = document.getElementById(buttonClicked).innerText;
-    let statusMess = "You answered: \"";
-    statusMess = statusMess + myAnswerText + "\". ";
 
+   let statusMess = "You answered: \"";
+    
+    statusMess = statusMess + myAnswerText + "\". ";
+    
     if (buttonClicked === correct) {
         setAllQuestionsToGreen();
         let errorMess = getRightAnswerMessage();
