@@ -13,3 +13,13 @@ add back to css
   CHange table to ordinary buttons to improve responsiveness
 
   The completed questions array is global. See if it can be somewhat easily be scoped to local
+
+  Random status messages (say 6 different "great job" and 6 "you can do better")
+
+  Check why the "all to green" is not working
+
+ CHeck and  Fix scoring
+
+  Add some styling to the "you answerd" resoponse.
+
+  Add loop

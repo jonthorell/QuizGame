@@ -3,7 +3,10 @@ const gameTitle = "the music quiz master";
 const maxQuestions = 10;
 const professor = "Professor Elvin Atombender thinks you won't escape.\nBonuspoint if you know where the quote comes from!";
 const myQuestionsArray = []; // empty combined array moved to const
-var currentQuestion=0;      // should be converted to local
+var currentQuestion = 0; // should be converted to local
+var questions = 0;
+var score = 0;
+var wrong = 0;
 
 // Get the modal - rules
 let modal = document.getElementById("myModal");
@@ -59,11 +62,21 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         button.addEventListener('mouseover', function () {
             // change background color to blue on mouseover
-            this.style.backgroundColor="#009DC4";
+            if (this.style.backgroundColor === "red") {
+                //dont really do anything if the question has been answered wrong. The color should remain
+                this.style.backgroundColor = "red";
+            } else {
+                this.style.backgroundColor = "#009DC4";
+            }
         });
         button.addEventListener('mouseout', function () {
             // change background color back to green on mouseout
-            this.style.backgroundColor="#00FF00";
+            if (this.style.backgroundColor === "red") {
+                //dont really do anything if the question has been answered wrong. The color should remain
+                this.style.backgroundColor = "red";
+            } else {
+                this.style.backgroundColor = "#00FF00";
+            }
         });
     }
 });
@@ -71,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
 
-printScore(0, 0,maxQuestions); // initial score display
+printScore(0, 0, questions + 1); // initial score display
 
 runGame();
 
@@ -82,11 +95,11 @@ runGame();
 
 function runGame() {
     let runQuestions = createQuestions();
-    let questions = 1; //countdown to keep track of how many questions has been answered. Max = 10
+    questions = 1; //countdown to keep track of how many questions has been answered. Max = 10. Reset at start.
     let message = "Welcome to the game! Please click an answer to proceed." //start message
-    let score = 0;
-    let wrong = 0;
-    setAllQuestionsToGreen()    // set all boxes to green
+    score = 0;
+    wrong = 0;
+    setAllQuestionsToGreen() // set all boxes to green
 
     printStatusMessage(message);
 
@@ -139,21 +152,89 @@ function createQuestions() {
  */
 
 function checkAnswer(buttonClicked) {
-    buttonClicked=buttonClicked.toLowerCase(); //provides the optionNR from the button clicked. Converted to lowercase for easy comparison
-    let correct=myQuestionsArray[currentQuestion].Correct;
-    correct=correct.toLowerCase();
+    buttonClicked = buttonClicked.toLowerCase(); //provides the optionNR from the button clicked. Converted to lowercase for easy comparison
+    let correct = myQuestionsArray[currentQuestion].Correct;
+    let answerText = document.getElementById(buttonClicked).buttonClicked;
+    correct = correct.toLowerCase();
+    let myAnswerText = document.getElementById(buttonClicked).innerText;
+    let statusMess = "You answered: \"";
+    statusMess = statusMess + myAnswerText + "\". ";
 
-    let newMess="";
-    console.log(buttonClicked);
-    console.log(correct);
-    
     if (buttonClicked === correct) {
-        newMess="That is correct. Great job!";
+        setAllQuestionsToGreen();
+        let errorMess = getRightAnswerMessage();
+        statusMess = statusMess + errorMess;
+        updateScore();
+        //statusMess = statusMess + "That is correct.";
     } else {
-        newMess="Sorry, you got that wrong.";
+        let errorMess = getWrongAnswerMessage();
+        setAllQuestionsToGreen();
+        statusMess = statusMess + errorMess;
+        updateColorRed(buttonClicked); //mark the box with red
+        updateWrong();
     }
-    alert(newMess);
-    //checkAnswer(answerButton,answer,correct,current);
+    printStatusMessage(statusMess);
+}
+
+function updateColorRed(clickedOption) {
+    let selectedAnswer = document.getElementById(clickedOption);
+    selectedAnswer.style.backgroundColor = "red";
+}
+
+function getWrongAnswerMessage() {
+    let myError = randomIntFromInterval(1, 6);
+    let myErrMsg = "";
+    switch (myError) {
+        case 1:
+            myErrMsg = "Music is not really your thing, is it?";
+            break;
+        case 2:
+            myErrMsg = "Absolutely brimming over with wrongability!";
+            break;
+        case 3:
+            myErrMsg = "You could not be more wrong even if you tried!";
+            break;
+        case 4:
+            myErrMsg = "Getting wronger all the time!";
+            break;
+        case 5:
+            myErrMsg = "It must suck to be you! In other words, you are wrong!";
+            break;
+        case 6:
+            myErrMsg = "There is a picture of you in the dictionary under the heading \"wrong\".";
+            break;
+        default:
+            myErrMsg = "Wrong yet again";
+    }
+    return myErrMsg;
+}
+
+function getRightAnswerMessage() {
+    let myRight = randomIntFromInterval(1, 6);
+    let myRightMsg = "";
+    switch (myRight) {
+        case 1:
+            myRightMsg = "Of course it is. Way too easy.";
+            break;
+        case 2:
+            myRightMsg = "In the words of Homer Simpson: \"Duh!\"";
+            break;
+        case 3:
+            myRightMsg = "That is as blatant as it can get, don't you agree?";
+            break;
+        case 4:
+            myRightMsg = "Lister to Red Dwarf. We have in our midst a complete smeg pot. Brains in the anal region. Chin absent, presumed missing. Genitalia small and inoffensive. Of no value or interest. Or in other words: don't be so smegging right!";
+            break;
+        case 5:
+            myRightMsg = "That is right (from a certain point of view).";
+            break;
+        case 6:
+            myRightMsg = "Captain Obvious strikes again!";
+            break;
+        default:
+            myRightMsg = "When you're hot, you're hot!";
+    }
+    return myRightMsg;
 }
 
 /**
@@ -161,7 +242,8 @@ function checkAnswer(buttonClicked) {
  */
 
 function updateScore() {
-
+    score++;
+    printScore(0, 0, questions + 1); 
 }
 
 /**
@@ -169,7 +251,8 @@ function updateScore() {
  */
 
 function updateWrong() {
-
+    wrong++;
+    printScore(0, 0, questions + 1); 
 }
 
 /**
@@ -204,16 +287,6 @@ function getQuestion(runQuestions) {
             document.getElementById('option4').innerText = runQuestions[currentQuestion].Option4;
             //runQuestions[currentQuestion].Answered=true;
             finished = true;
-
-            //let statusMess = "Question number: " + questions;
-            let statusMess = "\nNumber of questions:" + numberQuestions;
-            statusMess = statusMess + "\nCurrent Question:" + currentQuestion;
-            statusMess = statusMess + "\nCorrect answer:" + runQuestions[currentQuestion].Correct;
-            statusMess = statusMess + "\nBeen answered: " + runQuestions[currentQuestion].Answered;
-
-            //temporary text that outputs variable name/values to the browser
-
-            document.getElementById('status').innerText = statusMess;
         } else {
             console.log('The question has been answered');
         }
@@ -232,10 +305,10 @@ function randomIntFromInterval(min, max) { // min and max included
 /**
  * Update the score display
  */
-function printScore(correct, incorrect,currentQ) {
-    let myScore="Current question:"+currentQ;
-    myScore=myScore+("out of ")+maxQuestions;
-    myScore = "Correct Answers: " + correct;
+function printScore(correct, incorrect, currentQ) {
+    let myScore = "Current question:" + currentQ;
+    myScore = myScore + "(out of " + maxQuestions + ")";
+    myScore = myScore + "\nCorrect Answers: " + correct;
     myScore = myScore + ", Incorrect Answers: " + incorrect;
     document.getElementById('score').innerText = myScore;
 }
@@ -243,31 +316,31 @@ function printScore(correct, incorrect,currentQ) {
 
 function turnOnHidden() {
     // turn off start image
-    let picElement=document.getElementById('quizImage');
-    picElement.style.display="none";
-    let picElementDiv=document.getElementById('quizImageDiv');
-    picElement.style.display="none";
-    
+    let picElement = document.getElementById('quizImage');
+    picElement.style.display = "none";
+    let picElementDiv = document.getElementById('quizImageDiv');
+    picElement.style.display = "none";
+
 
     // turns on the hidden elements
     let questionElement = document.getElementById("question");
-    questionElement.style.display ="block";
+    questionElement.style.display = "block";
     let scoreElement = document.getElementById('score');
     scoreElement.style.display = "block";
     let messageElement = document.getElementById('message');
     messageElement.style.display = "block";
-    let tableElement=document.getElementById('gameTable');
-    tableElement.style.display="block";
+    let tableElement = document.getElementById('gameTable');
+    tableElement.style.display = "block";
 }
 
 function setAllQuestionsToGreen() {
     //make sure all answer boxes are green when new question is started
-   let option1=document.getElementById('option1');
-   option1.style.backgroundColor="#00FF00"
-   let option2=document.getElementById('option2');
-   option1.style.backgroundColor="#00FF00"
-   let option3=document.getElementById('option3');
-   option1.style.backgroundColor="#00FF00"
-   let option4=document.getElementById('option4');
-   option1.style.backgroundColor="#00FF00"
+    let option1 = document.getElementById('option1');
+    option1.style.backgroundColor = "#00FF00"
+    let option2 = document.getElementById('option2');
+    option1.style.backgroundColor = "#00FF00"
+    let option3 = document.getElementById('option3');
+    option1.style.backgroundColor = "#00FF00"
+    let option4 = document.getElementById('option4');
+    option1.style.backgroundColor = "#00FF00"
 }
