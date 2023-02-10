@@ -4,93 +4,100 @@ const maxQuestions = 10;
 const professor = "Professor Elvin Atombender thinks you won't escape.\nBonuspoint if you know where the quote comes from!";
 const myQuestionsArray = []; // empty combined array moved to const
 var currentQuestion = 0; // should be converted to local
-var questions = 0;
+// var questions = 0;
 var score = 0;
 var wrong = 0;
 
-// Get the modal - rules
-let modal = document.getElementById("myModal");
+createEvtListeners();
+/**
+ * Initialize all event listeners
+ */
+function createEvtListeners() {
 
-// Get the button that opens the modal
-let btn = document.getElementById("myBtn");
+    // Get the modal - rules
+    let modal = document.getElementById("myModal");
 
-// Get the <span> element that closes the modal
-let span = document.getElementsByClassName("close")[0];
+    // Get the button that opens the modal
+    let btn = document.getElementById("myBtn");
 
-// When the user clicks on the button, open the modal
-btn.onclick = function () {
-    modal.style.display = "block";
-}
+    // Get the <span> element that closes the modal
+    let span = document.getElementsByClassName("close")[0];
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-    modal.style.display = "none";
-}
+    // When the user clicks on the button, open the modal
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target == modal) {
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
         modal.style.display = "none";
     }
-}
 
-
-document.addEventListener("DOMContentLoaded", function () {
-    let startEvent = document.getElementById('myStart');
-    startEvent.addEventListener('click', function () {
-        //turnOnHidden(); //show the hidden elements. Turn on when everything else is ready
-    });
-    let welcomeEvent = document.getElementById('welcome');
-    welcomeEvent.addEventListener('mouseover', function () {
-        document.getElementById('welcome').innerText = professor;
-    });
-    welcomeEvent.addEventListener('mouseout', function () {
-        document.getElementById('welcome').innerText = welcomePhrase;
-    });
-
-    let btn2Event = document.getElementById('myBtn2');
-    btn2Event.addEventListener('click', function () {
-        alert("The game is written by:\nJonas Thorell");
-    });
-
-    let buttons = document.getElementsByClassName("answers");
-
-    for (let button of buttons) {
-        button.addEventListener("click", function answerFunction(myQuestionsArray) {
-            let answerButton = this.getAttribute("data-type");
-            checkAnswer(answerButton);
-        });
-        button.addEventListener('mouseover', function () {
-            // change background color to blue on mouseover
-            if (this.style.backgroundColor === "red") {
-                //dont really do anything if the question has been answered wrong. The color should remain
-                this.style.backgroundColor = "red";
-            } else if (this.style.backgroundColor == "yellow") {
-                //dont really do anything if the question has been answered correctly. The color should remain
-                this.style.backgroundColor = "yellow";
-            } else {
-                this.style.backgroundColor = "#009DC4";
-            }
-        });
-        button.addEventListener('mouseout', function () {
-            // change background color back to green on mouseout
-            if (this.style.backgroundColor === "red") {
-                //dont really do anything if the question has been answered wrong. The color should remain
-                this.style.backgroundColor = "red";
-            } else if (this.style.backgroundColor == "yellow") {
-                //dont really do anything if the question has been answered correctly. The color should remain
-                this.style.backgroundColor = "yellow";
-            } else {
-                this.style.backgroundColor = "#00FF00";
-            }
-        });
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
-});
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        let startEvent = document.getElementById('myStart');
+        startEvent.addEventListener('click', function () {
+            //turnOnHidden(); //show the hidden elements. Turn on when everything else is ready
+        });
+        let welcomeEvent = document.getElementById('welcome');
+        welcomeEvent.addEventListener('mouseover', function () {
+            document.getElementById('welcome').innerText = professor;
+        });
+        welcomeEvent.addEventListener('mouseout', function () {
+            document.getElementById('welcome').innerText = welcomePhrase;
+        });
+
+        let btn2Event = document.getElementById('myBtn2');
+        btn2Event.addEventListener('click', function () {
+            alert("The game is written by:\nJonas Thorell");
+        });
+
+        let buttons = document.getElementsByClassName("answers");
+
+        for (let button of buttons) {
+            button.addEventListener("click", function answerFunction(myQuestionsArray) {
+                let answerButton = this.getAttribute("data-type");
+                checkAnswer(answerButton);
+            });
+            button.addEventListener('mouseover', function () {
+                // change background color to blue on mouseover
+                if (this.style.backgroundColor === "red") {
+                    //dont really do anything if the question has been answered wrong. The color should remain
+                    this.style.backgroundColor = "red";
+                } else if (this.style.backgroundColor == "yellow") {
+                    //dont really do anything if the question has been answered correctly. The color should remain
+                    this.style.backgroundColor = "yellow";
+                } else {
+                    this.style.backgroundColor = "#009DC4";
+                }
+            });
+            button.addEventListener('mouseout', function () {
+                // change background color back to green on mouseout
+                if (this.style.backgroundColor === "red") {
+                    //dont really do anything if the question has been answered wrong. The color should remain
+                    this.style.backgroundColor = "red";
+                } else if (this.style.backgroundColor == "yellow") {
+                    //dont really do anything if the question has been answered correctly. The color should remain
+                    this.style.backgroundColor = "yellow";
+                } else {
+                    this.style.backgroundColor = "#00FF00";
+                }
+            });
+        }
+    });
+}
 
 document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
 
-printScore(0, 0, questions + 1); // initial score display
+printScore(0, 0, 1); // initial score display. Will not be necessary when game is in final state with splash screen
 
 runGame();
 
@@ -345,11 +352,11 @@ function printScore(correct, incorrect, currentQ) {
     myScore = myScore + "\nCorrect Answers: " + correct;
     myScore = myScore + ", Incorrect Answers: " + incorrect;
     myScore = myScore + "\nAccumulated score:"
-    
-    let scoreRight=correct*50;
-    let scoreWrong=wrong*70;
-    let myAccumulatedScore=scoreRight-scoreWrong;
-    myScore=myScore+myAccumulatedScore;
+
+    let scoreRight = correct * 50;
+    let scoreWrong = wrong * 70;
+    let myAccumulatedScore = scoreRight - scoreWrong;
+    myScore = myScore + myAccumulatedScore;
     document.getElementById('score').innerText = myScore;
 }
 
