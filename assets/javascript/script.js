@@ -38,8 +38,7 @@ window.onclick = function (event) {
 document.addEventListener("DOMContentLoaded", function () {
     let startEvent = document.getElementById('myStart');
     startEvent.addEventListener('click', function () {
-        console.log('start');
-        // turnOnHidden(); //show the hidden elements. Turn on when everything else is ready
+        //turnOnHidden(); //show the hidden elements. Turn on when everything else is ready
     });
     let welcomeEvent = document.getElementById('welcome');
     welcomeEvent.addEventListener('mouseover', function () {
@@ -321,9 +320,6 @@ function turnOnHidden() {
     // turn off start image
     let picElement = document.getElementById('quizImage');
     picElement.style.display = "none";
-    let picElementDiv = document.getElementById('quizImageDiv');
-    picElement.style.display = "none";
-
 
     // turns on the hidden elements
     let questionElement = document.getElementById("question");
@@ -332,8 +328,11 @@ function turnOnHidden() {
     scoreElement.style.display = "block";
     let messageElement = document.getElementById('message');
     messageElement.style.display = "block";
-    let tableElement = document.getElementById('gameTable');
-    tableElement.style.display = "block";
+    let answerButtons = document.getElementsByClassName('answers');
+    answerButtons[0].style.display = "block";
+    answerButtons[1].style.display = "block";
+    answerButtons[2].style.display = "block";
+    answerButtons[3].style.display = "block";
 }
 
 function setAllQuestionsToGreen() {

@@ -2,139 +2,150 @@ body {
   /* default values for the body */
   background-image: url("../images/backdrop.png");
   /* in case background can not be loaded, set a background color */
-    background-color: #777777;
-  }
-
-#quizImage,
-#quizImageDiv {
-  display: none; /* remember to change when game complete */
+  background-color: #777777;
 }
 
-  #welcome {
-    font-size: xx-large;
-    color: burlywood;
-    text-align: center;
-    align-content: center;
-  }
+#quizImage {
+  display: none;
+  /* remember to change when game complete */
+}
 
-  #header-text {
-    font-size: 24px;
-    color:white;
-    text-align: justify;
-    text-transform: capitalize;
-    text-align: center;
-  }
+#welcome {
+  font-size: xx-large;
+  color: burlywood;
+  text-align: center;
+  align-content: center;
+}
 
-  #game-title {
-    color:white;
-    font-size: xx-large;
-    text-align: center;
-    text-transform: capitalize;
-  }
+#header-text {
+  font-size: 24px;
+  color: white;
+  text-align: justify;
+  text-transform: capitalize;
+  text-align: center;
+}
 
-  .question {
-    /* Styles the question */
-    /* display: none;  hidden by default. Will be turned on by start button */
-    text-align: center;
-    font-style: italic;
-    font-size: xx-large;
+#game-title {
+  color: white;
+  font-size: xx-large;
+  text-align: center;
+  text-transform: capitalize;
+}
 
-    border-width:3px; 
-    border-style:solid; 
-    border-color:black;
-    color: black;
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
-    border-radius: 25px;
-    background-color: #00FF00;
-  }
+.question {
+  /* Styles the question */
+  /* display: none;  hidden by default. Will be turned on by start button */
+  text-align: center;
+  font-style: italic;
+  font-size: xx-large;
 
-  #message {
-    /* creates a border around the element, centers the text within it and makes the "box" centered. Invisible by default */
-    /* display: none; */
-    border-width:3px; 
-    border-style:solid; 
-    border-color:black;
-    color: black;
-    text-align: center;
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
-    font-size: x-large;
-    border-radius: 25px;
-    background-color: #00FF00;
-  }
+  border-width: 3px;
+  border-style: solid;
+  border-color: black;
+  color: black;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 25px;
+  background-color: #00FF00;
+}
 
-  #option1,
-  #option2,
-  #option3,
-  #option4 {
-    border-width:3px; 
-    border-style:solid; 
-    background-color: #00FF00;
-    color: black;
-  }
+#message {
+  /* creates a border around the element, centers the text within it and makes the "box" centered. Invisible by default */
+  /* display: none; */
+  border-width: 3px;
+  border-style: solid;
+  border-color: black;
+  color: black;
+  text-align: center;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: x-large;
+  border-radius: 25px;
+  background-color: #00FF00;
+}
 
-  #score {
-    /* display: none; invisible by default. Turns at start */
-    text-align: center;
-    color: black;
-    font-weight: bold;
-    border-width:3px; 
-    border-style:solid; 
-    border-color:black;
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
-    font-size: x-large;
-    border-radius: 25px;
-    background-color: red;
-  }
+#option1,
+#option2,
+#option3,
+#option4 {
+  border-width: 3px;
+  border-style: solid;
+  background-color: #00FF00;
+  color: black;
+  /* display: none; */
+}
 
-  .rcorners1 {
-    border-radius: 25px;
-    background: #73AD21;
-    padding: 20px;
-    padding-right: 20px;
-    width: 200px;
-    height: 150px;
-    font-size: x-large;
-  }
+#score {
+  /* display: none; invisible by default. Turns at start */
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  border-width: 3px;
+  border-style: solid;
+  border-color: black;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: x-large;
+  border-radius: 25px;
+  background-color: red;
+}
 
-  .button-row {
-    width: auto;
-    height: auto;
-    display:inline-block;
-    background-color: gold;
-  }
+.rcorners1 {
+  border-radius: 25px;
+  background: #73AD21;
+  padding: 20px;
+  padding-right: 20px;
+  width: 200px;
+  height: 150px;
+  font-size: x-large;
+}
 
- /* modal boilerplate code. The code was borrowed from:
+.button-row {
+  width: auto;
+  height: auto;
+  display: inline-block;
+}
+
+/* modal boilerplate code. The code was borrowed from:
  https://www.w3schools.com/howto/howto_css_modals.asp
- and adapted for my needs */ 
+ and adapted for my needs */
 
- .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  color:white;
-  margin: 15% auto; /* 15% from the top and centered */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  color: white;
+  margin: 15% auto;
+  /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-  font-size:larger;
+  width: 80%;
+  /* Could be more or less, depending on screen size */
+  font-size: larger;
 }
 
 /* The Close Button */
@@ -173,7 +184,8 @@ body {
 #myBtn,
 #myBtn2,
 #myStart {
-  background-color: #4CAF50; /* Green */
+  background-color: #4CAF50;
+  /* Green */
   border: solid;
   color: black;
   border-color: red;
