@@ -38,6 +38,7 @@ window.onclick = function (event) {
 document.addEventListener("DOMContentLoaded", function () {
     let startEvent = document.getElementById('myStart');
     startEvent.addEventListener('click', function () {
+        console.log('start');
         // turnOnHidden(); //show the hidden elements. Turn on when everything else is ready
     });
     let welcomeEvent = document.getElementById('welcome');
@@ -53,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("The game is written by:\nJonas Thorell");
     });
 
-    let buttons = document.getElementsByTagName("td");
+    let buttons = document.getElementsByClassName("answers");
 
     for (let button of buttons) {
         button.addEventListener("click", function (myQuestionsArray) {

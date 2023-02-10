@@ -32,19 +32,6 @@ body {
     text-transform: capitalize;
   }
 
-  .table-center {
-    /* make sure tables are centered */
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-  
-  table td {
-    /* Remove double borders on tables */
-    border-collapse: collapse;
-    text-align: center;
-  }
-
   .question {
     /* Styles the question */
     /* display: none;  hidden by default. Will be turned on by start button */
@@ -109,9 +96,17 @@ body {
     border-radius: 25px;
     background: #73AD21;
     padding: 20px;
+    padding-right: 20px;
     width: 200px;
     height: 150px;
-    font-size: xx-large;
+    font-size: x-large;
+  }
+
+  .button-row {
+    width: auto;
+    height: auto;
+    display:inline-block;
+    background-color: gold;
   }
 
  /* modal boilerplate code. The code was borrowed from:
@@ -157,6 +152,8 @@ body {
   cursor: pointer;
 }
 
+/* end of model code */
+
 .center-text {
   text-align: center;
 }
@@ -167,7 +164,7 @@ body {
   align-items: center;
 }
 
-.rcorners2 {
+.rcorners-logo {
   /* makes page logo circular(ish) */
   border-radius: 25px;
   padding: 20px;
