@@ -187,15 +187,27 @@ function checkAnswer(buttonClicked) {
     }
 }
 
+/**
+ * If the clicked answer is incorrect, set the box to red
+ */
+
 function updateColorRed(clickedOption) {
     let selectedAnswer = document.getElementById(clickedOption);
     selectedAnswer.style.backgroundColor = "red";
 }
 
+/**
+ * If the clicked answer is correct, set the box to yellow
+ */
+
 function updateColorYellow(clickedOption) {
     let selectedAnswer = document.getElementById(clickedOption);
     selectedAnswer.style.backgroundColor = "yellow";
 }
+
+/**
+ * get and return a random message to display when the user answers wrong
+ */
 
 function getWrongAnswerMessage() {
     let myError = randomIntFromInterval(1, 6);
@@ -224,6 +236,10 @@ function getWrongAnswerMessage() {
     }
     return myErrMsg;
 }
+
+/**
+ * get and return a random message to display when the user answers correctly
+ */
 
 function getRightAnswerMessage() {
     let myRight = randomIntFromInterval(1, 6);
@@ -356,6 +372,10 @@ function turnOnHidden() {
     answerButtons[2].style.display = "block";
     answerButtons[3].style.display = "block";
 }
+
+/**
+ * Mark all boxes as green on start of each turn
+ */
 
 function setAllQuestionsToGreen() {
     //make sure all answer boxes are green when new question is started
