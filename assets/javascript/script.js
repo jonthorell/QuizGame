@@ -329,7 +329,10 @@ function printScore(correct, incorrect, currentQ) {
     myScore = myScore + "\nCorrect Answers: " + correct;
     myScore = myScore + ", Incorrect Answers: " + incorrect;
     myScore = myScore + "\nAccumulated score:"
-    let myAccumulatedScore=correct*50;
+    
+    let scoreRight=correct*50;
+    let scoreWrong=wrong*70;
+    let myAccumulatedScore=scoreRight-scoreWrong;
     myScore=myScore+myAccumulatedScore;
     document.getElementById('score').innerText = myScore;
 }
