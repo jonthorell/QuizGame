@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let buttons = document.getElementsByClassName("answers");
 
     for (let button of buttons) {
-        button.addEventListener("click", function (myQuestionsArray) {
+        button.addEventListener("click", function answerFunction(myQuestionsArray) {
             let answerButton = this.getAttribute("data-type");
             checkAnswer(answerButton);
         });
@@ -65,6 +65,9 @@ document.addEventListener("DOMContentLoaded", function () {
             if (this.style.backgroundColor === "red") {
                 //dont really do anything if the question has been answered wrong. The color should remain
                 this.style.backgroundColor = "red";
+            } else if (this.style.backgroundColor == "yellow") {
+                //dont really do anything if the question has been answered correctly. The color should remain
+                this.style.backgroundColor = "yellow";
             } else {
                 this.style.backgroundColor = "#009DC4";
             }
@@ -74,6 +77,9 @@ document.addEventListener("DOMContentLoaded", function () {
             if (this.style.backgroundColor === "red") {
                 //dont really do anything if the question has been answered wrong. The color should remain
                 this.style.backgroundColor = "red";
+            } else if (this.style.backgroundColor == "yellow") {
+                //dont really do anything if the question has been answered correctly. The color should remain
+                this.style.backgroundColor = "yellow";
             } else {
                 this.style.backgroundColor = "#00FF00";
             }
@@ -152,35 +158,43 @@ function createQuestions() {
  */
 
 function checkAnswer(buttonClicked) {
-    buttonClicked = buttonClicked.toLowerCase(); //provides the optionNR from the button clicked. Converted to lowercase for easy comparison
-    let correct = myQuestionsArray[currentQuestion].Correct;
-    let answerText = document.getElementById(buttonClicked).buttonClicked;
-    correct = correct.toLowerCase();
-    let myAnswerText = document.getElementById(buttonClicked).innerText;
+    let myCurr = myQuestionsArray[currentQuestion].Answered;
+    if (myCurr === false) { // don't allow answer if already answered
+        buttonClicked = buttonClicked.toLowerCase(); //provides the option from the button clicked. Converted to lowercase for easy comparison
+        let correct = myQuestionsArray[currentQuestion].Correct;
+        let answerText = document.getElementById(buttonClicked).buttonClicked;
+        correct = correct.toLowerCase();
+        let myAnswerText = document.getElementById(buttonClicked).innerText;
 
-   let statusMess = "You answered: \"";
-    
-    statusMess = statusMess + myAnswerText + "\". ";
-    
-    if (buttonClicked === correct) {
-        setAllQuestionsToGreen();
-        let errorMess = getRightAnswerMessage();
-        statusMess = statusMess + errorMess;
-        updateScore();
-        //statusMess = statusMess + "That is correct.";
-    } else {
-        let errorMess = getWrongAnswerMessage();
-        setAllQuestionsToGreen();
-        statusMess = statusMess + errorMess;
-        updateColorRed(buttonClicked); //mark the box with red
-        updateWrong();
+        let statusMess = "You answered: \"";
+
+        statusMess = statusMess + myAnswerText + "\". ";
+
+        if (buttonClicked === correct) {
+            setAllQuestionsToGreen();
+            let errorMess = getRightAnswerMessage();
+            statusMess = statusMess + errorMess;
+            updateColorYellow(buttonClicked); // mark box yellow
+            updateScore();
+        } else {
+            let errorMess = getWrongAnswerMessage();
+            setAllQuestionsToGreen();
+            statusMess = statusMess + errorMess;
+            updateColorRed(buttonClicked); //mark the box with red
+            updateWrong();
+        }
+        printStatusMessage(statusMess);
     }
-    printStatusMessage(statusMess);
 }
 
 function updateColorRed(clickedOption) {
     let selectedAnswer = document.getElementById(clickedOption);
     selectedAnswer.style.backgroundColor = "red";
+}
+
+function updateColorYellow(clickedOption) {
+    let selectedAnswer = document.getElementById(clickedOption);
+    selectedAnswer.style.backgroundColor = "yellow";
 }
 
 function getWrongAnswerMessage() {
@@ -245,7 +259,8 @@ function getRightAnswerMessage() {
 
 function updateScore() {
     score++;
-    printScore(0, 0, questions + 1); 
+    printScore(score, wrong, questions + 1);
+    myQuestionsArray[currentQuestion].Answered = true;
 }
 
 /**
@@ -254,7 +269,8 @@ function updateScore() {
 
 function updateWrong() {
     wrong++;
-    printScore(0, 0, questions + 1); 
+    printScore(score, wrong, questions + 1);
+    myQuestionsArray[currentQuestion].Answered = true;
 }
 
 /**
