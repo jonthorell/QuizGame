@@ -328,6 +328,9 @@ function printScore(correct, incorrect, currentQ) {
     myScore = myScore + "(out of " + maxQuestions + ")";
     myScore = myScore + "\nCorrect Answers: " + correct;
     myScore = myScore + ", Incorrect Answers: " + incorrect;
+    myScore = myScore + "\nAccumulated score:"
+    let myAccumulatedScore=correct*50;
+    myScore=myScore+myAccumulatedScore;
     document.getElementById('score').innerText = myScore;
 }
 
