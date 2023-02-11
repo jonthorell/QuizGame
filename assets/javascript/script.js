@@ -1,24 +1,21 @@
-//start with defining some constants and global variables
+//start with defining some constants
 
 const welcomePhrase = "Another visitor!\nStay a while, stay forever!";
 const gameTitle = "the music quiz master";
-const maxQuestions = 10;
+const maxQuestions = 10; //number of questions to be asked
 const professor = "Professor Elvin Atombender thinks you won't escape.\nBonuspoint if you know where the quote comes from!";
-const myQuestionsArray = []; // empty combined array moved to const
+const myQuestionsArray = []; // empty array at first. Will contain all questions
+const scores=[];    // array that will hold three values: 0=current score, 1=current number of wrongs, 2=current question. WIll be updated by scoring functions
+scores.push(0,0,1); // make sure default values are there
 
-var currentQuestion = 0; // should be converted to local
-//var questions = 0; //if removed, check correct answer does not work. Control why.
-var score = 0;
-var wrong = 0;
-
-createEvtListeners(); // for user interactivity
-createQuestions(); // create array with quiz questions
+createEvtListeners(); // create event listeners for user interactivity
+createQuestions(); // create array with quiz questions. WIll only run once
 
 // initialize display
 document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
 
-printScore(0, 0, 1); // initial score display. Will not be necessary when game is in final state with splash screen
+printScore(scores[0], scores[1], scores[2]); // initial score display. Will not be necessary when game is in final state with splash screen
 
 runGame(); // will not be here when finished. Will be called from start-button
 
@@ -119,8 +116,8 @@ function createEvtListeners() {
 
 function createQuestions() {
     // only called once!
-    let questions = "Ultravox released an album named after which european capital?;The title of the first album of Depeche Mode is?;Relax was a major hit for?;Who did a duet with Dancing in the streets together with David Bowie?;Sisters are doin it for themselves was a hit for?;The title song of the movie Karate Kid 2 was performed by?;The song 1984 was recorded by Eurythmics. Who wrote the book?;The charity project Band Aid was inititiated by who?;A-ha is from what country?;Which band got a hit with Just cant get enough?;Who is the singer of the cure?;Derek K Dick is better known as?;Vince Clarke of Erasure was earlier a member of?;Nitzer Ebb makes what kind of music?;What year was live Aid?;Who sang 1984 hit All Cried Out?;Which popular AC/DC album was the first to feature new vocalist Brian Johnson?;Who sang the title track of 80s Bond film The Living Daylights?;In which iconic music video do Queen parody Coronation Street?;Now associated with rickrolling, which 1987 Rick Astley song became number one in 25 countries?;Which single gave Whitney Houston her first UK number one in 1985?;What was the best-selling single of the decade in the UK?;Which band was awaiting a Letter From America?;Who went straight to number one in 1981 with Stand and Deliver?;Who was Christmas Number One in 1988 with Mistletoe and Wine?;Which famous actor was waiting for Bananarama in 1984?;Who is the lead singer of the band Frankie Goes To Hollywood?;Bobby G, Cheryl Baker, Mike Nolan and Jay Aston are members of which band?;How old were George Michael and Andrew Ridgely when they wrote Careless Whisper?;Which U2 album became the fastest-selling album in British history at the time, once released in 1987?;Which iconic Simple Minds song plays during the opening and closing credits of The Breakfast Club?;Which 1981 Journey song failed to crack the UK Top 40 on release, then reached number 6 in 2009?;Which singer-songwriter's real name is Michael Barratt?;Which band recorded the theme song to Friends?;What was The Rolling Stones' second album called?;What’s the name of Britney Spears’ first single, released in 1998?;Right Said Fred had a No.1 Hit with 'I’m Too….'?;In which year of the nineties did Nirvana frontman Kurt Cobain die?;Which pop group named themselves after a London postcode?;Who had a hit with 'U Can't Touch This' in 1990?;In which year did Culture Club have a UK number one single with Karma Chameleon?;Sinead O'Connor had a hit in 1990 with Nothing Compares 2 U, but who wrote it?;Who is the lead singer of the Pet Shop Boys?;Which American rock band had a hit in the eighties with the 'Eye of the Tiger'?;Who shot John Lennon outside his apartment in New York City on December 8 1980?;What musician was deported from Japan in the 1980’s for possession of marijuana?;Which Irish rock band sang The Boys Are Back In Town?;Whose first hit was Wuthering Heights?;Which singer has the most UK Number One singles ever?;What was the name of Eminem's first UK single release in 1999?";
-    const questionArray = questions.split(";"); // array with the questions
+    let qArrText = "Ultravox released an album named after which european capital?;The title of the first album of Depeche Mode is?;Relax was a major hit for?;Who did a duet with Dancing in the streets together with David Bowie?;Sisters are doin it for themselves was a hit for?;The title song of the movie Karate Kid 2 was performed by?;The song 1984 was recorded by Eurythmics. Who wrote the book?;The charity project Band Aid was inititiated by who?;A-ha is from what country?;Which band got a hit with Just cant get enough?;Who is the singer of the cure?;Derek K Dick is better known as?;Vince Clarke of Erasure was earlier a member of?;Nitzer Ebb makes what kind of music?;What year was live Aid?;Who sang 1984 hit All Cried Out?;Which popular AC/DC album was the first to feature new vocalist Brian Johnson?;Who sang the title track of 80s Bond film The Living Daylights?;In which iconic music video do Queen parody Coronation Street?;Now associated with rickrolling, which 1987 Rick Astley song became number one in 25 countries?;Which single gave Whitney Houston her first UK number one in 1985?;What was the best-selling single of the decade in the UK?;Which band was awaiting a Letter From America?;Who went straight to number one in 1981 with Stand and Deliver?;Who was Christmas Number One in 1988 with Mistletoe and Wine?;Which famous actor was waiting for Bananarama in 1984?;Who is the lead singer of the band Frankie Goes To Hollywood?;Bobby G, Cheryl Baker, Mike Nolan and Jay Aston are members of which band?;How old were George Michael and Andrew Ridgely when they wrote Careless Whisper?;Which U2 album became the fastest-selling album in British history at the time, once released in 1987?;Which iconic Simple Minds song plays during the opening and closing credits of The Breakfast Club?;Which 1981 Journey song failed to crack the UK Top 40 on release, then reached number 6 in 2009?;Which singer-songwriter's real name is Michael Barratt?;Which band recorded the theme song to Friends?;What was The Rolling Stones' second album called?;What’s the name of Britney Spears’ first single, released in 1998?;Right Said Fred had a No.1 Hit with 'I’m Too….'?;In which year of the nineties did Nirvana frontman Kurt Cobain die?;Which pop group named themselves after a London postcode?;Who had a hit with 'U Can't Touch This' in 1990?;In which year did Culture Club have a UK number one single with Karma Chameleon?;Sinead O'Connor had a hit in 1990 with Nothing Compares 2 U, but who wrote it?;Who is the lead singer of the Pet Shop Boys?;Which American rock band had a hit in the eighties with the 'Eye of the Tiger'?;Who shot John Lennon outside his apartment in New York City on December 8 1980?;What musician was deported from Japan in the 1980’s for possession of marijuana?;Which Irish rock band sang The Boys Are Back In Town?;Whose first hit was Wuthering Heights?;Which singer has the most UK Number One singles ever?;What was the name of Eminem's first UK single release in 1999?";
+    const questionArray = qArrText.split(";"); // array with the questions
     let option1 = "Stockholm;Speak and spell;Mike and the mechanics;Mick Jagger;Aretha Franklin and Annie Lennox;Peter Cetera;George Orwell;Bono;Sweden;Depeche Mode;Dave Gahan;Morrisey;Depeche Mode;Rockabilly;1984;Annie Lennox;Highway to hell;Duran Duran;Radio Ga-Ga;Never gonna give you up;Saving all my love for you;Thriller;The Proclaimers;Adam and the ants;Rick James;Robert de Niro;Holly Johnson;Bucks Fizz;19;The Joshua Tree;Alive and kicking;Separate ways;Leonard Cohen;Rolling Stones;Exile on main st.;Oops I did it again;Hot;1994;East 17;M.C Hammer;1982;Prince;Neil Tennant;Red Hot Chilli Peppers;Mark Chapel;George Michael;The Pogues;Cyndi Lauper;Tom Jones;The real Slim Shady";
     const option1Array = option1.split(";"); // array with answer 1
     let option2 = "Berlin;Black Celebration;Roxette;Tina Turner;Bananarama;Billy Idol;William Golding;Bob Geldof;Norway;Yazoo;Robert Smith;Fish;Marillion;EBM;1987;Bonnie Taylor;Back in black;A-ha;I want to break free;Whenever you need somebody;I will always love you;Like a virgin;Joy Division;Sting;Cliff Richard;Roger Moore;Steven Tyler;Eagles;20;War;Belfast child;Dont stop belivin;Shakin Stevens;Bee Gees;The Rolling Stones No. 2;Toxic;Sexy;1992;ZipCode 193;LL Cool J;1983;Michael Jackson;Chris Lowe;Survivor;Mark Chapman;Freddie Mercury;The Cranberries;Grace Jones;Elvis Presley;Cleanin out my closet";
@@ -148,6 +145,7 @@ function createQuestions() {
         };
         myQuestionsArray.push(myQuestion);
     }
+    
 }
 
 /**
@@ -155,10 +153,15 @@ function createQuestions() {
  */
 
 function runGame() {
-    //questions = 1; //countdown to keep track of how many questions has been answered. Max = 10. Reset at start.
+    
+    scores[0]=0;
+    scores[1]=0;
+    scores[2]=1; //reset the scores array to default values at game start so player starts at a clean slate
+
     let message = "Welcome to the game! Please click an answer to proceed." //start message
-    score = 0;
-    wrong = 0;
+    let score = scores[0];
+    let wrong = scores[1];
+    
 
     setAllQuestionsToGreen() // set all boxes to green
     printStatusMessage(message);
@@ -185,12 +188,12 @@ function emptyArrayAtStart() {
  */
 
 function checkAnswer(buttonClicked) {
+    let currentQuestion=scores[2];
     let myCurr = myQuestionsArray[currentQuestion].Answered;
     if (myCurr === false) { // don't allow answer if already answered
         buttonClicked = buttonClicked.toLowerCase(); //provides the option from the button clicked. Converted to lowercase for easy comparison
         let correct = myQuestionsArray[currentQuestion].Correct;
         correct = correct.toLowerCase();//Converted to lowercase for easy comparison
-        
         let myAnswerText = document.getElementById(buttonClicked).innerHTML;
         let statusMess = "You answered: \"";
         statusMess = statusMess + myAnswerText + "\". ";
@@ -212,7 +215,7 @@ function checkAnswer(buttonClicked) {
 }
 
 /**
- * Print "Next coming up..."
+ * Print "Next coming up timer..."
  */
 
 function printNextQ() {
@@ -238,7 +241,7 @@ function printNextQ() {
  */
 
 function clearQuestionField() {
-    cleared = document.getElementById('next-question');
+    let cleared = document.getElementById('next-question');
     cleared.innerHTML = " ";
 }
 
@@ -329,8 +332,11 @@ function getRightAnswerMessage() {
  */
 
 function updateScore() {
-    score++;
-    printScore(score, wrong, questions + 1);
+    let currentQuestion=scores[2];
+    let oldScore=scores[0];
+    let score=oldScore+1;
+    let wrong=scores[1];
+    printScore(score, wrong, 1);
     myQuestionsArray[currentQuestion].Answered = true;
 }
 
@@ -339,8 +345,11 @@ function updateScore() {
  */
 
 function updateWrong() {
-    wrong++;
-    printScore(score, wrong, questions + 1);
+    let currentQuestion=scores[2];
+    let oldWrong=scores[1];
+    let score=scores[0];
+    let wrong=oldWrong+1;
+    printScore(score, wrong, 1);
     myQuestionsArray[currentQuestion].Answered = true;
 }
 
@@ -370,6 +379,7 @@ function getQuestion() {
             document.getElementById('option3').innerText = myQuestionsArray[currentQuestion].Option3;
             document.getElementById('option4').innerText = myQuestionsArray[currentQuestion].Option4;
             finished = true;
+            scores[2]=currentQuestion;
         } else {
             // make sure to do nothing when true
         }
@@ -395,7 +405,7 @@ function printScore(correct, incorrect, currentQ) {
     myScore = myScore + "\nAccumulated score:"
 
     let scoreRight = correct * 50;
-    let scoreWrong = wrong * 70;
+    let scoreWrong = incorrect * 70;
     let myAccumulatedScore = scoreRight - scoreWrong;
     myScore = myScore + myAccumulatedScore;
     document.getElementById('score').innerText = myScore;
