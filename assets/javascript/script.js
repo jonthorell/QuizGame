@@ -7,12 +7,12 @@ const professor = "Professor Elvin Atombender thinks you won't escape.\nBonuspoi
 const myQuestionsArray = []; // empty combined array moved to const
 
 var currentQuestion = 0; // should be converted to local
-var questions = 0; //if removed, check correct answer does not work. Control why.
+//var questions = 0; //if removed, check correct answer does not work. Control why.
 var score = 0;
 var wrong = 0;
 
 createEvtListeners(); // for user interactivity
-
+createQuestions(); // create array with quiz questions
 
 // initialize display
 document.getElementById('welcome').innerText = welcomePhrase;
@@ -25,18 +25,6 @@ runGame(); // will not be here when finished. Will be called from start-button
 
 
 // all functions starts here. No code should be outside from this point on
-
-/**
- * Set all questions to not answered at game start
- */
-
-function emptyArrayAtStart() {
-    let numberQuestions = myQuestionsArray.length;
-    for (let i = 0; i < numberQuestions; i++) {
-        myQuestionsArray[i].Answered = false;
-    }
-}
-
 
 /**
  * Initialize all event listeners
@@ -125,30 +113,12 @@ function createEvtListeners() {
     });
 }
 
-
-/**
- * The main game "loop", called when the script is first loaded
- * and after the user's answer has been processed
- */
-
-function runGame() {
-    let runQuestions = createQuestions();
-    //questions = 1; //countdown to keep track of how many questions has been answered. Max = 10. Reset at start.
-    let message = "Welcome to the game! Please click an answer to proceed." //start message
-    score = 0;
-    wrong = 0;
-
-    setAllQuestionsToGreen() // set all boxes to green
-    printStatusMessage(message);
-    getQuestion(); // get a random question to display
-}
-
 /**
  * Creates an array with all the questions and their properties.
  */
 
 function createQuestions() {
-
+    // only called once!
     let questions = "Ultravox released an album named after which european capital?;The title of the first album of Depeche Mode is?;Relax was a major hit for?;Who did a duet with Dancing in the streets together with David Bowie?;Sisters are doin it for themselves was a hit for?;The title song of the movie Karate Kid 2 was performed by?;The song 1984 was recorded by Eurythmics. Who wrote the book?;The charity project Band Aid was inititiated by who?;A-ha is from what country?;Which band got a hit with Just cant get enough?;Who is the singer of the cure?;Derek K Dick is better known as?;Vince Clarke of Erasure was earlier a member of?;Nitzer Ebb makes what kind of music?;What year was live Aid?;Who sang 1984 hit All Cried Out?;Which popular AC/DC album was the first to feature new vocalist Brian Johnson?;Who sang the title track of 80s Bond film The Living Daylights?;In which iconic music video do Queen parody Coronation Street?;Now associated with rickrolling, which 1987 Rick Astley song became number one in 25 countries?;Which single gave Whitney Houston her first UK number one in 1985?;What was the best-selling single of the decade in the UK?;Which band was awaiting a Letter From America?;Who went straight to number one in 1981 with Stand and Deliver?;Who was Christmas Number One in 1988 with Mistletoe and Wine?;Which famous actor was waiting for Bananarama in 1984?;Who is the lead singer of the band Frankie Goes To Hollywood?;Bobby G, Cheryl Baker, Mike Nolan and Jay Aston are members of which band?;How old were George Michael and Andrew Ridgely when they wrote Careless Whisper?;Which U2 album became the fastest-selling album in British history at the time, once released in 1987?;Which iconic Simple Minds song plays during the opening and closing credits of The Breakfast Club?;Which 1981 Journey song failed to crack the UK Top 40 on release, then reached number 6 in 2009?;Which singer-songwriter's real name is Michael Barratt?;Which band recorded the theme song to Friends?;What was The Rolling Stones' second album called?;What’s the name of Britney Spears’ first single, released in 1998?;Right Said Fred had a No.1 Hit with 'I’m Too….'?;In which year of the nineties did Nirvana frontman Kurt Cobain die?;Which pop group named themselves after a London postcode?;Who had a hit with 'U Can't Touch This' in 1990?;In which year did Culture Club have a UK number one single with Karma Chameleon?;Sinead O'Connor had a hit in 1990 with Nothing Compares 2 U, but who wrote it?;Who is the lead singer of the Pet Shop Boys?;Which American rock band had a hit in the eighties with the 'Eye of the Tiger'?;Who shot John Lennon outside his apartment in New York City on December 8 1980?;What musician was deported from Japan in the 1980’s for possession of marijuana?;Which Irish rock band sang The Boys Are Back In Town?;Whose first hit was Wuthering Heights?;Which singer has the most UK Number One singles ever?;What was the name of Eminem's first UK single release in 1999?";
     const questionArray = questions.split(";"); // array with the questions
     let option1 = "Stockholm;Speak and spell;Mike and the mechanics;Mick Jagger;Aretha Franklin and Annie Lennox;Peter Cetera;George Orwell;Bono;Sweden;Depeche Mode;Dave Gahan;Morrisey;Depeche Mode;Rockabilly;1984;Annie Lennox;Highway to hell;Duran Duran;Radio Ga-Ga;Never gonna give you up;Saving all my love for you;Thriller;The Proclaimers;Adam and the ants;Rick James;Robert de Niro;Holly Johnson;Bucks Fizz;19;The Joshua Tree;Alive and kicking;Separate ways;Leonard Cohen;Rolling Stones;Exile on main st.;Oops I did it again;Hot;1994;East 17;M.C Hammer;1982;Prince;Neil Tennant;Red Hot Chilli Peppers;Mark Chapel;George Michael;The Pogues;Cyndi Lauper;Tom Jones;The real Slim Shady";
@@ -166,8 +136,6 @@ function createQuestions() {
 
     //lets combine the arrays into one array with object properties
 
-    //const myQuestionsArray = []; // empty combined array moved to global
-
     for (let i = 0; i < numberQuestions; i++) {
         let myQuestion = {
             Question: questionArray[i],
@@ -180,8 +148,36 @@ function createQuestions() {
         };
         myQuestionsArray.push(myQuestion);
     }
-    return myQuestionsArray
 }
+
+/**
+ * The main game "loop", called when the user has clicked startbutton
+ */
+
+function runGame() {
+    //questions = 1; //countdown to keep track of how many questions has been answered. Max = 10. Reset at start.
+    let message = "Welcome to the game! Please click an answer to proceed." //start message
+    score = 0;
+    wrong = 0;
+
+    setAllQuestionsToGreen() // set all boxes to green
+    printStatusMessage(message);
+    emptyArrayAtStart() // set all questions to unanswered
+    getQuestion(); // get a random question to display
+}
+
+/**
+ * Set all questions to not answered at game start
+ */
+
+function emptyArrayAtStart() {
+    let numberQuestions = myQuestionsArray.length;
+    for (let i = 0; i < numberQuestions; i++) {
+        myQuestionsArray[i].Answered = false;
+    }
+}
+
+
 
 /**
  * Checks if the clicked answer corresponds with the correct answer using the Correct: property.
@@ -193,8 +189,8 @@ function checkAnswer(buttonClicked) {
     if (myCurr === false) { // don't allow answer if already answered
         buttonClicked = buttonClicked.toLowerCase(); //provides the option from the button clicked. Converted to lowercase for easy comparison
         let correct = myQuestionsArray[currentQuestion].Correct;
-        let answerText = document.getElementById(buttonClicked).buttonClicked;
-        correct = correct.toLowerCase();
+        correct = correct.toLowerCase();//Converted to lowercase for easy comparison
+        
         let myAnswerText = document.getElementById(buttonClicked).innerHTML;
         let statusMess = "You answered: \"";
         statusMess = statusMess + myAnswerText + "\". ";
