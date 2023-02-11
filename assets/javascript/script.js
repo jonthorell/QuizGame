@@ -364,7 +364,6 @@ function printStatusMessage(newMessage) {
 function getQuestion(runQuestions) {
 
     let numberQuestions = runQuestions.length;
-    //let currentQuestion = 0; //declare the variables beforehand to empty values
     let questionRow = "";
     let questionAnswered = "";
     let finished = false;
@@ -373,16 +372,14 @@ function getQuestion(runQuestions) {
         questionAnswered = runQuestions[currentQuestion].Answered;
         questionRow = runQuestions[currentQuestion];
         if (questionAnswered === false) {
-            console.log('The question has not been answered');
             document.getElementById('question').innerText = runQuestions[currentQuestion].Question;
             document.getElementById('option1').innerText = runQuestions[currentQuestion].Option1;
             document.getElementById('option2').innerText = runQuestions[currentQuestion].Option2;
             document.getElementById('option3').innerText = runQuestions[currentQuestion].Option3;
             document.getElementById('option4').innerText = runQuestions[currentQuestion].Option4;
-            //runQuestions[currentQuestion].Answered=true;
             finished = true;
         } else {
-            console.log('The question has been answered');
+            // make sure to do nothing when true
         }
     } while (finished === false);
     return questionRow;
