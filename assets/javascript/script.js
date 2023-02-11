@@ -3,7 +3,7 @@ const gameTitle = "the music quiz master";
 const maxQuestions = 10;
 const professor = "Professor Elvin Atombender thinks you won't escape.\nBonuspoint if you know where the quote comes from!";
 const myQuestionsArray = []; // empty combined array moved to const
-const nextQ = "Next question coming up in...";
+//const nextQ = "Next question coming up in...";
 var currentQuestion = 0; // should be converted to local
 var questions = 0;
 var score = 0;
@@ -101,8 +101,6 @@ document.getElementById('game-title').innerText = gameTitle;
 
 
 printScore(0, 0, 1); // initial score display. Will not be necessary when game is in final state with splash screen
-
-//document.getElementById('next-question').innerText = nextQ;
 
 runGame();
 
@@ -223,7 +221,6 @@ function printNextQ() {
  */
 
 function clearQuestionField() {
-    //nextQ.innerHTML="Countdown has reached zero"
     cleared = document.getElementById('next-question');
     cleared.innerHTML = " ";
 }
