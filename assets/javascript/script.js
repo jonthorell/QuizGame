@@ -33,7 +33,7 @@ runGame(); // will not be here when finished. Will be called from start-button
 function emptyArrayAtStart() {
     let numberQuestions = myQuestionsArray.length;
     for (let i = 0; i < numberQuestions; i++) {
-        myQuestionsArray[i].Answered=false;
+        myQuestionsArray[i].Answered = false;
     }
 }
 
@@ -137,11 +137,10 @@ function runGame() {
     let message = "Welcome to the game! Please click an answer to proceed." //start message
     score = 0;
     wrong = 0;
+
     setAllQuestionsToGreen() // set all boxes to green
-
     printStatusMessage(message);
-
-    let qrow = getQuestion(runQuestions); // get a random question to display
+    getQuestion(); // get a random question to display
 }
 
 /**
@@ -361,28 +360,24 @@ function printStatusMessage(newMessage) {
  * Gets the question to be answered. Makes sure questions can not be selected twice by using the answered: property
  */
 
-function getQuestion(runQuestions) {
+function getQuestion() {
 
-    let numberQuestions = runQuestions.length;
-    let questionRow = "";
-    let questionAnswered = "";
+    let numberQuestions = myQuestionsArray.length;
     let finished = false;
     do {
         currentQuestion = randomIntFromInterval(0, numberQuestions - 1);
-        questionAnswered = runQuestions[currentQuestion].Answered;
-        questionRow = runQuestions[currentQuestion];
+        questionAnswered = myQuestionsArray[currentQuestion].Answered;
         if (questionAnswered === false) {
-            document.getElementById('question').innerText = runQuestions[currentQuestion].Question;
-            document.getElementById('option1').innerText = runQuestions[currentQuestion].Option1;
-            document.getElementById('option2').innerText = runQuestions[currentQuestion].Option2;
-            document.getElementById('option3').innerText = runQuestions[currentQuestion].Option3;
-            document.getElementById('option4').innerText = runQuestions[currentQuestion].Option4;
+            document.getElementById('question').innerText = myQuestionsArray[currentQuestion].Question;
+            document.getElementById('option1').innerText = myQuestionsArray[currentQuestion].Option1;
+            document.getElementById('option2').innerText = myQuestionsArray[currentQuestion].Option2;
+            document.getElementById('option3').innerText = myQuestionsArray[currentQuestion].Option3;
+            document.getElementById('option4').innerText = myQuestionsArray[currentQuestion].Option4;
             finished = true;
         } else {
             // make sure to do nothing when true
         }
     } while (finished === false);
-    return questionRow;
 }
 
 /**
