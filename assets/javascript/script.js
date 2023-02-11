@@ -3,11 +3,13 @@ const gameTitle = "the music quiz master";
 const maxQuestions = 10;
 const professor = "Professor Elvin Atombender thinks you won't escape.\nBonuspoint if you know where the quote comes from!";
 const myQuestionsArray = []; // empty combined array moved to const
-//const nextQ = "Next question coming up in...";
+
 var currentQuestion = 0; // should be converted to local
-var questions = 0;
+var questions = 0;  //if removed, check correct answer does not work. Control why.
 var score = 0;
 var wrong = 0;
+
+runGame();
 
 createEvtListeners();
 /**
@@ -46,6 +48,7 @@ function createEvtListeners() {
         let startEvent = document.getElementById('myStart');
         startEvent.addEventListener('click', function () {
             //turnOnHidden(); //show the hidden elements. Turn on when everything else is ready
+            runGame();
         });
         let welcomeEvent = document.getElementById('welcome');
         welcomeEvent.addEventListener('mouseover', function () {
@@ -102,7 +105,7 @@ document.getElementById('game-title').innerText = gameTitle;
 
 printScore(0, 0, 1); // initial score display. Will not be necessary when game is in final state with splash screen
 
-runGame();
+//runGame();
 
 /**
  * The main game "loop", called when the script is first loaded
@@ -211,7 +214,7 @@ function printNextQ() {
             clearInterval(myInterval);
         } else {
             timer.innerHTML = currentTime;
-            nextQ.innerHTML = "Next question coming up in..." + currentTime;
+            nextQ.innerHTML = "<h1>Next question coming up in..." + currentTime+"</h1>";
         }
     }, 1000);
 }
