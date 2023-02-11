@@ -225,7 +225,7 @@ function printNextQ() {
 function clearQuestionField() {
     //nextQ.innerHTML="Countdown has reached zero"
     cleared = document.getElementById('next-question');
-    cleared.innerHTML = "Countdown has reached zero";
+    cleared.innerHTML = " ";
 }
 
 /**
