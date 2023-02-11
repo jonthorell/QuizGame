@@ -3,8 +3,9 @@ const gameTitle = "the music quiz master";
 const maxQuestions = 10;
 const professor = "Professor Elvin Atombender thinks you won't escape.\nBonuspoint if you know where the quote comes from!";
 const myQuestionsArray = []; // empty combined array moved to const
+const nextQ = "Next question coming up in...";
 var currentQuestion = 0; // should be converted to local
-// var questions = 0;
+var questions = 0;
 var score = 0;
 var wrong = 0;
 
@@ -97,7 +98,11 @@ function createEvtListeners() {
 document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
 
+
+
 printScore(0, 0, 1); // initial score display. Will not be necessary when game is in final state with splash screen
+
+//document.getElementById('next-question').innerText = nextQ;
 
 runGame();
 
@@ -108,7 +113,7 @@ runGame();
 
 function runGame() {
     let runQuestions = createQuestions();
-    questions = 1; //countdown to keep track of how many questions has been answered. Max = 10. Reset at start.
+    //questions = 1; //countdown to keep track of how many questions has been answered. Max = 10. Reset at start.
     let message = "Welcome to the game! Please click an answer to proceed." //start message
     score = 0;
     wrong = 0;
@@ -171,27 +176,56 @@ function checkAnswer(buttonClicked) {
         let correct = myQuestionsArray[currentQuestion].Correct;
         let answerText = document.getElementById(buttonClicked).buttonClicked;
         correct = correct.toLowerCase();
-        let myAnswerText = document.getElementById(buttonClicked).innerText;
-
+        let myAnswerText = document.getElementById(buttonClicked).innerHTML;
         let statusMess = "You answered: \"";
-
         statusMess = statusMess + myAnswerText + "\". ";
 
         if (buttonClicked === correct) {
-            setAllQuestionsToGreen();
             let errorMess = getRightAnswerMessage();
             statusMess = statusMess + errorMess;
             updateColorYellow(buttonClicked); // mark box yellow
             updateScore();
         } else {
             let errorMess = getWrongAnswerMessage();
-            setAllQuestionsToGreen();
             statusMess = statusMess + errorMess;
             updateColorRed(buttonClicked); //mark the box with red
             updateWrong();
         }
+        printNextQ();
         printStatusMessage(statusMess);
     }
+}
+
+/**
+ * Print "Next coming up..."
+ */
+
+function printNextQ() {
+    let startTime = document.getElementById('timer');
+    let nextQ = document.getElementById('next-question');
+
+    myInterval = setInterval(function () {
+        let timer = document.getElementById('timer');
+        let currentTime = timer.innerHTML;
+        currentTime--;
+        if (currentTime === 0) {
+            clearQuestionField();
+            clearInterval(myInterval);
+        } else {
+            timer.innerHTML = currentTime;
+            nextQ.innerHTML = "Next question coming up in..." + currentTime;
+        }
+    }, 1000);
+}
+
+/**
+ * Clear the next-question field when timer reaches zero
+ */
+
+function clearQuestionField() {
+    //nextQ.innerHTML="Countdown has reached zero"
+    cleared = document.getElementById('next-question');
+    cleared.innerHTML = "Countdown has reached zero";
 }
 
 /**
@@ -301,7 +335,7 @@ function updateWrong() {
  */
 
 function printStatusMessage(newMessage) {
-    document.getElementById('message').innerText = newMessage;
+    document.getElementById('message').innerHTML = newMessage;
 }
 
 /**

@@ -169,6 +169,15 @@ body {
   text-align: center;
 }
 
+#timer {
+  /* is set to display none. Just to make it easy for js to just grab the number and display it in another string */
+   display: none; 
+}
+
+.timer-font-color {
+  color: white;
+}
+
 .flex-center {
   display: flex;
   justify-content: center;
