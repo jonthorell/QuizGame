@@ -1,3 +1,5 @@
+//start with defining some constants and global variables
+
 const welcomePhrase = "Another visitor!\nStay a while, stay forever!";
 const gameTitle = "the music quiz master";
 const maxQuestions = 10;
@@ -5,13 +7,37 @@ const professor = "Professor Elvin Atombender thinks you won't escape.\nBonuspoi
 const myQuestionsArray = []; // empty combined array moved to const
 
 var currentQuestion = 0; // should be converted to local
-var questions = 0;  //if removed, check correct answer does not work. Control why.
+var questions = 0; //if removed, check correct answer does not work. Control why.
 var score = 0;
 var wrong = 0;
 
-runGame();
+createEvtListeners(); // for user interactivity
 
-createEvtListeners();
+
+// initialize display
+document.getElementById('welcome').innerText = welcomePhrase;
+document.getElementById('game-title').innerText = gameTitle;
+
+printScore(0, 0, 1); // initial score display. Will not be necessary when game is in final state with splash screen
+
+runGame(); // will not be here when finished. Will be called from start-button
+
+
+
+// all functions starts here. No code should be outside from this point on
+
+/**
+ * Set all questions to not answered at game start
+ */
+
+function emptyArrayAtStart() {
+    let numberQuestions = myQuestionsArray.length;
+    for (let i = 0; i < numberQuestions; i++) {
+        myQuestionsArray[i].Answered=false;
+    }
+}
+
+
 /**
  * Initialize all event listeners
  */
@@ -48,7 +74,8 @@ function createEvtListeners() {
         let startEvent = document.getElementById('myStart');
         startEvent.addEventListener('click', function () {
             //turnOnHidden(); //show the hidden elements. Turn on when everything else is ready
-            runGame();
+            //runGame();
+            //emptyArrayAtStart();
         });
         let welcomeEvent = document.getElementById('welcome');
         welcomeEvent.addEventListener('mouseover', function () {
@@ -98,14 +125,6 @@ function createEvtListeners() {
     });
 }
 
-document.getElementById('welcome').innerText = welcomePhrase;
-document.getElementById('game-title').innerText = gameTitle;
-
-
-
-printScore(0, 0, 1); // initial score display. Will not be necessary when game is in final state with splash screen
-
-//runGame();
 
 /**
  * The main game "loop", called when the script is first loaded
@@ -214,7 +233,7 @@ function printNextQ() {
             clearInterval(myInterval);
         } else {
             timer.innerHTML = currentTime;
-            nextQ.innerHTML = "<h1>Next question coming up in..." + currentTime+"</h1>";
+            nextQ.innerHTML = "<h1>Next question coming up in..." + currentTime + "</h1>";
         }
     }, 1000);
 }
@@ -394,7 +413,9 @@ function printScore(correct, incorrect, currentQ) {
     document.getElementById('score').innerText = myScore;
 }
 
-
+/**
+ * Turns on the hidden fields at game start
+ */
 function turnOnHidden() {
     // turn off start image
     let picElement = document.getElementById('quizImage');
