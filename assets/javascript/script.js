@@ -6,8 +6,8 @@ const maxQuestions = 10; //number of questions to be asked
 const professor = "Professor Elvin Atombender thinks you won't escape.\nBonuspoint if you know where the quote comes from!";
 const myQuestionsArray = []; // empty array at first. Will contain all questions
 const message = "Welcome to the game! Please click an answer to proceed." //start message
-const scores=[];    // array that will hold three values: 0=current score, 1=current number of wrongs, 2=current question on display. 3=value of where in loop. WIll be updated by scoring functions
-scores.push(0,0,1,1); // make sure default values are there
+const scores = []; // array that will hold three values: 0=current score, 1=current number of wrongs, 2=current question on display. 3=value of where in loop. WIll be updated by scoring functions
+scores.push(0, 0, 1, 1); // make sure default values are there
 
 createEvtListeners(); // create event listeners for user interactivity
 createQuestions(); // create array with quiz questions. WIll only run once
@@ -146,7 +146,7 @@ function createQuestions() {
         };
         myQuestionsArray.push(myQuestion);
     }
-    
+
 }
 
 /**
@@ -154,20 +154,22 @@ function createQuestions() {
  */
 
 function runGame() {
-    
-    scores[0]=0;
-    scores[1]=0;
-    scores[2]=1; 
-    scores[3]=1;   //reset the scores array to default values at game start so player starts at a clean slate
+
+    scores[0] = 0;
+    scores[1] = 0;
+    scores[2] = 1;
+    scores[3] = 1; //reset the scores array to default values at game start so player starts at a clean slate
 
     let score = scores[0];
     let wrong = scores[1];
-    
+
 
     setAllQuestionsToGreen() // set all boxes to green
     printStatusMessage(message);
     emptyArrayAtStart() // set all questions to unanswered
+
     getQuestion(); // get a random question to display
+
 }
 
 /**
@@ -189,12 +191,12 @@ function emptyArrayAtStart() {
  */
 
 function checkAnswer(buttonClicked) {
-    let currentQuestion=scores[2];
+    let currentQuestion = scores[2];
     let myCurr = myQuestionsArray[currentQuestion].Answered;
     if (myCurr === false) { // don't allow answer if already answered
         buttonClicked = buttonClicked.toLowerCase(); //provides the option from the button clicked. Converted to lowercase for easy comparison
         let correct = myQuestionsArray[currentQuestion].Correct;
-        correct = correct.toLowerCase();//Converted to lowercase for easy comparison
+        correct = correct.toLowerCase(); //Converted to lowercase for easy comparison
         let myAnswerText = document.getElementById(buttonClicked).innerHTML;
         let statusMess = "You answered: \"";
         statusMess = statusMess + myAnswerText + "\". ";
@@ -232,6 +234,7 @@ function printNextQ() {
             clearQuestionField();
             printStatusMessage(message);
             clearInterval(myInterval);
+            getQuestion(); // get a random question to display
         } else {
             timer.innerHTML = currentTime;
             nextQ.innerHTML = "<h1>Next question coming up in..." + currentTime + "</h1>";
@@ -294,13 +297,13 @@ function getWrongAnswerMessage() {
             myErrMsg = "There is a picture of you in the dictionary under the heading \"wrong\".";
             break;
         case 7:
-            myErrMsg="Wrong does not cease to be wrong because the majority share in it.";
+            myErrMsg = "Wrong does not cease to be wrong because the majority share in it.";
             break;
         case 8:
-            myErrMsg="Everybody is wrong about everything, just about all the time. This time it is you.";
+            myErrMsg = "Everybody is wrong about everything, just about all the time. This time it is you.";
             break;
         case 10:
-            myErrMsg="It is nobler to declare oneself wrong than to insist on being right --especially when one is right. So I suppose you think you are noble?";
+            myErrMsg = "It is nobler to declare oneself wrong than to insist on being right --especially when one is right. So I suppose you think you are noble?";
             break;
         default:
             //this should never be displayed. Is here as a fail-safe.
@@ -336,16 +339,16 @@ function getRightAnswerMessage() {
             myRightMsg = "Captain Obvious strikes again!";
             break;
         case 7:
-            myRightMsg="You're right (as always).";
+            myRightMsg = "You're right (as always).";
             break;
         case 8:
-            myRightMsg="When you're hot, you're hot!";
+            myRightMsg = "When you're hot, you're hot!";
             break;
         case 9:
-            myRightMsg="Indeed it is, smeg for brains!";
+            myRightMsg = "Indeed it is, smeg for brains!";
             break;
         case 10:
-            myRightMsg="You used google for that, right?";
+            myRightMsg = "You used google for that, right?";
             break;
         default:
             //this should never be displayed. Is here as a fail-safe.
@@ -359,14 +362,14 @@ function getRightAnswerMessage() {
  */
 
 function updateScore() {
-    let currentQuestion=scores[2];
-    let currentLoop=scores[3];
-    let oldScore=scores[0];
-    let score=oldScore+1;
-    let wrong=scores[1];
-    scores[0]=score;
+    let currentQuestion = scores[2];
+    let currentLoop = scores[3];
+    let oldScore = scores[0];
+    let score = oldScore + 1;
+    let wrong = scores[1];
+    scores[0] = score;
     currentLoop++;
-    scores[3]=currentLoop;
+    scores[3] = currentLoop;
     printScore(score, wrong, currentLoop);
     myQuestionsArray[currentQuestion].Answered = true;
 
@@ -377,14 +380,14 @@ function updateScore() {
  */
 
 function updateWrong() {
-    let currentQuestion=scores[2];
-    let currentLoop=scores[3];
-    let oldWrong=scores[1];
-    let score=scores[0];
-    let wrong=oldWrong+1;
-    scores[1]=wrong;
+    let currentQuestion = scores[2];
+    let currentLoop = scores[3];
+    let oldWrong = scores[1];
+    let score = scores[0];
+    let wrong = oldWrong + 1;
+    scores[1] = wrong;
     currentLoop++;
-    scores[3]=currentLoop;
+    scores[3] = currentLoop;
     printScore(score, wrong, currentLoop);
     myQuestionsArray[currentQuestion].Answered = true;
 }
@@ -415,7 +418,7 @@ function getQuestion() {
             document.getElementById('option3').innerText = myQuestionsArray[currentQuestion].Option3;
             document.getElementById('option4').innerText = myQuestionsArray[currentQuestion].Option4;
             finished = true;
-            scores[2]=currentQuestion;
+            scores[2] = currentQuestion;
         } else {
             // make sure to do nothing when true
         }
@@ -435,7 +438,7 @@ function randomIntFromInterval(min, max) { // min and max included
  */
 function printScore(correct, incorrect, currentQ) {
     let myScore = "Current question:" + currentQ;
-    myScore = myScore + "(out of " + maxQuestions + ")";
+    myScore = myScore + " (out of " + maxQuestions + ")";
     myScore = myScore + "\nCorrect Answers: " + correct;
     myScore = myScore + ", Incorrect Answers: " + incorrect;
     myScore = myScore + "\nAccumulated score:"
