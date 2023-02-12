@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <noscript><meta http-equiv="refresh" content="0; https://jonthorell.github.io/QuizGame/no-javascript.html"></noscript> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Lightweight 80's music quiz">
@@ -13,59 +14,59 @@
 </head>
 
 <body>
-    
-    <p id=" game-title">0</p>
 
-        <!-- Trigger/Open The Modal -->
+    <p id="game-title">0</p>
 
-        <div class="flex-center"><button id="myBtn">Rules</button>
-            <button id="myBtn2">About</button>
-            <button id="myStart" class="startbutton">Start Game</button></div>
+    <!-- Trigger/Open The Modal -->
 
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
+    <div class="flex-center"><button id="myBtn">Rules</button>
+        <button id="myBtn2">About</button>
+        <button id="myStart" class="startbutton">Start Game</button></div>
 
-            <!-- Modal content -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h1 class="center-text">Rules of the Game</h1>
-                <p class="center-text">You will answer 10 randomly chosen questions regarding music.</p>
-                <p class="center-text">The game is timed, so you will have 30 seconds per question to answer it.</p>
-                <p class="center-text">The game is scored as follows:</p>
-                <p class="center-text">1. Every question answered correctly will give you an added score of
-                    time-remaining *
-                    10</p>
-                <p class="center-text">2. Every question answered incorrectly will deduct the same amount of points with
-                    an
-                    added penalty of 50 to discourage from just guessing.</p>
-            </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1 class="center-text">Rules of the Game</h1>
+            <p class="center-text">You will answer 10 randomly chosen questions regarding music.</p>
+            <p class="center-text">The game is timed, so you will have 30 seconds per question to answer it.</p>
+            <p class="center-text">The game is scored as follows:</p>
+            <p class="center-text">1. Every question answered correctly will give you an added score of
+                time-remaining *
+                10</p>
+            <p class="center-text">2. Every question answered incorrectly will deduct the same amount of points with
+                an
+                added penalty of 50 to discourage from just guessing.</p>
         </div>
-        <p id="welcome">0</p>
+    </div>
+    <p id="welcome">0</p>
 
 
 
-        <p id="question" class="question">0</p>
+    <p id="question" class="question">0</p>
 
-        <div class="flex-center button-row">
-            <button id="option1" class="rcorners1 answers" data-type="option1">Option1</button>
-            <button id="option2" class="rcorners1 answers" data-type="option2">Option2</button>
-        </div>
-        <div class="flex-center button-row">
-            <button id="option3" class="rcorners1 answers" data-type="option3">Option3</button>
-            <button id="option4" class="rcorners1 answers" data-type="option4">Option4</button>
-        </div>
+    <div class="flex-center button-row">
+        <button id="option1" class="rcorners1 answers" data-type="option1">Option1</button>
+        <button id="option2" class="rcorners1 answers" data-type="option2">Option2</button>
+    </div>
+    <div class="flex-center button-row">
+        <button id="option3" class="rcorners1 answers" data-type="option3">Option3</button>
+        <button id="option4" class="rcorners1 answers" data-type="option4">Option4</button>
+    </div>
 
-        <div class="flex-center" id="quizImageDiv"><img id="quizImage" src="assets/images/quiz.jpg" width="672"
-                height="372" alt="Notes picture" aria-label="Picture of notes" class="rcorners-logo"></div>
+    <div class="flex-center" id="quizImageDiv"><img id="quizImage" src="assets/images/quiz.jpg" width="672" height="372"
+            alt="Notes picture" aria-label="Picture of notes" class="rcorners-logo"></div>
 
-        <p id="message">0</p>
+    <p id="message">0</p>
 
-        <p id="next-question" class="timer-font-color center-text"> </p>
-        <p id="timer" class="timer-font-color center-text">10</p>
+    <p id="next-question" class="timer-font-color center-text"> </p>
+    <p id="timer" class="timer-font-color center-text">10</p>
 
-        <p id="score">0</p>
+    <p id="score">0</p>
 
-        <script src="assets/javascript/script.js"></script>
+    <script src="assets/javascript/script.js"></script>
 </body>
 
 </html>
