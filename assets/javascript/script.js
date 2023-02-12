@@ -6,8 +6,8 @@ const maxQuestions = 10; //number of questions to be asked
 const professor = "Professor Elvin Atombender thinks you won't escape.\nBonuspoint if you know where the quote comes from!";
 const myQuestionsArray = []; // empty array at first. Will contain all questions
 const message = "Welcome to the game! Please click an answer to proceed." //start message
-const scores=[];    // array that will hold three values: 0=current score, 1=current number of wrongs, 2=current question. WIll be updated by scoring functions
-scores.push(0,0,1); // make sure default values are there
+const scores=[];    // array that will hold three values: 0=current score, 1=current number of wrongs, 2=current question on display. 3=value of where in loop. WIll be updated by scoring functions
+scores.push(0,0,1,1); // make sure default values are there
 
 createEvtListeners(); // create event listeners for user interactivity
 createQuestions(); // create array with quiz questions. WIll only run once
@@ -157,7 +157,8 @@ function runGame() {
     
     scores[0]=0;
     scores[1]=0;
-    scores[2]=1; //reset the scores array to default values at game start so player starts at a clean slate
+    scores[2]=1; 
+    scores[3]=1;   //reset the scores array to default values at game start so player starts at a clean slate
 
     let score = scores[0];
     let wrong = scores[1];
@@ -229,7 +230,6 @@ function printNextQ() {
         currentTime--;
         if (currentTime === 0) {
             clearQuestionField();
-            setAllQuestionsToGreen(); // set all boxes to green
             printStatusMessage(message);
             clearInterval(myInterval);
         } else {
@@ -246,6 +246,7 @@ function printNextQ() {
 function clearQuestionField() {
     let cleared = document.getElementById('next-question');
     cleared.innerHTML = " ";
+    setAllQuestionsToGreen();
 }
 
 /**
@@ -359,12 +360,16 @@ function getRightAnswerMessage() {
 
 function updateScore() {
     let currentQuestion=scores[2];
+    let currentLoop=scores[3];
     let oldScore=scores[0];
     let score=oldScore+1;
     let wrong=scores[1];
-    printScore(score, wrong, 1);
     scores[0]=score;
+    currentLoop++;
+    scores[3]=currentLoop;
+    printScore(score, wrong, currentLoop);
     myQuestionsArray[currentQuestion].Answered = true;
+
 }
 
 /**
@@ -373,11 +378,14 @@ function updateScore() {
 
 function updateWrong() {
     let currentQuestion=scores[2];
+    let currentLoop=scores[3];
     let oldWrong=scores[1];
     let score=scores[0];
     let wrong=oldWrong+1;
     scores[1]=wrong;
-    printScore(score, wrong, 1);
+    currentLoop++;
+    scores[3]=currentLoop;
+    printScore(score, wrong, currentLoop);
     myQuestionsArray[currentQuestion].Answered = true;
 }
 
@@ -467,12 +475,12 @@ function turnOnHidden() {
 
 function setAllQuestionsToGreen() {
     //make sure all answer boxes are green when new question is started
-    let option1 = document.getElementById('option1');
-    option1.style.backgroundColor = "#00FF00"
-    let option2 = document.getElementById('option2');
-    option1.style.backgroundColor = "#00FF00"
-    let option3 = document.getElementById('option3');
-    option1.style.backgroundColor = "#00FF00"
-    let option4 = document.getElementById('option4');
-    option1.style.backgroundColor = "#00FF00"
+    let box1 = document.getElementById('option1');
+    box1.style.backgroundColor = "#00FF00";
+    let box2 = document.getElementById('option2');
+    box2.style.backgroundColor = "#00FF00";
+    let box3 = document.getElementById('option3');
+    box3.style.backgroundColor = "#00FF00";
+    let box4 = document.getElementById('option4');
+    box4.style.backgroundColor = "#00FF00";
 }
