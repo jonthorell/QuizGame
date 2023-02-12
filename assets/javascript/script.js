@@ -5,6 +5,7 @@ const gameTitle = "the music quiz master";
 const maxQuestions = 10; //number of questions to be asked
 const professor = "Professor Elvin Atombender thinks you won't escape.\nBonuspoint if you know where the quote comes from!";
 const myQuestionsArray = []; // empty array at first. Will contain all questions
+const message = "Welcome to the game! Please click an answer to proceed." //start message
 const scores=[];    // array that will hold three values: 0=current score, 1=current number of wrongs, 2=current question. WIll be updated by scoring functions
 scores.push(0,0,1); // make sure default values are there
 
@@ -158,7 +159,6 @@ function runGame() {
     scores[1]=0;
     scores[2]=1; //reset the scores array to default values at game start so player starts at a clean slate
 
-    let message = "Welcome to the game! Please click an answer to proceed." //start message
     let score = scores[0];
     let wrong = scores[1];
     
@@ -203,14 +203,15 @@ function checkAnswer(buttonClicked) {
             statusMess = statusMess + errorMess;
             updateColorYellow(buttonClicked); // mark box yellow
             updateScore();
+            printStatusMessage(statusMess);
         } else {
             let errorMess = getWrongAnswerMessage();
             statusMess = statusMess + errorMess;
             updateColorRed(buttonClicked); //mark the box with red
             updateWrong();
+            printStatusMessage(statusMess);
         }
         printNextQ();
-        printStatusMessage(statusMess);
     }
 }
 
@@ -228,6 +229,8 @@ function printNextQ() {
         currentTime--;
         if (currentTime === 0) {
             clearQuestionField();
+            setAllQuestionsToGreen(); // set all boxes to green
+            printStatusMessage(message);
             clearInterval(myInterval);
         } else {
             timer.innerHTML = currentTime;
