@@ -21,7 +21,7 @@ runGame(); // will not be here when finished. Will be called from start-button
 
 
 
-// all functions starts here. No code should be outside from this point on
+// all functions starts here. No code should be outside functions from this point on
 
 /**
  * Initialize all event listeners
@@ -268,7 +268,7 @@ function updateColorYellow(clickedOption) {
  */
 
 function getWrongAnswerMessage() {
-    let myError = randomIntFromInterval(1, 6);
+    let myError = randomIntFromInterval(1, 10);
     let myErrMsg = "";
     switch (myError) {
         case 1:
@@ -289,7 +289,17 @@ function getWrongAnswerMessage() {
         case 6:
             myErrMsg = "There is a picture of you in the dictionary under the heading \"wrong\".";
             break;
+        case 7:
+            myErrMsg="Wrong does not cease to be wrong because the majority share in it.";
+            break;
+        case 8:
+            myErrMsg="Everybody is wrong about everything, just about all the time. This time it is you.";
+            break;
+        case 10:
+            myErrMsg="It is nobler to declare oneself wrong than to insist on being right --especially when one is right. So I suppose you think you are noble?";
+            break;
         default:
+            //this should never be displayed. Is here as a fail-safe.
             myErrMsg = "Wrong yet again";
     }
     return myErrMsg;
@@ -300,7 +310,7 @@ function getWrongAnswerMessage() {
  */
 
 function getRightAnswerMessage() {
-    let myRight = randomIntFromInterval(1, 6);
+    let myRight = randomIntFromInterval(1, 10);
     let myRightMsg = "";
     switch (myRight) {
         case 1:
@@ -321,7 +331,20 @@ function getRightAnswerMessage() {
         case 6:
             myRightMsg = "Captain Obvious strikes again!";
             break;
+        case 7:
+            myRightMsg="You're right (as always).";
+            break;
+        case 8:
+            myRightMsg="When you're hot, you're hot!";
+            break;
+        case 9:
+            myRightMsg="Indeed it is, smeg for brains!";
+            break;
+        case 10:
+            myRightMsg="You used google for that, right?";
+            break;
         default:
+            //this should never be displayed. Is here as a fail-safe.
             myRightMsg = "When you're hot, you're hot!";
     }
     return myRightMsg;
@@ -337,6 +360,7 @@ function updateScore() {
     let score=oldScore+1;
     let wrong=scores[1];
     printScore(score, wrong, 1);
+    scores[0]=score;
     myQuestionsArray[currentQuestion].Answered = true;
 }
 
@@ -349,6 +373,7 @@ function updateWrong() {
     let oldWrong=scores[1];
     let score=scores[0];
     let wrong=oldWrong+1;
+    scores[1]=wrong;
     printScore(score, wrong, 1);
     myQuestionsArray[currentQuestion].Answered = true;
 }

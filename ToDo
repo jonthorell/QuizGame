@@ -1,9 +1,6 @@
 The create-question part could be better. It would be far better to get the data from a database or csv-file, but that is for the future. As it is they are stored 
 statically in the js file.
 
-----Refactor variables. Remove all globals. Double-check where out-of value comes from ---
-
-
 Remember for final: enable display: none on question, score,message,gameTable. And reverse on image
 
 Add flowchart
@@ -16,12 +13,6 @@ add back to css
   }
 
   // turnOnHidden(); //show the hidden elements. Turn on when everything else is ready
-
-
-
-  The completed questions array is global. See if it can be somewhat easily be scoped to local
-  Refactor other global variables (not many)
-  
 
   Check why the "all to green" is not working
   
