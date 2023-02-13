@@ -31,7 +31,7 @@ function createEvtListeners() {
     let modal = document.getElementById("myModal");
 
     // Get the button that opens the modal
-    let btn = document.getElementById("myBtn");
+    let btn = document.getElementById("myBtnRules");
 
     // Get the <span> element that closes the modal
     let span = document.getElementsByClassName("close")[0];
@@ -55,11 +55,12 @@ function createEvtListeners() {
 
 
     document.addEventListener("DOMContentLoaded", function () {
-        let startEvent = document.getElementById('myStart');
+        let startEvent = document.getElementById('myBtnStart');
         startEvent.addEventListener('click', function () {
             //turnOnHidden(); //show the hidden elements. Turn on when everything else is ready
             //runGame();
             //emptyArrayAtStart();
+            alert('Not needed yet');
         });
         let welcomeEvent = document.getElementById('welcome');
         welcomeEvent.addEventListener('mouseover', function () {
@@ -69,7 +70,7 @@ function createEvtListeners() {
             document.getElementById('welcome').innerText = welcomePhrase;
         });
 
-        let btn2Event = document.getElementById('myBtn2');
+        let btn2Event = document.getElementById('myBtnAbout');
         btn2Event.addEventListener('click', function () {
             alert("The game is written by:\nJonas Thorell");
         });

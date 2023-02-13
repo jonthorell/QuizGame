@@ -11,8 +11,9 @@ body {
 }
 
 #welcome {
-  font-size: xx-large;
-  color: burlywood;
+  font-size: x-large;
+  font-style: italic;
+  color: white;
   text-align: center;
   align-content: center;
 }
@@ -47,7 +48,7 @@ body {
   margin-left: 10%;
   margin-right: 10%;
   border-radius: 25px;
-  background-color: #00FF00;
+  background-color: gold;
 }
 
 #message {
@@ -63,7 +64,7 @@ body {
   margin-right: 10%;
   font-size: x-large;
   border-radius: 25px;
-  background-color: #00FF00;
+  background-color: gold;
 }
 
 #option1 {
@@ -117,7 +118,7 @@ body {
   margin-right: 10%;
   font-size: x-large;
   border-radius: 25px;
-  background-color: red;
+  background-color: gold;
 }
 
 .rcorners1 {
@@ -217,14 +218,11 @@ body {
   padding: 20px;
 }
 
-#myBtn,
-#myBtn2,
-#myStart {
-  background-color: #4CAF50;
-  /* Green */
+#myBtnRules {
+  background-color: #00FF00;
   border: solid;
   color: black;
-  border-color: red;
+  border-color: black;
   padding: 10px 32px;
   text-align: center;
   text-decoration: none;
@@ -232,4 +230,44 @@ body {
   font-size: 16px;
   border-radius: 12px;
   cursor: pointer;
+}
+#myBtnAbout {
+  background-color: #00FF00;
+  border: solid;
+  color: black;
+  border-color: black;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+#myBtnStart {
+  background-color: #00FF00;
+  border: solid;
+  color: black;
+  border-color: black;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+#myBtnSelect {
+  /* background-color: #00FF00; */
+  border: none;
+  background-color: transparent;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+  width:30%;
+  margin-left: 10%;
 }
