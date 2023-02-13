@@ -2,7 +2,7 @@
 
 const welcomePhrase = "Another visitor!\nStay a while, stay forever!";
 const gameTitle = "the music quiz master";
-const maxQuestions = 10; //number of questions to be asked
+const maxQuestions = 3; //number of questions to be asked
 const professor = "Professor Elvin Atombender thinks you won't escape.\nBonuspoint if you know where the quote comes from!";
 const myQuestionsArray = []; // empty array at first. Will contain all questions
 const message = "Welcome to the game! Please click an answer to proceed." //start message
@@ -56,10 +56,7 @@ function createEvtListeners() {
 
     document.addEventListener("DOMContentLoaded", function () {
         let startEvent = document.getElementById('myBtnStart');
-        //startEvent.addEventListener('click', function () {
         startEvent.addEventListener('click', runGame);
-            //runGame();
-        //});
         let welcomeEvent = document.getElementById('welcome');
         welcomeEvent.addEventListener('mouseover', function () {
             document.getElementById('welcome').innerText = professor;
@@ -227,7 +224,7 @@ function checkAnswer(buttonClicked) {
 function printNextQ() {
     let startTime = document.getElementById('timer');
     let nextQ = document.getElementById('next-question');
-    let currentQ=scores[3];
+
 
     myInterval = setInterval(function () {
         let timer = document.getElementById('timer');
@@ -237,14 +234,23 @@ function printNextQ() {
             clearInterval(myInterval);
 
             clearQuestionField();
-            timer.innerHTML="10";
+            timer.innerHTML = "10";
             printStatusMessage(message);
-            alert(currentQ);
-
-            getQuestion(); // get a random question to display
+            let currentQ = scores[3];
+            if (currentQ === maxQuestions + 1) {
+                turnOffHidden();
+                let startEvent = document.getElementById('myBtnStart');
+                startEvent.addEventListener('click', runGame);
+            } else {
+                getQuestion(); // get a random question to display
+            }
         } else {
+            let currentQ = scores[3];
             timer.innerHTML = currentTime;
             nextQ.innerHTML = "<h1>Next question coming up in..." + currentTime + "</h1>";
+            if (currentQ === maxQuestions + 1) {
+                nextQ.innerHTML = "<h1>Exiting in..." + currentTime + "</h1>";
+            }
         }
     }, 1000);
 }
@@ -477,6 +483,29 @@ function turnOnHidden() {
     answerButtons[1].style.display = "block";
     answerButtons[2].style.display = "block";
     answerButtons[3].style.display = "block";
+}
+
+/**
+ * Turns off the hidden fields at game end
+ */
+
+function turnOffHidden() {
+    // turn on start image
+    let picElement = document.getElementById('quizImage');
+    picElement.style.display = "block";
+
+    // turns on the hidden elements
+    let questionElement = document.getElementById("question");
+    questionElement.style.display = "none";
+    let scoreElement = document.getElementById('score');
+    scoreElement.style.display = "none";
+    let messageElement = document.getElementById('message');
+    messageElement.style.display = "none";
+    let answerButtons = document.getElementsByClassName('answers');
+    answerButtons[0].style.display = "none";
+    answerButtons[1].style.display = "none";
+    answerButtons[2].style.display = "none";
+    answerButtons[3].style.display = "none";
 }
 
 /**
