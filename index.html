@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <noscript><meta http-equiv="refresh" content="0; https://jonthorell.github.io/QuizGame/no-javascript.html"></noscript> 
+    <!-- The line above redirects the browser to a secondary page in case javascript is not available for some reason. The reason is that the rendered page would look really
+    odd without javascript altering the dom in some way or the other.-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Lightweight 80's music quiz">
@@ -19,9 +21,11 @@
 
     <!-- Trigger/Open The Modal -->
 
-    <div class="flex-center"><button id="myBtn">Rules</button>
+    <div class="flex-center">
+        <button id="myBtn">Rules</button>
         <button id="myBtn2">About</button>
-        <button id="myStart" class="startbutton">Start Game</button></div>
+        <button id="myStart">Start Game</button>
+    </div>
 
     <!-- The Modal -->
     <div id="myModal" class="modal">

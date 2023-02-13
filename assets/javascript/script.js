@@ -6,7 +6,7 @@ const maxQuestions = 10; //number of questions to be asked
 const professor = "Professor Elvin Atombender thinks you won't escape.\nBonuspoint if you know where the quote comes from!";
 const myQuestionsArray = []; // empty array at first. Will contain all questions
 const message = "Welcome to the game! Please click an answer to proceed." //start message
-const scores = []; // array that will hold three values: 0=current score, 1=current number of wrongs, 2=current question on display. 3=value of where in loop. WIll be updated by scoring functions
+const scores = []; // array that will hold four values: 0=current number of rights, 1=current number of wrongs, 2=current question on display. 3=value of where in loop. WIll be updated by scoring functions
 scores.push(0, 0, 1, 1); // make sure default values are there
 
 createEvtListeners(); // create event listeners for user interactivity
@@ -19,8 +19,6 @@ document.getElementById('game-title').innerText = gameTitle;
 printScore(scores[0], scores[1], scores[2]); // initial score display. Will not be necessary when game is in final state with splash screen
 
 runGame(); // will not be here when finished. Will be called from start-button
-
-
 
 // all functions starts here. No code should be outside functions from this point on
 
@@ -231,9 +229,11 @@ function printNextQ() {
         let currentTime = timer.innerHTML;
         currentTime--;
         if (currentTime === 0) {
+            clearInterval(myInterval);
+            
             clearQuestionField();
             printStatusMessage(message);
-            clearInterval(myInterval);
+            
             getQuestion(); // get a random question to display
         } else {
             timer.innerHTML = currentTime;
