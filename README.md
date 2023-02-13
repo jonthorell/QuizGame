@@ -41,6 +41,7 @@ The site is fully responsive so can easily be used on any device.
 
 * HTML
 * CSS
+* Javascript
 * Gitpod as IDE, with aid of notepad++
 * Git from inside gitpod and github
 
@@ -73,11 +74,33 @@ The message below the buttons (marked in blue below) should change on mouseover,
 
 ![buttons](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/buttons.PNG?raw=true)
 
-If you hover over the three green buttons, the mouse pointer should change into a hand to indicate it is clickable. Works.
+If you hover over the three green buttons, the mouse pointer should change into a hand to indicate it is clickable. Works (but next to impossible to get a screenshot of)
 
 If you click the about button, you should get a requstor with information about the programmer.
 
 ![about](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/about-req.PNG?raw=true)
+
+Works. 
+
+If you click rules, you should get a semi-transparant overlay on how scoring works.
+
+![rules](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/rules-overlay.PNG?raw=true)
+
+Also works. If you click on the "x" button or outside of the overlay, it should close. That works too.
+
+Finally, the start-button.
+
+If you click it on the start-screen, the game should start like this:
+
+![startgame](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/game-in-progress.PNG?raw=true)
+
+Works. However, if the game is already in progress the button does not do anything. Works, but hard to get a screenshot of.
+
+### Game in progress
+
+
+
+
 
 
 
