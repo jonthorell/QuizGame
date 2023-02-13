@@ -116,7 +116,14 @@ When an answer has been submitted, it should look like this:
 
 ![submitted-answer](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/in-progress2.PNG?raw=true)
 
-As can be seen, the clicked answer has been marked red (wrong). And a timer has started to count downwards before revealing the next question.
+As can be seen, the clicked answer has been marked red (wrong). And a timer has started to count downwards before revealing the next question. The "answer box" has
+also been updated with a randomly chosen phrase.
+
+The score has also been updated:
+
+![submitted-answer](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/in-progress3.PNG?raw=true)
+
+
 
 
 
