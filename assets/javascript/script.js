@@ -16,9 +16,9 @@ createQuestions(); // create array with quiz questions. WIll only run once
 document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
 
-printScore(scores[0], scores[1], scores[2]); // initial score display. Will not be necessary when game is in final state with splash screen
 
-runGame(); // will not be here when finished. Will be called from start-button
+
+//runGame(); // will not be here when finished. Will be called from start-button
 
 // all functions starts here. No code should be outside functions from this point on
 
@@ -56,12 +56,10 @@ function createEvtListeners() {
 
     document.addEventListener("DOMContentLoaded", function () {
         let startEvent = document.getElementById('myBtnStart');
-        startEvent.addEventListener('click', function () {
-            //turnOnHidden(); //show the hidden elements. Turn on when everything else is ready
+        //startEvent.addEventListener('click', function () {
+        startEvent.addEventListener('click', runGame);
             //runGame();
-            //emptyArrayAtStart();
-            alert('Not needed yet');
-        });
+        //});
         let welcomeEvent = document.getElementById('welcome');
         welcomeEvent.addEventListener('mouseover', function () {
             document.getElementById('welcome').innerText = professor;
@@ -162,10 +160,15 @@ function runGame() {
     let score = scores[0];
     let wrong = scores[1];
 
+    let startEvent = document.getElementById('myBtnStart');
+    startEvent.removeEventListener('click', runGame);
+
+    printScore(scores[0], scores[1], scores[2]); // initial score display. 
 
     setAllQuestionsToGreen() // set all boxes to green
     printStatusMessage(message);
     emptyArrayAtStart() // set all questions to unanswered
+    turnOnHidden(); //show the hidden elements. 
 
     getQuestion(); // get a random question to display
 
@@ -224,6 +227,7 @@ function checkAnswer(buttonClicked) {
 function printNextQ() {
     let startTime = document.getElementById('timer');
     let nextQ = document.getElementById('next-question');
+    let currentQ=scores[3];
 
     myInterval = setInterval(function () {
         let timer = document.getElementById('timer');
@@ -231,10 +235,12 @@ function printNextQ() {
         currentTime--;
         if (currentTime === 0) {
             clearInterval(myInterval);
-            
+
             clearQuestionField();
+            timer.innerHTML="10";
             printStatusMessage(message);
-            
+            alert(currentQ);
+
             getQuestion(); // get a random question to display
         } else {
             timer.innerHTML = currentTime;
@@ -474,7 +480,7 @@ function turnOnHidden() {
 }
 
 /**
- * Mark all boxes as green on start of each turn
+ * Mark all boxes as green on start of each turn.
  */
 
 function setAllQuestionsToGreen() {

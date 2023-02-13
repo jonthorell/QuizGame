@@ -6,8 +6,8 @@ body {
 }
 
 #quizImage {
-  display: none;
-  /* remember to change when game complete */
+  /* display: none;  Default is to show */
+  width: auto;
 }
 
 #welcome {
@@ -36,6 +36,7 @@ body {
 .question {
   /* Styles the question */
   /* display: none;  hidden by default. Will be turned on by start button */
+  display: none;
   text-align: center;
   font-style: italic;
   font-size: xx-large;
@@ -53,7 +54,7 @@ body {
 
 #message {
   /* creates a border around the element, centers the text within it and makes the "box" centered. Invisible by default */
-  /* display: none; */
+  display: none; 
   border-width: 3px;
   border-style: solid;
   border-color: black;
@@ -75,6 +76,7 @@ body {
   cursor: pointer;
   width: 40%;
   margin-left: 10%;
+  display: none;
 }
 #option2 {
   border-width: 3px;
@@ -84,6 +86,7 @@ body {
   cursor: pointer;
   width: 40%;
   margin-right: 10%;
+  display: none;
 }
 #option3 {
   border-width: 3px;
@@ -93,6 +96,7 @@ body {
   cursor: pointer;
   width: 40%;
   margin-left: 10%;
+  display: none;
 }
 #option4 {
   border-width: 3px;
@@ -102,11 +106,12 @@ body {
   cursor: pointer;
   width: 40%;
   margin-right: 10%;
-  /* display: none; */
+  display: none;
 }
 
 #score {
   /* display: none; invisible by default. Turns at start */
+  display: none;
   text-align: center;
   color: black;
   font-weight: bold;
