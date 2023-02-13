@@ -67,5 +67,16 @@ Expected look:
 
 ![startpage](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/startscreen.PNG?raw=true)
 
+Works. 
+
+The message below the buttons (marked in blue below) should change on mouseover, which it does.
+
+![buttons](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/buttons.PNG?raw=true)
+
+
+
+If you hover over the three green buttons, the mouse pointer should change into a hand to indicate it is clickable. Works.
+
+
 
 
