@@ -2,7 +2,7 @@
 
 const welcomePhrase = "Another visitor!\nStay a while, stay forever!";
 const gameTitle = "the music quiz master";
-const maxQuestions = 3; //number of questions to be asked
+const maxQuestions = 10; //number of questions to be asked
 const professor = "Professor Elvin Atombender thinks you won't escape.\nBonuspoint if you know where the quote comes from!";
 const myQuestionsArray = []; // empty array at first. Will contain all questions
 const message = "Welcome to the game! Please click an answer to proceed." //start message
@@ -67,7 +67,7 @@ function createEvtListeners() {
 
         let btn2Event = document.getElementById('myBtnAbout');
         btn2Event.addEventListener('click', function () {
-            alert("The game is written by:\nJonas Thorell");
+            alert("The game is written by:\nJonas Thorell\nAKA \"The Mad Monkey\"");
         });
 
         let buttons = document.getElementsByClassName("answers");
