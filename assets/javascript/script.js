@@ -16,10 +16,6 @@ createQuestions(); // create array with quiz questions. WIll only run once
 document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
 
-
-
-//runGame(); // will not be here when finished. Will be called from start-button
-
 // all functions starts here. No code should be outside functions from this point on
 
 /**
