@@ -94,9 +94,25 @@ If you click it on the start-screen, the game should start like this:
 
 ![startgame](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/game-in-progress.PNG?raw=true)
 
-Works. However, if the game is already in progress the button does not do anything. Works, but hard to get a screenshot of.
+Works. However, if the game is already in progress the button should not do anything. Works, but hard to get a screenshot of.
 
 ### Game in progress
+
+When the game is first launched, you should get an image like this:
+
+![question-1](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/in-progress1.PNG?raw=true)
+
+The top row as well as the four green buttons are pulled from an array of questions, and added dynamically to the correct dom-element.
+The "welcome to the game" row is populated by a constant variable at start. 
+The "current question" part is partially pulled from another array, and partially calculated (the accumulated score part).
+
+As long as the users has not answered this particular question, all answer buttons are green. When the mouse hovers over it, the background color
+changes to blue.
+
+When an answer has been submitted, the color changes to either red (wrong) or yellow (right). At that point, the onhover part is disabled until the next
+question has been revealed. Again, hard to get a screenshot of.
+
+When an answer has been submitted, it should look like this:
 
 
 
