@@ -61,5 +61,11 @@ scales well down to about 200px wide. Lower than that and the responsiveness ten
 
 ## Functional testing
 
+### Start page
+
+Expected look:
+
+![startpage](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/startscreen.PNG?raw=true)
+
 
 
