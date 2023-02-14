@@ -160,10 +160,19 @@ The folder hierarchy looks like this:
 
 ![folders](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/folder-hieararchy.PNG?raw=true)
 
+The css and javascript folders contain one file each. The readme-file folders only contain screenshots used for this documentation.
 
+# Bugs encountered and fixed
 
+1. The countdown timer initially only ran once, for the first question. Had forgotten to reset the timer to the initial value of ten. Once that was fixed, it runs for every question.
+2. The text in the answer-buttons and the buttons in the top-row could sometimes spill over in lower resolutions. Fixed with some media-queries.
+3. Got some odd values in the function that retrieves the question values from the array. Turns out it was a mistake regarding variable scope. I refactored the entire code to remove all global variables.
+4. The refactoring led to a problem in the if-statements regarding the answer-buttons, meaning that they did not react as they should. The if/else logic needed to be redone slightly to compensate for that, but works again as it should.
+5. Some cases of missed semi-colons and spaces in the wrong places led to the display showing the placeholder values rather than the correct content. I.e. option1 in the button instead of the question. It was hard to see where the problem was at first but found the problem eventually.
 
+# Remaining bugs
 
+None known
 
 
 
