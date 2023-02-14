@@ -110,7 +110,7 @@ As long as the users has not answered this particular question, all answer butto
 changes to blue.
 
 When an answer has been submitted, the color changes to either red (wrong) or yellow (right). At that point, the onhover part is disabled until the next
-question has been revealed. Again, hard to get a screenshot of.
+question has been revealed. Again, hard to get a screenshot of but works.
 
 When an answer has been submitted, it should look like this:
 
@@ -122,6 +122,23 @@ also been updated with a randomly chosen phrase.
 The score has also been updated:
 
 ![submitted-answer](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/in-progress3.PNG?raw=true)
+
+When the count-down timer reaches zero, it will reveal the next question.
+
+Unless it is the last question. If it is, the countdown timer will change to this:
+
+![last-question](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/in-progress4.PNG?raw=true)
+
+When it reaches zero, in that case, the game exits and the user is back to the startpage.
+
+This part has been tested in several ways, or in several stages might be a better way of putting it.
+
+1. Do not use a loop or condition at first. Hardcode which question to use so you can see exactly what values would be assigned to which variable.
+2. Make conditions as easily compared as possible (like convert both parts of the equation into lowercase)
+2. Make sure condions in 2 
+
+
+
 
 
 
