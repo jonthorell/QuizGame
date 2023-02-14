@@ -167,16 +167,37 @@ The css and javascript folders contain one file each. The readme-file folders on
 1. The countdown timer initially only ran once, for the first question. Had forgotten to reset the timer to the initial value of ten. Once that was fixed, it runs for every question.
 2. The text in the answer-buttons and the buttons in the top-row could sometimes spill over in lower resolutions. Fixed with some media-queries.
 3. Got some odd values in the function that retrieves the question values from the array. Turns out it was a mistake regarding variable scope. I refactored the entire code to remove all global variables.
-4. The refactoring led to a problem in the if-statements regarding the answer-buttons, meaning that they did not react as they should. The if/else logic needed to be redone slightly to compensate for that, but works again as it should.
-5. Some cases of missed semi-colons and spaces in the wrong places led to the display showing the placeholder values rather than the correct content. I.e. option1 in the button instead of the question. It was hard to see where the problem was at first but found the problem eventually.
-6. Not a bug strictly speaking, but an unwanted sideffect really. If the user has javascript disabled the site looks odd. The game will of course not work without javascript, but it should at least look decent anyway even if no user interaction can take place.
+4. The functons that were present when the re-factoring took place are:
+    - createEvtListeners 		works, no globals
+    - createQuestions			works, no globals
+    - rungame					works, no globals
+    - emptyArrayAtStart		works, no globals
+    - checkAnswer				works, no globals
+    - printNextQ				works, no globals
+    - clearQuestionField		works, no globals
+    - updateColorRed			works, no globals
+    - updateColorYellow		works, no globals
+    - getWrongAnserMessage	works, no globals
+    - getRightAnswerMessage	works, no globals
+    - updateScore				been updated to NOT use globals. Works, no globals. 
+    - updateWrong				been updated to NOT use globals. Works, no globals. 
+    - printStatusMessage		works, no globals
+    - getQuestion				works, no globals
+    - RandomIntIntervall		works, no globals
+    - printScore				works, no globals
+    - turnOnHidden			works, no globals
+    - setAllQuestionstogreen	works, no globals
+
+5. The refactoring led to a problem in the if-statements regarding the answer-buttons, meaning that they did not react as they should. The if/else logic needed to be redone slightly to compensate for that, but works again as it should.
+6. Some cases of missed semi-colons and spaces in the wrong places led to the display showing the placeholder values rather than the correct content. I.e. option1 in the button instead of the question. It was hard to see where the problem was at first but found the problem eventually.
+7. Not a bug strictly speaking, but an unwanted sideffect really. If the user has javascript disabled the site looks odd. The game will of course not work without javascript, but it should at least look decent anyway even if no user interaction can take place.
 
     It looks better now when some elements are hidden by default (display:none in the css file), but still.
 
     ![no-javascript](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/strange-look-w-no-javascript.PNG?raw=true)
 
     The 0 are altered by javascript so without javascript enabled, it looks ugly. Fixed by doing a redirect to no-javascript.html when the browser detects javascript is not available.
-7. JSHint detected some errors in the code. The browsers ran the code just fine anyway though.
+8. JSHint detected some errors in the code. The browsers ran the code just fine anyway though.
 
 # Remaining bugs
 
@@ -221,7 +242,7 @@ Lighthouse score for the no-javascript page:
 
 # To-Do
 
-Remake the createQuestions function.
+Remake the createQuestions function. It is hard to read as it is and difficult to maintain. My current idea is to create the array in question from a csv-file. I have postponed that since I wanted the game to work as-is first.
 
 # Credits
 
