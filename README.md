@@ -204,9 +204,42 @@ The css-file was validated using:
 
 ## Javascript
 
-It may not count as validating really, but JSHint was used to detect hard-to-see mistakes such as missing semi-colons and variables that were never used (leftovers from earlier stages in the code). Of course, JSHint can only detect if the code follows the syntax. It can not detect logical errors such as comparing the wrong variables and things of that nature. 
+It may not count as validating really, but JSHint was used to detect hard-to-see mistakes such as missing semi-colons and variables that were never used (leftovers from earlier stages in the code). Of course, JSHint can only detect if the code follows the syntax. It can not detect logical errors such as comparing the wrong variables and things of that nature. Use strict enabled after checking everything with JSHint. It should have been enabled from the start really, but the code works perfectly fine in strict mode.
 
 # Lighthouse
+
+Lighthouse score for main-page:
+
+![lighthouse-mainpage](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/lighthouse-mainpage.PNG?raw=true)
+
+The result may be slightly misleading. Misleading since the start-page and the main-game uses the same html-file, and I have not found a way to get lighthouse to
+create a report from when the game is in progress. It starts there, but reverts to default values after a while.
+
+Lighthouse score for the no-javascript page:
+
+![lighthouse-no-javascript](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/lighthouse-no-javascript.PNG?raw=true)
+
+# To-Do
+
+Remake the createQuestions function.
+
+# Credits
+
+The image on the start page was found using google image-search. If necessary, more precise location(s) where it is hosted can be provided although I can not vouch for its authorative status.
+
+Some icono-graphy provided by 
+[fontawsome](https://fontawesome.com/)
+
+The modal used for the rules-button was "stolen" from:
+
+[How to make a modal box](https://www.w3schools.com/howto/howto_css_modals.asp)
+
+and adapted for my use.
+
+
+
+
+
 
 
 
