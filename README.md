@@ -169,6 +169,14 @@ The css and javascript folders contain one file each. The readme-file folders on
 3. Got some odd values in the function that retrieves the question values from the array. Turns out it was a mistake regarding variable scope. I refactored the entire code to remove all global variables.
 4. The refactoring led to a problem in the if-statements regarding the answer-buttons, meaning that they did not react as they should. The if/else logic needed to be redone slightly to compensate for that, but works again as it should.
 5. Some cases of missed semi-colons and spaces in the wrong places led to the display showing the placeholder values rather than the correct content. I.e. option1 in the button instead of the question. It was hard to see where the problem was at first but found the problem eventually.
+6. Not a bug strictly speaking, but an unwanted sideffect really. If the user has javascript disabled the site looks odd. The game will of course not work without javascript, but it should at least look decent anyway even if no user interaction can take place.
+
+    It looks better now when some elements are hidden by default (display:none in the css file), but still.
+
+    ![no-javascript](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/strange-look-w-no-javascript.PNG?raw=true)
+
+    The 0 are altered by javascript so without javascript enabled, it looks ugly. Fixed by doing a redirect to no-javascript.html when the browser detects javascript is not available.
+7. JSHint detected some errors in the code. The browsers ran the code just fine anyway though,
 
 # Remaining bugs
 
@@ -193,6 +201,14 @@ The css-file was validated using:
 [jigsaw](https://jigsaw.w3.org/css-validator/)
 
 ![css](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/validate-css.PNG?raw=true)
+
+## Javascript
+
+It may not count as validating really, but JSHint was used to detect hard-to-see mistakes such as missing semi-colons.
+
+# Lighthouse
+
+
 
 
 
