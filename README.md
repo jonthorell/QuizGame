@@ -182,7 +182,9 @@ Everything has been validated using the official tools.
 
 The two files were validated using [v3 validator](https://validator.w3.org/)
 
+![index](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/validate-index.PNG?raw=true)
 
+![no-javascript](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/validate-no-javascript.PNG?raw=true)
 
 
 
