@@ -308,10 +308,3 @@ body {
   text-align: center;
   font-size: xx-large;
 }
-
-.center-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
