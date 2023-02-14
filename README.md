@@ -176,7 +176,7 @@ The css and javascript folders contain one file each. The readme-file folders on
     ![no-javascript](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/strange-look-w-no-javascript.PNG?raw=true)
 
     The 0 are altered by javascript so without javascript enabled, it looks ugly. Fixed by doing a redirect to no-javascript.html when the browser detects javascript is not available.
-7. JSHint detected some errors in the code. The browsers ran the code just fine anyway though,
+7. JSHint detected some errors in the code. The browsers ran the code just fine anyway though.
 
 # Remaining bugs
 
@@ -204,7 +204,7 @@ The css-file was validated using:
 
 ## Javascript
 
-It may not count as validating really, but JSHint was used to detect hard-to-see mistakes such as missing semi-colons.
+It may not count as validating really, but JSHint was used to detect hard-to-see mistakes such as missing semi-colons and variables that were never used (leftovers from earlier stages in the code). Of course, JSHint can only detect if the code follows the syntax. It can not detect logical errors such as comparing the wrong variables and things of that nature. 
 
 # Lighthouse
 
