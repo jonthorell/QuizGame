@@ -153,6 +153,13 @@ Everything works as expected.
 
 # File names and hierarchy
 
+All filenames are consistently in lower case with the appropriate extension (html, css, or js).
+The html-files are in the root-folder.
+
+The folder hierarchy looks like this:
+
+![folders](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/folder-hieararchy.PNG?raw=true)
+
 
 
 
