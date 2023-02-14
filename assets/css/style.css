@@ -301,3 +301,11 @@ body {
     font-size: 8px;
   }
 }
+
+#no-javascript {
+  /* only used for the no-javascript p tag */
+  color: black;
+  text-align: center;
+  background-color: gold;
+  font-size: xx-large;
+}
