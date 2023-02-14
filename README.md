@@ -192,6 +192,8 @@ The css-file was validated using:
 
 [jigsaw](https://jigsaw.w3.org/css-validator/)
 
+![css](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/validate-css.PNG?raw=true)
+
 
 
 
