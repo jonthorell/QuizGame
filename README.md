@@ -133,9 +133,27 @@ When it reaches zero, in that case, the game exits and the user is back to the s
 
 This part has been tested in several ways, or in several stages might be a better way of putting it.
 
-1. Do not use a loop or condition at first. Hardcode which question to use so you can see exactly what values would be assigned to which variable.
+1. Did not use a "loop" or condition at first. It was hardcoded which question to use so you can see exactly what values would be assigned to which variable.
 2. Make conditions as easily compared as possible (like convert both parts of the equation into lowercase)
-2. Make sure condions in 2 
+3. Variable values were displayed at the bottom of the screen. The variable I was working on at the time was further showcased using alert(variableName). Other important aspects were logged using console.log.
+4. Make sure condions in 1 and 2 evaluates to correct values for the hardcoded question so the game-logic works.
+5. When 4 works, add loop so the game consists of more than one question. 
+6. Repeat step 4 for the loop.
+
+Everything works as expected.
+
+1. Upon start, the start button is disabled so the user can not start the game while one is currently in progress.
+2. The game asks the user ten questions, randomly chosen.
+3. For each question, the question field (top yellow) is populated with the correct question. The green answer buttons are populated with the correct answer option.
+4. When hovering over unanswered questions, the background color changes to blue.
+5. When answering a question, the score is updated and the user gets a random answer message to provide some variety. The answer-button is updated to either red (wrong) or yellow (right). The hover effect is disabled for that answer.
+6. A countdown from 10 to 0 starts.
+7. When the countdown reaches 0, a new question is shown and numbers 3-6 repeats.
+8. When 10 questions has been asked, the user is re-directed to the start page with the start-button re-enabled.
+
+# File names and hierarchy
+
+
 
 
 
