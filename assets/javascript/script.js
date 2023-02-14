@@ -5,7 +5,7 @@ const gameTitle = "the music quiz master";
 const maxQuestions = 10; //number of questions to be asked
 const professor = "Professor Elvin Atombender thinks you won't escape.\nBonuspoint if you know where the quote comes from!";
 const myQuestionsArray = []; // empty array at first. Will contain all questions
-const message = "Welcome to the game! Please click an answer to proceed." //start message
+const message = "Welcome to the game! Please click an answer to proceed."; //start message
 const scores = []; // array that will hold four values: 0=current number of rights, 1=current number of wrongs, 2=current question on display. 3=value of where in loop. WIll be updated by scoring functions
 scores.push(0, 0, 1, 1); // make sure default values are there
 
@@ -35,19 +35,19 @@ function createEvtListeners() {
     // When the user clicks on the button, open the modal
     btn.onclick = function () {
         modal.style.display = "block";
-    }
+    };
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
         modal.style.display = "none";
-    }
+    };
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
-    }
+    };
 
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -150,17 +150,14 @@ function runGame() {
     scores[2] = 1;
     scores[3] = 1; //reset the scores array to default values at game start so player starts at a clean slate
 
-    let score = scores[0];
-    let wrong = scores[1];
-
     let startEvent = document.getElementById('myBtnStart');
     startEvent.removeEventListener('click', runGame);
 
     printScore(scores[0], scores[1], scores[2]); // initial score display. 
 
-    setAllQuestionsToGreen() // set all boxes to green
+    setAllQuestionsToGreen(); // set all boxes to green
     printStatusMessage(message);
-    emptyArrayAtStart() // set all questions to unanswered
+    emptyArrayAtStart(); // set all questions to unanswered
     turnOnHidden(); //show the hidden elements. 
 
     getQuestion(); // get a random question to display
@@ -218,11 +215,11 @@ function checkAnswer(buttonClicked) {
  */
 
 function printNextQ() {
-    let startTime = document.getElementById('timer');
+    
     let nextQ = document.getElementById('next-question');
 
 
-    myInterval = setInterval(function () {
+    let myInterval = setInterval(function () {
         let timer = document.getElementById('timer');
         let currentTime = timer.innerHTML;
         currentTime--;
@@ -415,6 +412,8 @@ function printStatusMessage(newMessage) {
 
 function getQuestion() {
 
+    let currentQuestion=0;
+    let questionAnswered=0;
     let numberQuestions = myQuestionsArray.length;
     let finished = false;
     do {
@@ -439,7 +438,7 @@ function getQuestion() {
  */
 
 function randomIntFromInterval(min, max) { // min and max included 
-    return Math.floor(Math.random() * (max - min + 1) + min)
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 /**
@@ -450,7 +449,7 @@ function printScore(correct, incorrect, currentQ) {
     myScore = myScore + " (out of " + maxQuestions + ")";
     myScore = myScore + "\nCorrect Answers: " + correct;
     myScore = myScore + ", Incorrect Answers: " + incorrect;
-    myScore = myScore + "\nAccumulated score:"
+    myScore = myScore + "\nAccumulated score:";
 
     let scoreRight = correct * 50;
     let scoreWrong = incorrect * 70;
