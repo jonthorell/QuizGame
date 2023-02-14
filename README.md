@@ -186,6 +186,14 @@ The two files were validated using [v3 validator](https://validator.w3.org/)
 
 ![no-javascript](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/validate-no-javascript.PNG?raw=true)
 
+## CSS
+
+The css-file was validated using:
+
+[jigsaw](https://jigsaw.w3.org/css-validator/)
+
+
+
 
 
 
