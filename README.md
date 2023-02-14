@@ -174,6 +174,14 @@ The css and javascript folders contain one file each. The readme-file folders on
 
 None known
 
+# Validation
+
+Everything has been validated using the official tools.
+
+## HTML
+
+The two files were validated using [v3 validator](https://validator.w3.org/)
+
 
 
 
