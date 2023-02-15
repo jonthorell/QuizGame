@@ -154,7 +154,6 @@ body {
   padding-right: 20px;
   width: 200px;
   height: 150px;
-  /* font-size: x-large; */
 }
 
 .button-row {
@@ -298,6 +297,24 @@ body {
 @media screen and (max-width: 640px) {
   #myBtnAbout,#myBtnRules,#myBtnStart {
     font-size: 8px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  #score, #message, #question {
+    font-size:smaller;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  #score, #message, #question {
+    font-size:medium;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  #score, #message, #question {
+    font-size: large;
   }
 }
 
