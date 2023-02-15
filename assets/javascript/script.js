@@ -445,7 +445,9 @@ function randomIntFromInterval(min, max) { // min and max included
  * Update the score display
  */
 function printScore(correct, incorrect, currentQ) {
-    let myScore = "Current question:" + currentQ; //what is the loop number of the question asked?
+    let myScore = "Current question:";
+    
+    myScore = myScore + currentQ; //what is the loop number of the question asked?
     myScore = myScore + " (out of " + maxQuestions + ")"; //add the max number of questions to the string
     myScore = myScore + "\nCorrect Answers: " + correct; //add how many of those are correct
     myScore = myScore + ", Incorrect Answers: " + incorrect; //add how many of those are incorrect
