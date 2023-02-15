@@ -39,7 +39,7 @@ body {
   display: none;
   text-align: center;
   font-style: italic;
-  font-size: xx-large;
+  font-size: x-large;
 
   border-width: 3px;
   border-style: solid;
@@ -136,7 +136,6 @@ body {
   display: none;
   text-align: center;
   color: black;
-  font-weight: bold;
   border-width: 3px;
   border-style: solid;
   border-color: black;
@@ -155,7 +154,7 @@ body {
   padding-right: 20px;
   width: 200px;
   height: 150px;
-  font-size: x-large;
+  /* font-size: x-large; */
 }
 
 .button-row {

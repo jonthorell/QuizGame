@@ -459,12 +459,23 @@ function printScore(correct, incorrect, currentQ) {
 }
 
 /**
- * Turns on the hidden fields at game start
+ * Turns on the hidden fields at game start and hide picture as well as title and buttons
  */
 function turnOnHidden() {
     // turn off start image
     let picElement = document.getElementById('quizImage');
     picElement.style.display = "none"; //display=none equals hidden
+    //turn of buttons and title to save screen estate
+    let gameTitle=document.getElementById('game-title');
+    gameTitle.style.display="none"; //no title
+    let welcomeText=document.getElementById('welcome');
+    welcomeText.style.display="none"; //no welcome-text
+    let button1=document.getElementById('myBtnAbout');
+    let button2=document.getElementById('myBtnRules');
+    let button3=document.getElementById('myBtnStart');
+    button1.style.display="none";
+    button2.style.display="none";
+    button3.style.display="none"; //no buttons
 
     // turns on the hidden elements. All of the below are hidden by default in the css file. This function enables the elements by altering the display property
     let questionElement = document.getElementById("question");
@@ -488,6 +499,18 @@ function turnOffHidden() {
     // turn on start image
     let picElement = document.getElementById('quizImage');
     picElement.style.display = "block"; //turns on the image again when the game is over
+    //turn on buttons and title again
+    let gameTitle=document.getElementById('game-title');
+    gameTitle.style.display="block"; //title is back
+    console.log(gameTitle.style.display);
+    let welcomeText=document.getElementById('welcome');
+    welcomeText.style.display="block"; //welcome-text is back
+    let button1=document.getElementById('myBtnAbout');
+    let button2=document.getElementById('myBtnRules');
+    let button3=document.getElementById('myBtnStart');
+    button1.style.display="initial";
+    button2.style.display="initial";
+    button3.style.display="initial"; //buttons are back
 
     //All of the below are hidden by default in the css file, but enabled when the game starts. This function reverts that and goes back to hidden
     let questionElement = document.getElementById("question");
