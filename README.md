@@ -94,7 +94,7 @@ If you click it on the start-screen, the game should start like this:
 
 ![startgame](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/game-in-progress.PNG?raw=true)
 
-Works. However, if the game is already in progress the button should not do anything. Works, but hard to get a screenshot of.
+Works. 
 
 ### Game in progress
 
