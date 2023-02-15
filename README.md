@@ -142,14 +142,14 @@ This part has been tested in several ways, or in several stages might be a bette
 
 Everything works as expected.
 
-1. Upon start, the start button is disabled so the user can not start the game while one is currently in progress.
+1. Upon start, the top button row and the text-fields are removed. Partially to save screen-estate and partially to make it impossible for the user to start a new game when one is already in progress.
 2. The game asks the user ten questions, randomly chosen.
-3. For each question, the question field (top yellow) is populated with the correct question. The green answer buttons are populated with the correct answer option.
+3. For each question, the question field (top yellow) is populated with the correct question. The green answer buttons are populated with the correct answer options.
 4. When hovering over unanswered questions, the background color changes to blue.
 5. When answering a question, the score is updated and the user gets a random answer message to provide some variety. The answer-button is updated to either red (wrong) or yellow (right). The hover effect is disabled for that answer.
 6. A countdown from 10 to 0 starts.
 7. When the countdown reaches 0, a new question is shown and numbers 3-6 repeats.
-8. When 10 questions has been asked, the user is re-directed to the start page with the start-button re-enabled.
+8. When 10 questions has been asked, the user is re-directed to the start page with the buttons shown again.
 
 # File names and hierarchy
 
