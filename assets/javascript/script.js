@@ -10,6 +10,7 @@ const myQuestionsArray = []; // empty array at first. Will contain all questions
 const message = "Welcome to the game! Please click an answer to proceed."; //start message
 const scores = []; // array that will hold four values: 0=current number of rights, 1=current number of wrongs, 2=current question on display. 3=value of where in loop. WIll be updated by scoring functions
 scores.push(0, 0, 1, 1); // make sure default values are there
+var currentTime = 0; //var for now to get abort to work. Changes after that
 
 createEvtListeners(); // create event listeners for user interactivity
 createQuestions(); // create array with quiz questions. WIll only run once
@@ -216,19 +217,32 @@ function checkAnswer(buttonClicked) {
  */
 
 function printNextQ() {
-
     let nextQ = document.getElementById('next-question'); //the DOM element where the countdown will be printed
-
+    let btn2Abort = document.getElementById('myBtnAbort');
+    btn2Abort.style.display = "block"; // reveal button
+    btn2Abort.addEventListener('click', function () {
+        console.log(currentTime);
+        clearInterval(myInterval); //disable the countdown
+        clearQuestionField(); //clear the area where the countdown was printed
+        timer.innerHTML = "11;" // reset the timer
+        let btn2Abort2 = document.getElementById('myBtnAbort');
+        btn2Abort2.style.display = "none"; // hide the button again
+        printStatusMessage(message); //reset the statusmessage to default texy
+        //let timer = document.getElementById('timer'); //hidden element. An easy way of just grabbing/printing the time. It will be displayd in next-question
+        //currentTime = timer.innerHTML; //grab current time. Default value is 11
+        getQuestion(); // get a random question to display
+    });
 
     let myInterval = setInterval(function () {
         let timer = document.getElementById('timer'); //hidden element. An easy way of just grabbing/printing the time. It will be displayd in next-question
-        let currentTime = timer.innerHTML; //grab current time. Default value is 11
+        currentTime = timer.innerHTML; //grab current time. Default value is 11
         currentTime--; //decrease the timer by 1
         if (currentTime === 0) { //when timer has reaced zero,
             clearInterval(myInterval); //disable the countdown
-
             clearQuestionField(); //clear the area where the countdown was printed
             timer.innerHTML = "11"; // reset the timer
+            let btn2Abort2 = document.getElementById('myBtnAbort');
+            btn2Abort2.style.display = "none"; // hide the button again
             printStatusMessage(message); //reset the statusmessage to default texy
             let currentQ = scores[3]; //where in the loop are we?
             if (currentQ === maxQuestions + 1) { //check if the user has answered 10 questions. If so, exit the game
@@ -246,8 +260,10 @@ function printNextQ() {
                 nextQ.innerHTML = "<h1>Exiting in..." + currentTime + "</h1>"; //if max number of questions has been asked, change the text in the timer
             }
         }
+
     }, 1000); // 1000=once a second
 }
+
 
 /**
  * Clear the next-question field when timer reaches zero
