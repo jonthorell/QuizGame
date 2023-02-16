@@ -70,9 +70,9 @@ function createEvtListeners() {
         let buttons = document.getElementsByClassName("answers");
 
         for (let button of buttons) {
-            button.addEventListener("click", function answerFunction(myQuestionsArray) {
-                let answerButton = this.getAttribute("data-type");
-                checkAnswer(answerButton);
+            button.addEventListener("click", function () {
+                // loop thru all answer buttons and add a click-eventlistener to them
+                checkAnswer(this.getAttribute("data-type"));
             });
             button.addEventListener('mouseover', function () {
                 // change background color to blue on mouseover
