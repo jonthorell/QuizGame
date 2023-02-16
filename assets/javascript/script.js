@@ -79,23 +79,23 @@ function createEvtListeners() {
                 if (this.style.backgroundColor === "red") {
                     //dont really do anything if the question has been answered wrong. The color should remain
                     this.style.backgroundColor = "red";
-                } else if (this.style.backgroundColor == "yellow") {
+                } else if (this.style.backgroundColor == "lime") {
                     //dont really do anything if the question has been answered correctly. The color should remain
-                    this.style.backgroundColor = "yellow";
+                    this.style.backgroundColor = "lime";
                 } else {
-                    this.style.backgroundColor = "#009DC4";
+                    this.style.backgroundColor = "aqua";
                 }
             });
             button.addEventListener('mouseout', function () {
-                // change background color back to green on mouseout
+                // change background color back to gold on mouseout
                 if (this.style.backgroundColor === "red") {
                     //dont really do anything if the question has been answered wrong. The color should remain
                     this.style.backgroundColor = "red";
-                } else if (this.style.backgroundColor == "yellow") {
+                } else if (this.style.backgroundColor === "lime") {
                     //dont really do anything if the question has been answered correctly. The color should remain
-                    this.style.backgroundColor = "yellow";
+                    this.style.backgroundColor = "lime";
                 } else {
-                    this.style.backgroundColor = "#00FF00";
+                    this.style.backgroundColor = "gold";
                 }
             });
         }
@@ -156,7 +156,7 @@ function runGame() {
 
     printScore(scores[0], scores[1], scores[2]); // initial score display. 
 
-    setAllQuestionsToGreen(); // set all boxes to green
+    setAllQuestionsToGold(); // set all boxes to green
     printStatusMessage(message); //print initial statusmessage
     emptyArrayAtStart(); // set all questions to unanswered
     turnOnHidden(); //show the hidden elements. And remove the picture
@@ -197,7 +197,7 @@ function checkAnswer(buttonClicked) {
         if (buttonClicked === correct) {
             let errorMess = getRightAnswerMessage();    //errorMess is misnomer, but same variable is used in both places in the if/else clause. Gets a random answer message into the errorMess variable
             statusMess = statusMess + errorMess; //add the retrieved error-message to the statusmess
-            updateColorYellow(buttonClicked); // mark box yellow
+            updateColorGreen(buttonClicked); // mark box green
             updateScore(); //updates the score. Further details inside the function
             printStatusMessage(statusMess); //print new statusmessage
         } else {
@@ -256,7 +256,7 @@ function printNextQ() {
 function clearQuestionField() {
     let cleared = document.getElementById('next-question');
     cleared.innerHTML = " "; //clear the element of content
-    setAllQuestionsToGreen(); //function that re-sets the answer buttons to a background of green
+    setAllQuestionsToGold(); //function that re-sets the answer buttons to a background of green
 }
 
 /**
@@ -269,12 +269,12 @@ function updateColorRed(clickedOption) {
 }
 
 /**
- * If the clicked answer is correct, set the box to yellow
+ * If the clicked answer is correct, set the box to green
  */
 
-function updateColorYellow(clickedOption) {
+function updateColorGreen(clickedOption) {
     let selectedAnswer = document.getElementById(clickedOption);
-    selectedAnswer.style.backgroundColor = "yellow"; //set the backround to yellow on the clicked button. Function is called from checkanswer when answer is correct
+    selectedAnswer.style.backgroundColor = "lime"; //set the backround to green on the clicked button. Function is called from checkanswer when answer is correct
 }
 
 /**
@@ -502,7 +502,6 @@ function turnOffHidden() {
     //turn on buttons and title again
     let gameTitle=document.getElementById('game-title');
     gameTitle.style.display="block"; //title is back
-    console.log(gameTitle.style.display);
     let welcomeText=document.getElementById('welcome');
     welcomeText.style.display="block"; //welcome-text is back
     let button1=document.getElementById('myBtnAbout');
@@ -527,17 +526,17 @@ function turnOffHidden() {
 }
 
 /**
- * Mark all boxes as green on start of each turn.
+ * Mark all boxes as gold on start of each turn.
  */
 
-function setAllQuestionsToGreen() {
-    //make sure all answer boxes are green when new question is started
+function setAllQuestionsToGold() {
+    //make sure all answer boxes are gold when new question is started
     let box1 = document.getElementById('option1');
-    box1.style.backgroundColor = "#00FF00";
+    box1.style.backgroundColor = "gold";
     let box2 = document.getElementById('option2');
-    box2.style.backgroundColor = "#00FF00";
+    box2.style.backgroundColor = "gold";
     let box3 = document.getElementById('option3');
-    box3.style.backgroundColor = "#00FF00";
+    box3.style.backgroundColor = "gold";
     let box4 = document.getElementById('option4');
-    box4.style.backgroundColor = "#00FF00";
+    box4.style.backgroundColor = "gold";
 }

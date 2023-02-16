@@ -1,6 +1,6 @@
 body {
   /* default values for the body */
-  background-image: url("../images/backdrop.png");
+  background-image: url("../images/backdrop.png"); 
   /* in case background can not be loaded, set a background color */
   background-color: #777777;
 }
@@ -71,7 +71,7 @@ body {
 #option1 {
   border-width: 3px;
   border-style: solid;
-  background-color: #00FF00;
+  background-color:gold;
   color: black;
   cursor: pointer;
   width: 40%;
@@ -82,7 +82,7 @@ body {
 #option2 {
   border-width: 3px;
   border-style: solid;
-  background-color: #00FF00;
+  background-color:gold;
   color: black;
   cursor: pointer;
   width: 40%;
@@ -93,7 +93,7 @@ body {
 #option3 {
   border-width: 3px;
   border-style: solid;
-  background-color: #00FF00;
+  background-color:gold;
   color: black;
   cursor: pointer;
   width: 40%;
@@ -104,7 +104,7 @@ body {
 #option4 {
   border-width: 3px;
   border-style: solid;
-  background-color: #00FF00;
+  background-color:gold;
   color: black;
   cursor: pointer;
   width: 40%;

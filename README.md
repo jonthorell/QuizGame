@@ -49,7 +49,9 @@ The site is fully responsive so can easily be used on any device.
 
 All code entered into its respective file from within gitpod.
 
-The source is hosted at github and deployed using git-pages and the commands:
+The source is hosted at github and deployed using the publicly availabe git-hube page of https://github.com/jonthorell/QuizGame
+
+That is done regularily using:
 
 * git add .
 * git commit -m "commit message"
@@ -197,11 +199,14 @@ The css and javascript folders contain one file each. The readme-file folders on
     ![no-javascript](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/strange-look-w-no-javascript.PNG?raw=true)
 
     The 0 are altered by javascript so without javascript enabled, it looks ugly. Fixed by doing a redirect to no-javascript.html when the browser detects javascript is not available.
-8. JSHint detected some errors in the code. The browsers ran the code just fine anyway though.
 
 # Remaining bugs
 
 None known
+
+# To note
+
+The WAVE tool complains about "very low contrast" for one element. That can safely be ignored since that element always has the diplay property set to none. The element is only used for the game-logic and is never displayed to the user.
 
 # Validation
 
@@ -226,6 +231,13 @@ The css-file was validated using:
 ## Javascript
 
 It may not count as validating really, but JSHint was used to detect hard-to-see mistakes such as missing semi-colons and variables that were never used (leftovers from earlier stages in the code). Of course, JSHint can only detect if the code follows the syntax. It can not detect logical errors such as comparing the wrong variables and things of that nature. Use strict enabled after checking everything with JSHint. It should have been enabled from the start really, but the code works perfectly fine in strict mode.
+
+The result from JSHint is:
+
+![jshint](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/validate-js.PNG?raw=true)
+
+One warning present, but not a show-stopper. The keyword is may. I do not think it leads to confusing semantics and I think it is quite clear what the line of code does.
+
 
 # Lighthouse
 
