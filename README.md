@@ -238,6 +238,44 @@ The result from JSHint is:
 
 One warning present, but not a show-stopper. The keyword is may. I do not think it leads to confusing semantics and I think it is quite clear what the line of code does.
 
+The code it complains about is the following.
+
+```
+for (let button of buttons) {
+            button.addEventListener("click", function () {
+                // loop thru all answer buttons and add a click-eventlistener to them
+                checkAnswer(this.getAttribute("data-type"));
+            });
+```
+I opted to keep that, since the other option is clumsier in my opinion.
+
+That would be something like this:
+
+```
+let btn1 = document.getElementById('option1');
+let btn2 = document.getElementById('option2');
+let btn3 = document.getElementById('option3');
+let btn4 = document.getElementById('option4');
+
+btn1.addEventListener("click", function () {
+     checkAnswer(btn1.getAttribute("data-type"));
+});
+
+btn2.addEventListener("click", function () {
+     checkAnswer(btn2.getAttribute("data-type"));
+});
+
+btn3.addEventListener("click", function () {
+       checkAnswer(btn3.getAttribute("data-type"));
+ });
+
+btn4.addEventListener("click", function () {
+      checkAnswer(btn4.getAttribute("data-type"));
+});
+
+```
+
+The end-result is the same, but the loop is neater.
 
 # Lighthouse
 

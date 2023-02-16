@@ -152,7 +152,7 @@ function runGame() {
     scores[3] = 1; //reset the scores array to default values at game start so player starts at a clean slate
 
     let startEvent = document.getElementById('myBtnStart');
-    startEvent.removeEventListener('click', runGame);       //disable the start-button
+    startEvent.removeEventListener('click', runGame); //disable the start-button
 
     printScore(scores[0], scores[1], scores[2]); // initial score display. 
 
@@ -195,16 +195,16 @@ function checkAnswer(buttonClicked) {
         statusMess = statusMess + myAnswerText + "\". "; //set the statusMess variable to 'You answered: "Wings".
 
         if (buttonClicked === correct) {
-            let errorMess = getRightAnswerMessage();    //errorMess is misnomer, but same variable is used in both places in the if/else clause. Gets a random answer message into the errorMess variable
+            let errorMess = getRightAnswerMessage(); //errorMess is misnomer, but same variable is used in both places in the if/else clause. Gets a random answer message into the errorMess variable
             statusMess = statusMess + errorMess; //add the retrieved error-message to the statusmess
             updateColorGreen(buttonClicked); // mark box green
             updateScore(); //updates the score. Further details inside the function
             printStatusMessage(statusMess); //print new statusmessage
         } else {
             let errorMess = getWrongAnswerMessage(); //Get random wrong answer message into the errorMess variable
-            statusMess = statusMess + errorMess;    //add the retrieved error-message to the statusmess
+            statusMess = statusMess + errorMess; //add the retrieved error-message to the statusmess
             updateColorRed(buttonClicked); //mark the box with red
-            updateWrong();  //updates the score. Further details inside the function
+            updateWrong(); //updates the score. Further details inside the function
             printStatusMessage(statusMess); //print new statusmessage
         }
         printNextQ(); //start countdown timer
@@ -216,7 +216,7 @@ function checkAnswer(buttonClicked) {
  */
 
 function printNextQ() {
-    
+
     let nextQ = document.getElementById('next-question'); //the DOM element where the countdown will be printed
 
 
@@ -224,8 +224,8 @@ function printNextQ() {
         let timer = document.getElementById('timer'); //hidden element. An easy way of just grabbing/printing the time. It will be displayd in next-question
         let currentTime = timer.innerHTML; //grab current time. Default value is 11
         currentTime--; //decrease the timer by 1
-        if (currentTime === 0) {        //when timer has reaced zero,
-            clearInterval(myInterval);  //disable the countdown
+        if (currentTime === 0) { //when timer has reaced zero,
+            clearInterval(myInterval); //disable the countdown
 
             clearQuestionField(); //clear the area where the countdown was printed
             timer.innerHTML = "11"; // reset the timer
@@ -238,7 +238,7 @@ function printNextQ() {
             } else {
                 getQuestion(); // get a random question to display
             }
-        } else {    // timer is still counting down
+        } else { // timer is still counting down
             let currentQ = scores[3]; //where in the loop are we?
             timer.innerHTML = currentTime; //update the DOM with the timer (hidden field)
             nextQ.innerHTML = "<h1>Next question coming up in..." + currentTime + "</h1>"; //update the display with the countdown
@@ -326,7 +326,7 @@ function getWrongAnswerMessage() {
 function getRightAnswerMessage() {
     let myRight = randomIntFromInterval(1, 10); //get a random integer between 1 and 10
     let myRightMsg = ""; //set the inital value of myErrMsg to empty
-    switch (myRight) {  //depending on the random number generated, create different error messages
+    switch (myRight) { //depending on the random number generated, create different error messages
         case 1:
             myRightMsg = "Of course it is. Way too easy.";
             break;
@@ -361,7 +361,7 @@ function getRightAnswerMessage() {
             //this should never be displayed. Is here as a fail-safe.
             myRightMsg = "Duh!";
     }
-    return myRightMsg;  //return the value back to the calling function for display
+    return myRightMsg; //return the value back to the calling function for display
 }
 
 /**
@@ -374,10 +374,10 @@ function updateScore() {
     let currentLoop = scores[3]; //where in the loop are we?
     let oldScore = scores[0]; //oldScore will be the value of how many questions had previously been answered correctly
     let wrong = scores[1]; //how many questions has been answered incorrectly?
-    scores[0] = oldScore+1;
+    scores[0] = oldScore + 1;
     currentLoop++;
     scores[3] = currentLoop; //update the array with new values for how many correctly answered values as well as where in the loop we are
-    printScore(oldScore+1, wrong, currentLoop); //print new score
+    printScore(oldScore + 1, wrong, currentLoop); //print new score
     myQuestionsArray[currentQuestion].Answered = true; //mark the question as answered
 }
 
@@ -387,14 +387,14 @@ function updateScore() {
 
 function updateWrong() {
     //updates when the user answered incorrectly
-    let currentQuestion = scores[2];    //used to update which question has been answered already
-    let currentLoop = scores[3];    //where in the loop are we?
-    let oldWrong = scores[1];   //oldWrong will be the value of how many questions had previously been answered incorrectly
+    let currentQuestion = scores[2]; //used to update which question has been answered already
+    let currentLoop = scores[3]; //where in the loop are we?
+    let oldWrong = scores[1]; //oldWrong will be the value of how many questions had previously been answered incorrectly
     let score = scores[0]; //how many questions has been answered correctly?
-    scores[1] = oldWrong+1;
+    scores[1] = oldWrong + 1;
     currentLoop++;
     scores[3] = currentLoop; //update the array with new values for how many incorrectly answered values as well as where in the loop we are
-    printScore(score, oldWrong+1, currentLoop); //print new score
+    printScore(score, oldWrong + 1, currentLoop); //print new score
     myQuestionsArray[currentQuestion].Answered = true; //mark the question as answered
 }
 
@@ -411,14 +411,14 @@ function printStatusMessage(newMessage) {
  */
 
 function getQuestion() {
-    let currentQuestion=0; //which question should be answered?
-    let questionAnswered=0; //has the question been answered?
+    let currentQuestion = 0; //which question should be answered?
+    let questionAnswered = 0; //has the question been answered?
     let numberQuestions = myQuestionsArray.length; //how many items are in the array?
     let finished = false; //when to break out of the do-while loop
     do {
         currentQuestion = randomIntFromInterval(0, numberQuestions - 1); //get random question
         questionAnswered = myQuestionsArray[currentQuestion].Answered; //get the answered-property value of the random question
-        if (questionAnswered === false) { 
+        if (questionAnswered === false) {
             //if the question has not been asked in current game, populate the display with the question and the four possible answers
             document.getElementById('question').innerText = myQuestionsArray[currentQuestion].Question;
             document.getElementById('option1').innerText = myQuestionsArray[currentQuestion].Option1;
@@ -446,16 +446,16 @@ function randomIntFromInterval(min, max) { // min and max included
  */
 function printScore(correct, incorrect, currentQ) {
     let myScore = "Current question:";
-    
+
     myScore = myScore + currentQ; //what is the loop number of the question asked?
     myScore = myScore + " (out of " + maxQuestions + ")"; //add the max number of questions to the string
     myScore = myScore + "\nCorrect Answers: " + correct; //add how many of those are correct
     myScore = myScore + ", Incorrect Answers: " + incorrect; //add how many of those are incorrect
     myScore = myScore + "\nAccumulated score:"; //and the accumulated score
 
-    let myAccumulatedScore = (correct*50)-(incorrect*70); //calculate new score. 1 correct answer=50 points, 1 incorrect answer=-70 points
-    
-    document.getElementById('score').innerText = myScore+myAccumulatedScore; //update the display with new accumulated score
+    let myAccumulatedScore = (correct * 50) - (incorrect * 70); //calculate new score. 1 correct answer=50 points, 1 incorrect answer=-70 points
+
+    document.getElementById('score').innerText = myScore + myAccumulatedScore; //update the display with new accumulated score
 }
 
 /**
@@ -466,16 +466,16 @@ function turnOnHidden() {
     let picElement = document.getElementById('quizImage');
     picElement.style.display = "none"; //display=none equals hidden
     //turn of buttons and title to save screen estate
-    let gameTitle=document.getElementById('game-title');
-    gameTitle.style.display="none"; //no title
-    let welcomeText=document.getElementById('welcome');
-    welcomeText.style.display="none"; //no welcome-text
-    let button1=document.getElementById('myBtnAbout');
-    let button2=document.getElementById('myBtnRules');
-    let button3=document.getElementById('myBtnStart');
-    button1.style.display="none";
-    button2.style.display="none";
-    button3.style.display="none"; //no buttons
+    let gameTitle = document.getElementById('game-title');
+    gameTitle.style.display = "none"; //no title
+    let welcomeText = document.getElementById('welcome');
+    welcomeText.style.display = "none"; //no welcome-text
+    let button1 = document.getElementById('myBtnAbout');
+    let button2 = document.getElementById('myBtnRules');
+    let button3 = document.getElementById('myBtnStart');
+    button1.style.display = "none";
+    button2.style.display = "none";
+    button3.style.display = "none"; //no buttons
 
     // turns on the hidden elements. All of the below are hidden by default in the css file. This function enables the elements by altering the display property
     let questionElement = document.getElementById("question");
@@ -500,16 +500,16 @@ function turnOffHidden() {
     let picElement = document.getElementById('quizImage');
     picElement.style.display = "block"; //turns on the image again when the game is over
     //turn on buttons and title again
-    let gameTitle=document.getElementById('game-title');
-    gameTitle.style.display="block"; //title is back
-    let welcomeText=document.getElementById('welcome');
-    welcomeText.style.display="block"; //welcome-text is back
-    let button1=document.getElementById('myBtnAbout');
-    let button2=document.getElementById('myBtnRules');
-    let button3=document.getElementById('myBtnStart');
-    button1.style.display="initial";
-    button2.style.display="initial";
-    button3.style.display="initial"; //buttons are back
+    let gameTitle = document.getElementById('game-title');
+    gameTitle.style.display = "block"; //title is back
+    let welcomeText = document.getElementById('welcome');
+    welcomeText.style.display = "block"; //welcome-text is back
+    let button1 = document.getElementById('myBtnAbout');
+    let button2 = document.getElementById('myBtnRules');
+    let button3 = document.getElementById('myBtnStart');
+    button1.style.display = "initial";
+    button2.style.display = "initial";
+    button3.style.display = "initial"; //buttons are back
 
     //All of the below are hidden by default in the css file, but enabled when the game starts. This function reverts that and goes back to hidden
     let questionElement = document.getElementById("question");
