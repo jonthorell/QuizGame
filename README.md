@@ -240,7 +240,7 @@ One warning present, but not a show-stopper. The keyword is may. I do not think 
 
 The code it complains about is the following.
 
-```
+```javascript
 for (let button of buttons) {
             button.addEventListener("click", function () {
                 // loop thru all answer buttons and add a click-eventlistener to them
@@ -251,7 +251,7 @@ I opted to keep that, since the other option is clumsier in my opinion.
 
 That would be something like this:
 
-```
+```javascript
 let btn1 = document.getElementById('option1');
 let btn2 = document.getElementById('option2');
 let btn3 = document.getElementById('option3');
