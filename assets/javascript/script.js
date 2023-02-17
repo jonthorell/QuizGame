@@ -1,4 +1,4 @@
-"use strict";
+//"use strict";
 
 //start with defining some constants
 
@@ -28,22 +28,25 @@ function createQuestionsFromCsv() {
     let myTest;
     let myNrOfQ;
 
-    let qTempArray = [];
-    let opt1TempArray = [];
-    let opt2TempArray = [];
-    let opt3TempArray = [];
-    let opt4TempArray = [];
-    let AnswerTempArray = [];
+    //var qTempArray = [];
+    var opt1TempArray = [];
+    var opt2TempArray = [];
+    var opt3TempArray = [];
+    var opt4TempArray = [];
+    var AnswerTempArray = [];
 
     //grab questions
     fetch(myPath + "questions.txt")
         .then(response => response.text())
         .then(text => {
             myTest = text;
-            qTempArray = myTest.split("\n");
+            const qTempArray = myTest.split("\n");
+            //const questionArray = qArrText.split(";");
             myNrOfQ = qTempArray.length;
 
             console.log("Question: " + qTempArray[myNrOfQ - 1] + "(" + myNrOfQ + ").");
+            console.log("Test: "+qTempArray[12]);
+            
         })
     //grab option1
     fetch(myPath + "option1.txt")
@@ -99,6 +102,9 @@ function createQuestionsFromCsv() {
 
             console.log("Correct: " + AnswerTempArray[myNrOfQ - 1]);
         })
+
+        //console.log("Len:"+qTempArray.length);
+       
 
     //combine arrays and add named property
 
