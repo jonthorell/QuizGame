@@ -9,17 +9,40 @@ const professor = "Professor Elvin Atombender thinks you won't escape.\nBonuspoi
 const myQuestionsArray = []; // empty array at first. Will contain all questions
 const message = "Welcome to the game! Please click an answer to proceed."; //start message
 const scores = []; // array that will hold four values: 0=current number of rights, 1=current number of wrongs, 2=current question on display. 3=value of where in loop. WIll be updated by scoring functions
+const myPath = "assets/questions/"; //base url for files used for the questions
 scores.push(0, 0, 1, 1); // make sure default values are there
 var currentTime = 0; //var for now to get abort to work. Changes after that
 
 createEvtListeners(); // create event listeners for user interactivity
 createQuestions(); // create array with quiz questions. WIll only run once
-
+createQuestionsFromCsv();
 // initialize display
 document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
 
 // all functions starts here. No code should be outside functions from this point on
+
+//create questions from csv-file
+
+function createQuestionsFromCsv() {
+    let myTest;
+    let myNrOfQ;
+    let qTempArray = [];
+    console.log(myPath+"questions.txt");
+    fetch(myPath + "questions.txt")
+        .then(response => response.text())
+        .then(text => {
+            myTest = text;
+            qTempArray=myTest.split("\n");
+            myNrOfQ=qTempArray.length;
+            console.log("First: "+qTempArray[0]);
+            console.log("Number: "+myNrOfQ);
+            console.log("Last: "+qTempArray[myNrOfQ-1]);
+        })
+
+    
+}
+
 
 /**
  * Initialize all event listeners
