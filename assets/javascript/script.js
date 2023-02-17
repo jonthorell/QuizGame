@@ -27,20 +27,78 @@ document.getElementById('game-title').innerText = gameTitle;
 function createQuestionsFromCsv() {
     let myTest;
     let myNrOfQ;
+
     let qTempArray = [];
-    console.log(myPath+"questions.txt");
+    let opt1TempArray = [];
+    let opt2TempArray = [];
+    let opt3TempArray = [];
+    let opt4TempArray = [];
+    let AnswerTempArray = [];
+
+    //grab questions
     fetch(myPath + "questions.txt")
         .then(response => response.text())
         .then(text => {
             myTest = text;
-            qTempArray=myTest.split("\n");
-            myNrOfQ=qTempArray.length;
-            console.log("First: "+qTempArray[0]);
-            console.log("Number: "+myNrOfQ);
-            console.log("Last: "+qTempArray[myNrOfQ-1]);
+            qTempArray = myTest.split("\n");
+            myNrOfQ = qTempArray.length;
+        
+            console.log("Last question: "+qTempArray[myNrOfQ -1]+"("+myNrOfQ+").");
+        })
+    //grab option1
+    fetch(myPath + "option1.txt")
+        .then(response => response.text())
+        .then(text => {
+            myTest = text;
+            opt1TempArray = myTest.split("\n");
+            myNrOfQ = opt1TempArray.length;
+           
+            console.log("Option 1: "+opt1TempArray[myNrOfQ -1]+"("+myNrOfQ+").");
         })
 
-    
+    //grab option2
+    fetch(myPath + "option2.txt")
+        .then(response => response.text())
+        .then(text => {
+            myTest = text;
+            opt2TempArray = myTest.split("\n");
+            myNrOfQ = opt2TempArray.length;
+            
+            console.log("Option 2: "+opt2TempArray[myNrOfQ -1]+"("+myNrOfQ+").");
+        })
+
+    //grab option3
+    fetch(myPath + "option3.txt")
+        .then(response => response.text())
+        .then(text => {
+            myTest = text;
+            opt3TempArray = myTest.split("\n");
+            myNrOfQ = opt3TempArray.length;
+            
+            console.log("Option 3: "+opt3TempArray[myNrOfQ -1]+"("+myNrOfQ+").");
+        })
+
+    //grab option4
+    fetch(myPath + "option4.txt")
+        .then(response => response.text())
+        .then(text => {
+            myTest = text;
+            opt4TempArray = myTest.split("\n");
+            myNrOfQ = opt4TempArray.length;
+
+            console.log("Option 4: "+opt4TempArray[myNrOfQ -1]+"("+myNrOfQ+").");
+        })
+
+    //grab correct
+    fetch(myPath + "right.txt")
+        .then(response => response.text())
+        .then(text => {
+            myTest = text;
+            AnswerTempArray = myTest.split("\n");
+            myNrOfQ = AnswerTempArray.length;
+            
+            console.log("Correct: " + AnswerTempArray[myNrOfQ - 1]);
+        })
 }
 
 
