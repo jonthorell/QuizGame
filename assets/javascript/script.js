@@ -42,8 +42,8 @@ function createQuestionsFromCsv() {
             myTest = text;
             qTempArray = myTest.split("\n");
             myNrOfQ = qTempArray.length;
-        
-            console.log("Last question: "+qTempArray[myNrOfQ -1]+"("+myNrOfQ+").");
+
+            console.log("Question: " + qTempArray[myNrOfQ - 1] + "(" + myNrOfQ + ").");
         })
     //grab option1
     fetch(myPath + "option1.txt")
@@ -52,8 +52,8 @@ function createQuestionsFromCsv() {
             myTest = text;
             opt1TempArray = myTest.split("\n");
             myNrOfQ = opt1TempArray.length;
-           
-            console.log("Option 1: "+opt1TempArray[myNrOfQ -1]+"("+myNrOfQ+").");
+
+            console.log("Option 1: " + opt1TempArray[myNrOfQ - 1] + "(" + myNrOfQ + ").");
         })
 
     //grab option2
@@ -63,8 +63,8 @@ function createQuestionsFromCsv() {
             myTest = text;
             opt2TempArray = myTest.split("\n");
             myNrOfQ = opt2TempArray.length;
-            
-            console.log("Option 2: "+opt2TempArray[myNrOfQ -1]+"("+myNrOfQ+").");
+
+            console.log("Option 2: " + opt2TempArray[myNrOfQ - 1] + "(" + myNrOfQ + ").");
         })
 
     //grab option3
@@ -74,8 +74,8 @@ function createQuestionsFromCsv() {
             myTest = text;
             opt3TempArray = myTest.split("\n");
             myNrOfQ = opt3TempArray.length;
-            
-            console.log("Option 3: "+opt3TempArray[myNrOfQ -1]+"("+myNrOfQ+").");
+
+            console.log("Option 3: " + opt3TempArray[myNrOfQ - 1] + "(" + myNrOfQ + ").");
         })
 
     //grab option4
@@ -86,7 +86,7 @@ function createQuestionsFromCsv() {
             opt4TempArray = myTest.split("\n");
             myNrOfQ = opt4TempArray.length;
 
-            console.log("Option 4: "+opt4TempArray[myNrOfQ -1]+"("+myNrOfQ+").");
+            console.log("Option 4: " + opt4TempArray[myNrOfQ - 1] + "(" + myNrOfQ + ").");
         })
 
     //grab correct
@@ -96,9 +96,12 @@ function createQuestionsFromCsv() {
             myTest = text;
             AnswerTempArray = myTest.split("\n");
             myNrOfQ = AnswerTempArray.length;
-            
+
             console.log("Correct: " + AnswerTempArray[myNrOfQ - 1]);
         })
+
+    //combine arrays and add named property
+
 }
 
 
