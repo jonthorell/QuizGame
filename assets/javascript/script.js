@@ -12,102 +12,94 @@ const scores = []; // array that will hold four values: 0=current number of righ
 const myPath = "assets/questions/"; //base url for files used for the questions
 scores.push(0, 0, 1, 1); // make sure default values are there
 var currentTime = 0; //var for now to get abort to work. Changes after that
+const questionsArray = []; // empty array at first. Will contain all questions. Teemporary
 
 createEvtListeners(); // create event listeners for user interactivity
 createQuestions(); // create array with quiz questions. WIll only run once
 createQuestionsFromCsv();
+
 // initialize display
 document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
 
 // all functions starts here. No code should be outside functions from this point on
 
-//create questions from csv-file
-
 function createQuestionsFromCsv() {
-    let myTest;
-    let myNrOfQ;
+    let request;
+    let textfileContent;
 
-    //var qTempArray = [];
-    var opt1TempArray = [];
-    var opt2TempArray = [];
-    var opt3TempArray = [];
-    var opt4TempArray = [];
-    var AnswerTempArray = [];
-
+    //Every 'grab' part grabs a textfile from within the assets folder and adds every line to a new row to an array
+    
     //grab questions
-    fetch(myPath + "questions.txt")
-        .then(response => response.text())
-        .then(text => {
-            myTest = text;
-            const qTempArray = myTest.split("\n");
-            //const questionArray = qArrText.split(";");
-            myNrOfQ = qTempArray.length;
+    request = new XMLHttpRequest();
+    request.open('GET', myPath + "questions.txt", false);
+    request.send();
+    textfileContent = request.responseText;
 
-            console.log("Question: " + qTempArray[myNrOfQ - 1] + "(" + myNrOfQ + ").");
-            console.log("Test: "+qTempArray[12]);
-            
-        })
+    const qTempArray = textfileContent.split("\n");
+
     //grab option1
-    fetch(myPath + "option1.txt")
-        .then(response => response.text())
-        .then(text => {
-            myTest = text;
-            opt1TempArray = myTest.split("\n");
-            myNrOfQ = opt1TempArray.length;
+    request = new XMLHttpRequest();
+    request.open('GET', myPath + "option1.txt", false);
+    request.send();
+    textfileContent = request.responseText;
 
-            console.log("Option 1: " + opt1TempArray[myNrOfQ - 1] + "(" + myNrOfQ + ").");
-        })
+    const Opt1TempArray = textfileContent.split("\n");
+
 
     //grab option2
-    fetch(myPath + "option2.txt")
-        .then(response => response.text())
-        .then(text => {
-            myTest = text;
-            opt2TempArray = myTest.split("\n");
-            myNrOfQ = opt2TempArray.length;
 
-            console.log("Option 2: " + opt2TempArray[myNrOfQ - 1] + "(" + myNrOfQ + ").");
-        })
+    request = new XMLHttpRequest();
+    request.open('GET', myPath + "option2.txt", false);
+    request.send();
+    textfileContent = request.responseText;
+
+    const Opt2TempArray = textfileContent.split("\n");
 
     //grab option3
-    fetch(myPath + "option3.txt")
-        .then(response => response.text())
-        .then(text => {
-            myTest = text;
-            opt3TempArray = myTest.split("\n");
-            myNrOfQ = opt3TempArray.length;
 
-            console.log("Option 3: " + opt3TempArray[myNrOfQ - 1] + "(" + myNrOfQ + ").");
-        })
+    request = new XMLHttpRequest();
+    request.open('GET', myPath + "option3.txt", false);
+    request.send();
+    textfileContent = request.responseText;
+
+    const Opt3TempArray = textfileContent.split("\n");
 
     //grab option4
-    fetch(myPath + "option4.txt")
-        .then(response => response.text())
-        .then(text => {
-            myTest = text;
-            opt4TempArray = myTest.split("\n");
-            myNrOfQ = opt4TempArray.length;
 
-            console.log("Option 4: " + opt4TempArray[myNrOfQ - 1] + "(" + myNrOfQ + ").");
-        })
+    request = new XMLHttpRequest();
+    request.open('GET', myPath + "option4.txt", false);
+    request.send();
+    textfileContent = request.responseText;
+
+    const Opt4TempArray = textfileContent.split("\n");
 
     //grab correct
-    fetch(myPath + "right.txt")
-        .then(response => response.text())
-        .then(text => {
-            myTest = text;
-            AnswerTempArray = myTest.split("\n");
-            myNrOfQ = AnswerTempArray.length;
 
-            console.log("Correct: " + AnswerTempArray[myNrOfQ - 1]);
-        })
+    request = new XMLHttpRequest();
+    request.open('GET', myPath + "right.txt", false);
+    request.send();
+    textfileContent = request.responseText;
 
-        //console.log("Len:"+qTempArray.length);
-       
+    const RightTempArray = textfileContent.split("\n");
 
     //combine arrays and add named property
 
+    let nr_Q=qTempArray.length;
+    document.getElementById('len').innerText = "Number of questions: "+nr_Q;
+
+    for (let i=0;i<nr_Q;i++) {
+        let myQuestion= {
+            Question: qTempArray[i],
+            Option1: Opt1TempArray[i],
+            Option2: Opt2TempArray[i],
+            Option3: Opt3TempArray[i],
+            Option4: Opt4TempArray[i],
+            Correct: RightTempArray[i],
+            Answered: false
+        };
+        questionsArray.push(myQuestion);
+    }
 }
 
 
