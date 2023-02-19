@@ -13,7 +13,6 @@ const myPath = "assets/questions/"; //base url for files used for the questions
 scores.push(0, 0, 1, 1); // make sure default values are there
 //const questionsArray = []; // empty array at first. Will contain all questions. Teemporary
 const myStartModal = `
-<span class="close">&times;</span>
 <h1 class="center-text"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></h1>
 <h2 class="center-text">Rules of the Game</h2>
 <p class="center-text">You will answer 10 randomly chosen questions regarding music.</p>
@@ -674,7 +673,7 @@ function displayScore() {
     let myAccumulated = (myRight * 50) - (myWrong * 70);
 
     let myScore='<h1 class="center-text"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></h1>';
-    myScore = myScore + '<span class="close">&times;</span><h1 class="center-text">Game Over</h1>';
+    myScore = myScore + '<h1 class="center-text">Game Over</h1>';
     myScore=myScore+'<h2 class="center-text">';
     myScore=myScore+'<i class="fa-solid fa-trophy"></i>';
     myScore = myScore + '<h2 class="center-text">';
