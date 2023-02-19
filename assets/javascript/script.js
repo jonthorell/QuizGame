@@ -11,7 +11,7 @@ const message = "Welcome to the game! Please click an answer to proceed."; //sta
 const scores = []; // array that will hold four values: 0=current number of rights, 1=current number of wrongs, 2=current question on display. 3=value of where in loop. WIll be updated by scoring functions
 const myPath = "assets/questions/"; //base url for files used for the questions
 scores.push(0, 0, 1, 1); // make sure default values are there
-const questionsArray = []; // empty array at first. Will contain all questions. Teemporary
+//const questionsArray = []; // empty array at first. Will contain all questions. Teemporary
 const myStartModal = `
 <span class="close">&times;</span>
 <h1 class="center-text"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></h1>
@@ -24,13 +24,13 @@ const myStartModal = `
 `; //start-value of the modal. Gets re-written into the innerHTML at appropiate times
 
 createEvtListeners(); // create event listeners for user interactivity
-createQuestions(); // create array with quiz questions. WIll only run once
+//createQuestions(); // create array with quiz questions. WIll only run once
 createQuestionsFromFiles();
 
 // initialize display
 document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
-document.getElementById('dbase').innerText = "The game consists of " + questionsArray.length + " questions.";
+document.getElementById('dbase').innerText = "The game consists of " + myQuestionsArray.length + " questions.";
 document.getElementById('dbase').style.color = "white"; //no title
 document.getElementsByClassName('modal-content')[0].innerHTML = myStartModal; //populate modal with rules-html
 
@@ -107,18 +107,33 @@ function createQuestionsFromFiles() {
     //combine arrays and add named property
 
     let nr_Q = qTempArray.length;
+    let o1,q,o2,o3,o4,r,tmp;
 
     for (let i = 0; i < qTempArray.length; i++) {
+        tmp=Opt1TempArray[i];
+        o1=tmp.trim();
+        tmp=Opt2TempArray[i];
+        o2=tmp.trim();
+        tmp=Opt3TempArray[i];
+        o3=tmp.trim();
+        tmp=Opt4TempArray[i];
+        o4=tmp.trim();
+        tmp=qTempArray[i];
+        q=tmp.trim();
+        tmp=RightTempArray[i];
+        r=tmp.trim();
+        //the above in the for-loop strips away any leading and trailing spaces. Essentially to make sure there are no \n or similar in the source text-files
+        //that can screw things up.
         let myQuestion = {
-            Question: qTempArray[i],
-            Option1: Opt1TempArray[i],
-            Option2: Opt2TempArray[i],
-            Option3: Opt3TempArray[i],
-            Option4: Opt4TempArray[i],
-            Correct: RightTempArray[i],
+            Question: q,
+            Option1: o1,
+            Option2: o2,
+            Option3: o3,
+            Option4: o4,
+            Correct: r,
             Answered: false
         };
-        questionsArray.push(myQuestion);
+        myQuestionsArray.push(myQuestion);
     }
 }
 
@@ -299,7 +314,6 @@ function checkAnswer(buttonClicked) {
         let myAnswerText = document.getElementById(buttonClicked).innerHTML; //get the text of the button clicked in clear-text rather than option1, option2. That is, the answer in English.
         let statusMess = "You answered: \"";
         statusMess = statusMess + myAnswerText + "\". "; //set the statusMess variable to 'You answered: "Wings".
-
         if (buttonClicked === correct) {
             let errorMess = getRightAnswerMessage(); //errorMess is misnomer, but same variable is used in both places in the if/else clause. Gets a random answer message into the errorMess variable
             statusMess = statusMess + errorMess; //add the retrieved error-message to the statusmess
