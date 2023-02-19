@@ -11,25 +11,46 @@ const message = "Welcome to the game! Please click an answer to proceed."; //sta
 const scores = []; // array that will hold four values: 0=current number of rights, 1=current number of wrongs, 2=current question on display. 3=value of where in loop. WIll be updated by scoring functions
 const myPath = "assets/questions/"; //base url for files used for the questions
 scores.push(0, 0, 1, 1); // make sure default values are there
-var currentTime = 0; //var for now to get abort to work. Changes after that
 const questionsArray = []; // empty array at first. Will contain all questions. Teemporary
+const myStartModal = `
+<span class="close">&times;</span>
+<h1 class="center-text"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></h1>
+<h2 class="center-text">Rules of the Game</h2>
+<p class="center-text">You will answer 10 randomly chosen questions regarding music.</p>
+<p class="center-text">The game is scored as follows:</p>
+<p class="center-text">1. Every question answered correctly will give you an added score of
+    50.</p>
+<p class="center-text">2. Every question answered incorrectly will deduct 70 points to discourage from just guessing.</p>
+`; //start-value of the modal. Gets re-written into the innerHTML at appropiate times
 
 createEvtListeners(); // create event listeners for user interactivity
 createQuestions(); // create array with quiz questions. WIll only run once
-createQuestionsFromCsv();
+createQuestionsFromFiles();
 
 // initialize display
 document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
+document.getElementById('dbase').innerText = "The game consists of " + questionsArray.length + " questions.";
+document.getElementById('dbase').style.color = "white"; //no title
+document.getElementsByClassName('modal-content')[0].innerHTML = myStartModal; //populate modal with rules-html
 
 // all functions starts here. No code should be outside functions from this point on
 
-function createQuestionsFromCsv() {
+/**
+ * Creates an array with all the questions and their properties using files saved under assets/questions
+ */
+function createQuestionsFromFiles() {
+    //this function creates the necessary array of questions to be asked from 6 textfiles located under assets/questions.
+    //questions.txt contains the question itself. option1-4 contains the different answers that will be used to populate the answer buttons
+    //right.txt contain the value of which option is correct.
+    //The directory also contain a questions.xlsx file to use as a template. You basically add, remove rows and/or change values in it
+    //and then cut-and-paste the column into the corresponding text-file
+
     let request;
     let textfileContent;
 
     //Every 'grab' part grabs a textfile from within the assets folder and adds every line to a new row to an array
-    
+
     //grab questions
     request = new XMLHttpRequest();
     request.open('GET', myPath + "questions.txt", false);
@@ -85,11 +106,10 @@ function createQuestionsFromCsv() {
 
     //combine arrays and add named property
 
-    let nr_Q=qTempArray.length;
-    document.getElementById('len').innerText = "Number of questions: "+nr_Q;
+    let nr_Q = qTempArray.length;
 
-    for (let i=0;i<nr_Q;i++) {
-        let myQuestion= {
+    for (let i = 0; i < qTempArray.length; i++) {
+        let myQuestion = {
             Question: qTempArray[i],
             Option1: Opt1TempArray[i],
             Option2: Opt2TempArray[i],
@@ -108,7 +128,7 @@ function createQuestionsFromCsv() {
  */
 function createEvtListeners() {
 
-    // Get the modal - rules
+    // Get the modal
     let modal = document.getElementById("myModal");
 
     // Get the button that opens the modal
@@ -119,6 +139,9 @@ function createEvtListeners() {
 
     // When the user clicks on the button, open the modal
     btn.onclick = function () {
+        document.getElementsByClassName('modal-content')[0].innerHTML = myStartModal; //populate modal with rules-html
+        //that is necessary since the modal used to display the score at the end of the game.
+        //this makes sure the modal has the rules applied to it when the user actively clicks the button
         modal.style.display = "block";
     };
 
@@ -300,20 +323,6 @@ function checkAnswer(buttonClicked) {
 
 function printNextQ() {
     let nextQ = document.getElementById('next-question'); //the DOM element where the countdown will be printed
-    let btn2Abort = document.getElementById('myBtnAbort');
-    btn2Abort.style.display = "block"; // reveal button
-    btn2Abort.addEventListener('click', function () {
-        console.log(currentTime);
-        clearInterval(myInterval); //disable the countdown
-        clearQuestionField(); //clear the area where the countdown was printed
-        timer.innerHTML = "11;" // reset the timer
-        let btn2Abort2 = document.getElementById('myBtnAbort');
-        btn2Abort2.style.display = "none"; // hide the button again
-        printStatusMessage(message); //reset the statusmessage to default texy
-        //let timer = document.getElementById('timer'); //hidden element. An easy way of just grabbing/printing the time. It will be displayd in next-question
-        //currentTime = timer.innerHTML; //grab current time. Default value is 11
-        getQuestion(); // get a random question to display
-    });
 
     let myInterval = setInterval(function () {
         let timer = document.getElementById('timer'); //hidden element. An easy way of just grabbing/printing the time. It will be displayd in next-question
@@ -323,12 +332,12 @@ function printNextQ() {
             clearInterval(myInterval); //disable the countdown
             clearQuestionField(); //clear the area where the countdown was printed
             timer.innerHTML = "11"; // reset the timer
-            let btn2Abort2 = document.getElementById('myBtnAbort');
-            btn2Abort2.style.display = "none"; // hide the button again
             printStatusMessage(message); //reset the statusmessage to default texy
             let currentQ = scores[3]; //where in the loop are we?
-            if (currentQ === maxQuestions + 1) { //check if the user has answered 10 questions. If so, exit the game
+            if (currentQ === maxQuestions + 1) { //check if the user has answered the maxquestions. If so, exit the game
+
                 turnOffHidden(); //disable the game-field and show the picture
+                displayScore(); //show the score in a modal
                 let startEvent = document.getElementById('myBtnStart');
                 startEvent.addEventListener('click', runGame); //re-enable the start-button
             } else {
@@ -568,6 +577,7 @@ function turnOnHidden() {
     gameTitle.style.display = "none"; //no title
     let welcomeText = document.getElementById('welcome');
     welcomeText.style.display = "none"; //no welcome-text
+    document.getElementById('dbase').style.display = "none"; //no nr of questions in game displayed
     let button1 = document.getElementById('myBtnAbout');
     let button2 = document.getElementById('myBtnRules');
     let button3 = document.getElementById('myBtnStart');
@@ -602,6 +612,7 @@ function turnOffHidden() {
     gameTitle.style.display = "block"; //title is back
     let welcomeText = document.getElementById('welcome');
     welcomeText.style.display = "block"; //welcome-text is back
+    document.getElementById('dbase').style.display = "block"; //nr of questions in game displayed is back
     let button1 = document.getElementById('myBtnAbout');
     let button2 = document.getElementById('myBtnRules');
     let button3 = document.getElementById('myBtnStart');
@@ -637,4 +648,46 @@ function setAllQuestionsToGold() {
     box3.style.backgroundColor = "gold";
     let box4 = document.getElementById('option4');
     box4.style.backgroundColor = "gold";
+}
+
+/**
+ * Display the score in the modal
+ */
+function displayScore() {
+    let myRight = scores[0];
+    let myWrong = scores[1];
+    let myScoreMess;
+    let myAccumulated = (myRight * 50) - (myWrong * 70);
+
+    let myScore='<h1 class="center-text"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></h1>';
+    myScore = myScore + '<span class="close">&times;</span><h1 class="center-text">Game Over</h1>';
+    myScore=myScore+'<h2 class="center-text">';
+    myScore=myScore+'<i class="fa-solid fa-trophy"></i>';
+    myScore = myScore + '<h2 class="center-text">';
+    myScore = myScore + 'You scored:' + myAccumulated + ' out of 500</h2>';
+    if (myAccumulated < 0) {
+        myScoreMess = "Oh dear. A negative score. That is great for covid-tests but not otherwise.";
+    } else if (myAccumulated < 150) {
+        myScoreMess = "Really not a good score. You can do a lot better.";
+    } else if (myAccumulated < 210) {
+        myScoreMess = "Okay, decent enough. But you did guess on some?";
+    } else if (myAccumulated < 280) {
+        myScoreMess = "Impressive. Most impressive.";
+    } else if (myAccumulated < 350) {
+        myScoreMess = "WOW! I'm in awe!";
+    } else if (myAccumulated <500) {
+        myScoreMess = "Great balls of fire!!";
+    } else if (myAccumulated === 500) {
+        myScoreMess = "You answered everything correctly! I bow to the master!";
+    } else {
+        myScoreMess = "WOW! I'm in awe! (default)"; 
+        //should never happen. Here as a fail-safe
+    }
+
+    myScore=myScore+'<p class="center-text">'+myScoreMess+'</p>';
+
+    //score html for the modal
+
+    document.getElementsByClassName('modal-content')[0].innerHTML = myScore; //populate modal with score
+    document.getElementById('myModal').style.display = "block"; //display it
 }
