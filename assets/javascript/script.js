@@ -12,7 +12,7 @@ const scores = []; // array that will hold four values: 0=current number of righ
 const myPath = "assets/questions/"; //base url for files used for the questions
 scores.push(0, 0, 1, 1); // make sure default values are there
 //const questionsArray = []; // empty array at first. Will contain all questions. Teemporary
-const myStartModal = `
+const myStartModal = `<span class="close">&times;</span>
 <h1 class="center-text"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></h1>
 <h2 class="center-text">Rules of the Game</h2>
 <p class="center-text">You will answer 10 randomly chosen questions regarding music.</p>
@@ -23,8 +23,7 @@ const myStartModal = `
 `; //start-value of the modal. Gets re-written into the innerHTML at appropiate times
 
 createEvtListeners(); // create event listeners for user interactivity
-//createQuestions(); // create array with quiz questions. WIll only run once
-createQuestionsFromFiles();
+createQuestionsFromFiles(); // create array with quiz questions. WIll only run once
 
 // initialize display
 document.getElementById('welcome').innerText = welcomePhrase;
@@ -106,21 +105,21 @@ function createQuestionsFromFiles() {
     //combine arrays and add named property
 
     let nr_Q = qTempArray.length;
-    let o1,q,o2,o3,o4,r,tmp;
+    let o1, q, o2, o3, o4, r, tmp;
 
     for (let i = 0; i < qTempArray.length; i++) {
-        tmp=Opt1TempArray[i];
-        o1=tmp.trim();
-        tmp=Opt2TempArray[i];
-        o2=tmp.trim();
-        tmp=Opt3TempArray[i];
-        o3=tmp.trim();
-        tmp=Opt4TempArray[i];
-        o4=tmp.trim();
-        tmp=qTempArray[i];
-        q=tmp.trim();
-        tmp=RightTempArray[i];
-        r=tmp.trim();
+        tmp = Opt1TempArray[i];
+        o1 = tmp.trim();
+        tmp = Opt2TempArray[i];
+        o2 = tmp.trim();
+        tmp = Opt3TempArray[i];
+        o3 = tmp.trim();
+        tmp = Opt4TempArray[i];
+        o4 = tmp.trim();
+        tmp = qTempArray[i];
+        q = tmp.trim();
+        tmp = RightTempArray[i];
+        r = tmp.trim();
         //the above in the for-loop strips away any leading and trailing spaces. Essentially to make sure there are no \n or similar in the source text-files
         //that can screw things up.
         let myQuestion = {
@@ -222,43 +221,6 @@ function createEvtListeners() {
     });
 }
 
-/**
- * Creates an array with all the questions and their properties.
- */
-
-function createQuestions() {
-    // only called once!
-    let qArrText = "Ultravox released an album named after which european capital?;The title of the first album of Depeche Mode is?;Relax was a major hit for?;Who did a duet with Dancing in the streets together with David Bowie?;Sisters are doin it for themselves was a hit for?;The title song of the movie Karate Kid 2 was performed by?;The song 1984 was recorded by Eurythmics. Who wrote the book?;The charity project Band Aid was inititiated by who?;A-ha is from what country?;Which band got a hit with Just cant get enough?;Who is the singer of the cure?;Derek K Dick is better known as?;Vince Clarke of Erasure was earlier a member of?;Nitzer Ebb makes what kind of music?;What year was live Aid?;Who sang 1984 hit All Cried Out?;Which popular AC/DC album was the first to feature new vocalist Brian Johnson?;Who sang the title track of 80s Bond film The Living Daylights?;In which iconic music video do Queen parody Coronation Street?;Now associated with rickrolling, which 1987 Rick Astley song became number one in 25 countries?;Which single gave Whitney Houston her first UK number one in 1985?;What was the best-selling single of the decade in the UK?;Which band was awaiting a Letter From America?;Who went straight to number one in 1981 with Stand and Deliver?;Who was Christmas Number One in 1988 with Mistletoe and Wine?;Which famous actor was waiting for Bananarama in 1984?;Who is the lead singer of the band Frankie Goes To Hollywood?;Bobby G, Cheryl Baker, Mike Nolan and Jay Aston are members of which band?;How old were George Michael and Andrew Ridgely when they wrote Careless Whisper?;Which U2 album became the fastest-selling album in British history at the time, once released in 1987?;Which iconic Simple Minds song plays during the opening and closing credits of The Breakfast Club?;Which 1981 Journey song failed to crack the UK Top 40 on release, then reached number 6 in 2009?;Which singer-songwriter's real name is Michael Barratt?;Which band recorded the theme song to Friends?;What was The Rolling Stones' second album called?;What’s the name of Britney Spears’ first single, released in 1998?;Right Said Fred had a No.1 Hit with 'I’m Too….'?;In which year of the nineties did Nirvana frontman Kurt Cobain die?;Which pop group named themselves after a London postcode?;Who had a hit with 'U Can't Touch This' in 1990?;In which year did Culture Club have a UK number one single with Karma Chameleon?;Sinead O'Connor had a hit in 1990 with Nothing Compares 2 U, but who wrote it?;Who is the lead singer of the Pet Shop Boys?;Which American rock band had a hit in the eighties with the 'Eye of the Tiger'?;Who shot John Lennon outside his apartment in New York City on December 8 1980?;What musician was deported from Japan in the 1980’s for possession of marijuana?;Which Irish rock band sang The Boys Are Back In Town?;Whose first hit was Wuthering Heights?;Which singer has the most UK Number One singles ever?;What was the name of Eminem's first UK single release in 1999?";
-    const questionArray = qArrText.split(";"); // array with the questions
-    let option1 = "Stockholm;Speak and spell;Mike and the mechanics;Mick Jagger;Aretha Franklin and Annie Lennox;Peter Cetera;George Orwell;Bono;Sweden;Depeche Mode;Dave Gahan;Morrisey;Depeche Mode;Rockabilly;1984;Annie Lennox;Highway to hell;Duran Duran;Radio Ga-Ga;Never gonna give you up;Saving all my love for you;Thriller;The Proclaimers;Adam and the ants;Rick James;Robert de Niro;Holly Johnson;Bucks Fizz;19;The Joshua Tree;Alive and kicking;Separate ways;Leonard Cohen;Rolling Stones;Exile on main st.;Oops I did it again;Hot;1994;East 17;M.C Hammer;1982;Prince;Neil Tennant;Red Hot Chilli Peppers;Mark Chapel;George Michael;The Pogues;Cyndi Lauper;Tom Jones;The real Slim Shady";
-    const option1Array = option1.split(";"); // array with answer 1
-    let option2 = "Berlin;Black Celebration;Roxette;Tina Turner;Bananarama;Billy Idol;William Golding;Bob Geldof;Norway;Yazoo;Robert Smith;Fish;Marillion;EBM;1987;Bonnie Taylor;Back in black;A-ha;I want to break free;Whenever you need somebody;I will always love you;Like a virgin;Joy Division;Sting;Cliff Richard;Roger Moore;Steven Tyler;Eagles;20;War;Belfast child;Dont stop belivin;Shakin Stevens;Bee Gees;The Rolling Stones No. 2;Toxic;Sexy;1992;ZipCode 193;LL Cool J;1983;Michael Jackson;Chris Lowe;Survivor;Mark Chapman;Freddie Mercury;The Cranberries;Grace Jones;Elvis Presley;Cleanin out my closet";
-    const option2Array = option2.split(";"); // array with answer 2
-    let option3 = "Vienna;Violator;Frankie goes to Hollywood;Phil Collins;Olivia Newton-John;Bruce Springsteen;Joseph Conrad;Midge Ure;Finland;The Assembly;Johnny Marr;Meatloaf;Yes;Heavy Metal;1985;Aretha Franklin;Stiff upper lip;Wings;Im going slightly mad;My arms keep missing you;I wanna dance with somebody;Do they know its christmas?;The Police;Sade;Cyndi Lauper;Jack Nicholson;Peter Gabriel;Status Quo;16;The unforgettable fire;Dont you forget about me;When you love a woman;Jeff Buckley;Crowded House;Sticky fingers;.. Baby One More Time;Handsome;1996;10cc;Eminem;1984;Billy Joel;Andy Bell;Van Halen;Mark Hamill;Madonna;Thin Lizzy;Melissa Etheridge;Bruce Springsteen;Stan";
-    const option3Array = option3.split(";"); // array with answer 3
-    let option4 = "London;Music for the masses;Pet Shop Boys;Aretha Franklin;Paul McCartney;Billy Joel;J.D. Salinger;George Harrison;Denmark;Erasure;Ian Curtis;Ripper;The Smiths;Soul;1986;Alison Moyet;Fly on the wall;Tina Turner;We will rock you;Together forever;Greatest love of all;Sexual healing;Tears for fears;Lionel Richie;Salt-n-Pepa;Harrison Ford;Don Henley;Genesis;17;Boy;Let there be love;Faithfully;Bob Dylan;The Rembrandts;Let it bleed;Womanizer;Awsome;1995;Blink 182;Heavy D;1985;George Harrison;Dave Stewart;Guns n roses;Mark Owen;Paul McCartney;Boomtown Rats;Kate Bush;Elton John;My name is";
-    const option4Array = option4.split(";"); // array with answer 4
-    let rightAnswer = "Option3;Option1;Option4;Option1;Option1;Option1;Option1;Option2;Option2;Option1;Option2;Option2;Option1;Option2;Option3;Option4;Option2;Option2;Option2;Option1;Option1;Option3;Option1;Option1;Option2;Option1;Option1;Option1;Option4;Option1;Option3;Option2;Option2;Option4;Option2;Option3;Option2;Option1;Option1;Option1;Option2;Option1;Option1;Option2;Option2;Option4;Option3;Option4;Option2;Option4";
-    // right answer will be compared to the same object value later on to determine if the user clicked on the right answer
-    const rightArray = rightAnswer.split(";"); // array with the correct answer
-    let numberQuestions = questionArray.length;
-
-    //lets combine the arrays into one array with object properties
-
-    for (let i = 0; i < numberQuestions; i++) {
-        let myQuestion = {
-            Question: questionArray[i],
-            Option1: option1Array[i],
-            Option2: option2Array[i],
-            Option3: option3Array[i],
-            Option4: option4Array[i],
-            Correct: rightArray[i],
-            Answered: false
-        };
-        myQuestionsArray.push(myQuestion);
-    }
-
-}
 
 /**
  * The main game "loop", called when the user has clicked startbutton
@@ -672,32 +634,37 @@ function displayScore() {
     let myScoreMess;
     let myAccumulated = (myRight * 50) - (myWrong * 70);
 
-    let myScore='<h1 class="center-text"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></h1>';
+    let myScore = '<span class="close">&times;</span><h1 class="center-text"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></h1>';
     myScore = myScore + '<h1 class="center-text">Game Over</h1>';
-    myScore=myScore+'<h2 class="center-text">';
-    myScore=myScore+'<i class="fa-solid fa-trophy"></i>';
+    myScore = myScore + '<h2 class="center-text">';
+    myScore = myScore + '<i class="fa-solid fa-trophy"></i>';
     myScore = myScore + '<h2 class="center-text">';
     myScore = myScore + 'You scored:' + myAccumulated + ' out of 500</h2>';
     if (myAccumulated < 0) {
-        myScoreMess = "Oh dear. A negative score. That is great for covid-tests but not otherwise.";
-    } else if (myAccumulated < 150) {
+        myScoreMess = "Oh dear. A negative score. That is great for covid-tests, but not otherwise.";
+    } else if (myAccumulated < 150 && myAccumulated >=0) {
+        //is displayed when score is between 0 and 149
         myScoreMess = "Really not a good score. You can do a lot better.";
-    } else if (myAccumulated < 210) {
+    } else if (myAccumulated < 210 && myAccumulated >=150) {
+        //is displayed when score is between 150 and 209
         myScoreMess = "Okay, decent enough. But you did guess on some?";
-    } else if (myAccumulated < 280) {
+    } else if (myAccumulated < 260 && myAccumulated >=210) {
+        //is displayed when score is between 210 and 260
         myScoreMess = "Impressive. Most impressive.";
-    } else if (myAccumulated < 350) {
+    } else if (myAccumulated === 260) {
+        //due to how scoring works, only when 2 questions are answered wrong
         myScoreMess = "WOW! I'm in awe!";
-    } else if (myAccumulated <500) {
+    } else if (myAccumulated === 380) {
+        //due to how scoring works, only when 1 question is answered wrong
         myScoreMess = "Great balls of fire!!";
     } else if (myAccumulated === 500) {
         myScoreMess = "You answered everything correctly! I bow to the master!";
     } else {
-        myScoreMess = "WOW! I'm in awe! (default)"; 
+        myScoreMess = "I guess that counts as a score. Somehow.";
         //should never happen. Here as a fail-safe
     }
 
-    myScore=myScore+'<p class="center-text">'+myScoreMess+'</p>';
+    myScore = myScore + '<p class="center-text">' + myScoreMess + '</p>';
 
     //score html for the modal
 
