@@ -32,6 +32,8 @@ document.getElementById('dbase').innerText = "The game consists of " + myQuestio
 document.getElementById('dbase').style.color = "white"; //no title
 document.getElementsByClassName('modal-content')[0].innerHTML = myStartModal; //populate modal with rules-html
 
+
+
 // all functions starts here. No code should be outside functions from this point on
 
 /**
@@ -642,13 +644,13 @@ function displayScore() {
     myScore = myScore + 'You scored:' + myAccumulated + ' out of 500</h2>';
     if (myAccumulated < 0) {
         myScoreMess = "Oh dear. A negative score. That is great for covid-tests, but not otherwise.";
-    } else if (myAccumulated < 150 && myAccumulated >=0) {
+    } else if (myAccumulated < 150 && myAccumulated >= 0) {
         //is displayed when score is between 0 and 149
         myScoreMess = "Really not a good score. You can do a lot better.";
-    } else if (myAccumulated < 210 && myAccumulated >=150) {
+    } else if (myAccumulated < 210 && myAccumulated >= 150) {
         //is displayed when score is between 150 and 209
         myScoreMess = "Okay, decent enough. But you did guess on some?";
-    } else if (myAccumulated < 260 && myAccumulated >=210) {
+    } else if (myAccumulated < 260 && myAccumulated >= 210) {
         //is displayed when score is between 210 and 260
         myScoreMess = "Impressive. Most impressive.";
     } else if (myAccumulated === 260) {
