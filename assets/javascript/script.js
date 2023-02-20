@@ -33,7 +33,7 @@ document.getElementById('dbase').innerText = "The game consists of " + myQuestio
 document.getElementById('dbase').style.color = "white"; //make number-of-questions in display white
 document.getElementsByClassName('modal-content')[0].innerHTML = myStartModal; //populate modal with rules-html
 
-var testQ=66;
+var testQ=71;
 //number is two less than the number in excel. 1 due to array start at 0. 1 due to heading-line
 var last=myQuestionsArray[myQuestionsArray.length-1].Question;
 var testQ2="Q nr: "+testQ+"<br>";
