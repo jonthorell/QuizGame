@@ -21,8 +21,6 @@ const myStartModal = `<span class="close">&times;</span>
 <p class="center-text">2. Every question answered incorrectly will deduct 70 points to discourage from just guessing.</p>
 `; //start-value of the modal. Gets re-written into the innerHTML at appropiate times
 
-
-
 createEvtListeners(); // create event listeners for user interactivity
 createQuestionsFromFiles(); // create array with quiz questions. WIll only run once
 
@@ -44,6 +42,9 @@ function createQuestionsFromFiles() {
     //right.txt contain the value of which option is correct.
     //The directory also contain a questions.xlsx file to use as a template. You basically add, remove rows and/or change values in it
     //and then cut-and-paste the column into the corresponding text-file
+    //the first version of the app used some very long variable strings for this. It worked, but was was not easily maintained if
+    //you wanted to add a qustion or discovered an error (such as the wrong option was marked as the correct one)
+    //This is far more readable and far more easily changed when need-be
 
     let request;
     let textfileContent;
@@ -165,7 +166,7 @@ function createEvtListeners() {
     };
 
     document.addEventListener("DOMContentLoaded", function () {
-        
+
         document.getElementById('myBtnStart').addEventListener('click', runGame);
 
         document.getElementById('welcome').addEventListener('mouseover', function () {
@@ -514,7 +515,7 @@ function randomIntFromInterval(min, max) { // min and max included
  */
 function printScore(correct, incorrect, currentQ) {
     let myScore = "Current question:";
-    if (currentQ===11) {
+    if (currentQ === 11) {
         currentQ--; //make sure the display never shows Current Question 11 (out of 10)
     }
 
@@ -563,7 +564,7 @@ function turnOffHidden() {
     document.getElementById('game-title').style.display = "block"; //title is back
     document.getElementById('welcome').style.display = "block"; //welcome-text is back
     document.getElementById('dbase').style.display = "block"; //nr of questions in game displayed is back
-    
+
     document.getElementById('myBtnAbout').style.display = "initial";
     document.getElementById('myBtnRules').style.display = "initial";
     document.getElementById('myBtnStart').style.display = "initial"; //buttons are back
