@@ -33,7 +33,7 @@ document.getElementById('dbase').innerText = "The game consists of " + myQuestio
 document.getElementById('dbase').style.color = "white"; //make number-of-questions in display white
 document.getElementsByClassName('modal-content')[0].innerHTML = myStartModal; //populate modal with rules-html
 
-var testQ=56;
+var testQ=61;
 var last=myQuestionsArray[myQuestionsArray.length-1].Question;
 var testQ2="Q nr: "+testQ+"<br>";
 
