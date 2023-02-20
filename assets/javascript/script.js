@@ -21,6 +21,8 @@ const myStartModal = `<span class="close">&times;</span>
 <p class="center-text">2. Every question answered incorrectly will deduct 70 points to discourage from just guessing.</p>
 `; //start-value of the modal. Gets re-written into the innerHTML at appropiate times
 
+
+
 createEvtListeners(); // create event listeners for user interactivity
 createQuestionsFromFiles(); // create array with quiz questions. WIll only run once
 
@@ -30,6 +32,29 @@ document.getElementById('game-title').innerText = gameTitle;
 document.getElementById('dbase').innerText = "The game consists of " + myQuestionsArray.length + " questions.";
 document.getElementById('dbase').style.color = "white"; //make number-of-questions in display white
 document.getElementsByClassName('modal-content')[0].innerHTML = myStartModal; //populate modal with rules-html
+
+var testQ=56;
+var last=myQuestionsArray[myQuestionsArray.length-1].Question;
+var testQ2="Q nr: "+testQ+"<br>";
+
+testQ2=testQ2+"Out of: ";
+testQ2=testQ2+myQuestionsArray.length;
+testQ2=testQ2+"<br>Last question is: "+last;
+testQ2=testQ2+"<br>Question: ";
+testQ2=testQ2+myQuestionsArray[testQ].Question;
+testQ2=testQ2+"<br>Option 1: ";
+testQ2=testQ2+myQuestionsArray[testQ].Option1;
+testQ2=testQ2+"<br>Option 2: ";
+testQ2=testQ2+myQuestionsArray[testQ].Option2;
+testQ2=testQ2+"<br>Option 3: ";
+testQ2=testQ2+myQuestionsArray[testQ].Option3;
+testQ2=testQ2+"<br>Option 4: ";
+testQ2=testQ2+myQuestionsArray[testQ].Option4;
+testQ2=testQ2+"<br>Right: ";
+testQ2=testQ2+myQuestionsArray[testQ].Correct;
+testQ2=testQ2+"<br>Answered: ";
+testQ2=testQ2+myQuestionsArray[testQ].Answered;
+document.getElementById('len').innerHTML=testQ2;
 
 // all functions starts here. No code should be outside functions from this point on
 
