@@ -33,31 +33,6 @@ document.getElementById('dbase').innerText = "The game consists of " + myQuestio
 document.getElementById('dbase').style.color = "white"; //make number-of-questions in display white
 document.getElementsByClassName('modal-content')[0].innerHTML = myStartModal; //populate modal with rules-html
 
-//test/debugging code that will be removed before submission
-//var testQ=99;
-//number is two less than the number in excel. 1 due to array start at 0. 1 due to heading-line
-//var last=myQuestionsArray[myQuestionsArray.length-1].Question;
-//var testQ2="Q nr: "+testQ+"<br>";
-
-//testQ2=testQ2+"Out of: ";
-//testQ2=testQ2+myQuestionsArray.length;
-//testQ2=testQ2+"<br>Last question is: "+last;
-//testQ2=testQ2+"<br>Question: ";
-//testQ2=testQ2+myQuestionsArray[testQ].Question;
-//testQ2=testQ2+"<br>Option 1: ";
-//testQ2=testQ2+myQuestionsArray[testQ].Option1;
-//testQ2=testQ2+"<br>Option 2: ";
-//testQ2=testQ2+myQuestionsArray[testQ].Option2;
-//testQ2=testQ2+"<br>Option 3: ";
-//testQ2=testQ2+myQuestionsArray[testQ].Option3;
-//testQ2=testQ2+"<br>Option 4: ";
-//testQ2=testQ2+myQuestionsArray[testQ].Option4;
-//testQ2=testQ2+"<br>Right: ";
-//testQ2=testQ2+myQuestionsArray[testQ].Correct;
-//testQ2=testQ2+"<br>Answered: ";
-//testQ2=testQ2+myQuestionsArray[testQ].Answered;
-//document.getElementById('len').innerHTML=testQ2;
-
 // all functions starts here. No code should be outside functions from this point on
 
 /**
@@ -124,7 +99,6 @@ function createQuestionsFromFiles() {
     const RightTempArray = textfileContent.split("\n");
 
     //combine arrays and add named property
-    let nr_Q = qTempArray.length; //nr of questions in the questions array. The number (when the files are created correctly) is the same for option1, option2 etc
     let o1, q, o2, o3, o4, r, tmp;
 
     for (let i = 0; i < qTempArray.length; i++) {
@@ -314,6 +288,7 @@ function checkAnswer(buttonClicked) {
 
 function printNextQ() {
     let nextQ = document.getElementById('next-question'); //the DOM element where the countdown will be printed
+    let currentTime;
 
     let myInterval = setInterval(function () {
         let timer = document.getElementById('timer'); //hidden element. An easy way of just grabbing/printing the time. It will be displayd in next-question
