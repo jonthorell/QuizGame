@@ -33,7 +33,8 @@ document.getElementById('dbase').innerText = "The game consists of " + myQuestio
 document.getElementById('dbase').style.color = "white"; //make number-of-questions in display white
 document.getElementsByClassName('modal-content')[0].innerHTML = myStartModal; //populate modal with rules-html
 
-var testQ=61;
+var testQ=66;
+//number is two less than the number in excel. 1 due to array start at 0. 1 due to heading-line
 var last=myQuestionsArray[myQuestionsArray.length-1].Question;
 var testQ2="Q nr: "+testQ+"<br>";
 
@@ -319,12 +320,12 @@ function printNextQ() {
 
     let myInterval = setInterval(function () {
         let timer = document.getElementById('timer'); //hidden element. An easy way of just grabbing/printing the time. It will be displayd in next-question
-        currentTime = timer.innerHTML; //grab current time. Default value is 11
+        currentTime = timer.innerHTML; //grab current time. Default value is 6
         currentTime--; //decrease the timer by 1
         if (currentTime === 0) { //when timer has reaced zero,
             clearInterval(myInterval); //disable the countdown
             clearQuestionField(); //clear the area where the countdown was printed
-            timer.innerHTML = "11"; // reset the timer
+            timer.innerHTML = "6"; // reset the timer
             printStatusMessage(message); //reset the statusmessage to default text
             let currentQ = scores[3]; //where in the loop are we?
             if (currentQ === maxQuestions + 1) { //check if the user has answered the maxquestions. If so, exit the game
