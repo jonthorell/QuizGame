@@ -11,7 +11,6 @@ const message = "Welcome to the game! Please click an answer to proceed."; //sta
 const scores = []; // array that will hold four values: 0=current number of rights, 1=current number of wrongs, 2=current question on display. 3=value of where in loop. WIll be updated by scoring functions
 const myPath = "assets/questions/"; //base url for files used for the questions
 scores.push(0, 0, 1, 1); // make sure default values are there
-//const questionsArray = []; // empty array at first. Will contain all questions. Teemporary
 const myStartModal = `<span class="close">&times;</span>
 <h1 class="center-text"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></h1>
 <h2 class="center-text">Rules of the Game</h2>
@@ -29,10 +28,8 @@ createQuestionsFromFiles(); // create array with quiz questions. WIll only run o
 document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
 document.getElementById('dbase').innerText = "The game consists of " + myQuestionsArray.length + " questions.";
-document.getElementById('dbase').style.color = "white"; //no title
+document.getElementById('dbase').style.color = "white"; //make number-of-questions in display white
 document.getElementsByClassName('modal-content')[0].innerHTML = myStartModal; //populate modal with rules-html
-
-
 
 // all functions starts here. No code should be outside functions from this point on
 
@@ -106,7 +103,7 @@ function createQuestionsFromFiles() {
 
     //combine arrays and add named property
 
-    let nr_Q = qTempArray.length;
+    let nr_Q = qTempArray.length; //nr of questions in the questions array. The number (when the files are created correctly) is the same for option1, option2 etc
     let o1, q, o2, o3, o4, r, tmp;
 
     for (let i = 0; i < qTempArray.length; i++) {
@@ -133,7 +130,7 @@ function createQuestionsFromFiles() {
             Correct: r,
             Answered: false
         };
-        myQuestionsArray.push(myQuestion);
+        myQuestionsArray.push(myQuestion); //push the current question into the main array
     }
 }
 
@@ -173,18 +170,16 @@ function createEvtListeners() {
     };
 
     document.addEventListener("DOMContentLoaded", function () {
-        let startEvent = document.getElementById('myBtnStart');
-        startEvent.addEventListener('click', runGame);
-        let welcomeEvent = document.getElementById('welcome');
-        welcomeEvent.addEventListener('mouseover', function () {
+        
+        document.getElementById('myBtnStart').addEventListener('click', runGame);
+        document.getElementById('welcome').addEventListener('mouseover', function () {
             document.getElementById('welcome').innerText = professor;
         });
-        welcomeEvent.addEventListener('mouseout', function () {
+        document.getElementById('welcome').addEventListener('mouseout', function () {
             document.getElementById('welcome').innerText = welcomePhrase;
         });
 
-        let btn2Event = document.getElementById('myBtnAbout');
-        btn2Event.addEventListener('click', function () {
+        document.getElementById('myBtnAbout').addEventListener('click', function () {
             alert("The game is written by:\nJonas Thorell\nAKA \"The Mad Monkey\"");
         });
 
@@ -235,8 +230,7 @@ function runGame() {
     scores[2] = 1;
     scores[3] = 1; //reset the scores array to default values at game start so player starts at a clean slate
 
-    let startEvent = document.getElementById('myBtnStart');
-    startEvent.removeEventListener('click', runGame); //disable the start-button
+    document.getElementById('myBtnStart').removeEventListener('click', runGame); //disable the start-button
 
     printScore(scores[0], scores[1], scores[2]); // initial score display. 
 
@@ -244,9 +238,7 @@ function runGame() {
     printStatusMessage(message); //print initial statusmessage
     emptyArrayAtStart(); // set all questions to unanswered
     turnOnHidden(); //show the hidden elements. And remove the picture
-
     getQuestion(); // get a random question to display
-
 }
 
 /**
@@ -254,8 +246,7 @@ function runGame() {
  */
 
 function emptyArrayAtStart() {
-    let numberQuestions = myQuestionsArray.length;
-    for (let i = 0; i < numberQuestions; i++) {
+    for (let i = 0; i < myQuestionsArray.length; i++) {
         myQuestionsArray[i].Answered = false; //set the named property answered to false for every row in the array
     }
 }
@@ -309,14 +300,12 @@ function printNextQ() {
             clearInterval(myInterval); //disable the countdown
             clearQuestionField(); //clear the area where the countdown was printed
             timer.innerHTML = "11"; // reset the timer
-            printStatusMessage(message); //reset the statusmessage to default texy
+            printStatusMessage(message); //reset the statusmessage to default text
             let currentQ = scores[3]; //where in the loop are we?
             if (currentQ === maxQuestions + 1) { //check if the user has answered the maxquestions. If so, exit the game
-
                 turnOffHidden(); //disable the game-field and show the picture
                 displayScore(); //show the score in a modal
-                let startEvent = document.getElementById('myBtnStart');
-                startEvent.addEventListener('click', runGame); //re-enable the start-button
+                document.getElementById('myBtnStart').addEventListener('click', runGame); //re-enable the start-button
             } else {
                 getQuestion(); // get a random question to display
             }
@@ -338,9 +327,8 @@ function printNextQ() {
  */
 
 function clearQuestionField() {
-    let cleared = document.getElementById('next-question');
-    cleared.innerHTML = " "; //clear the element of content
-    setAllQuestionsToGold(); //function that re-sets the answer buttons to a background of green
+    document.getElementById('next-question').innerHTML = " "; //clear the element of content
+    setAllQuestionsToGold(); //function that re-sets the answer buttons to a background of gold
 }
 
 /**
@@ -348,8 +336,7 @@ function clearQuestionField() {
  */
 
 function updateColorRed(clickedOption) {
-    let selectedAnswer = document.getElementById(clickedOption);
-    selectedAnswer.style.backgroundColor = "red"; //set the backround to red on the clicked button. Function is called from checkanswer when answer is wrong
+    document.getElementById(clickedOption).style.backgroundColor = "red"; //set the backround to red on the clicked button. Function is called from checkanswer when answer is wrong
 }
 
 /**
@@ -357,8 +344,7 @@ function updateColorRed(clickedOption) {
  */
 
 function updateColorGreen(clickedOption) {
-    let selectedAnswer = document.getElementById(clickedOption);
-    selectedAnswer.style.backgroundColor = "lime"; //set the backround to green on the clicked button. Function is called from checkanswer when answer is correct
+    document.getElementById(clickedOption).style.backgroundColor = "lime"; //set the backround to green on the clicked button. Function is called from checkanswer when answer is correct
 }
 
 /**
@@ -455,12 +441,12 @@ function getRightAnswerMessage() {
 function updateScore() {
     //updates when the user answered correctly
     let currentQuestion = scores[2]; //used to update which question has been answered already
-    let currentLoop = scores[3]; //where in the loop are we?
+    let currentLoop = scores[3]; //where in the loop are we? Used to display which question is being answered
     let oldScore = scores[0]; //oldScore will be the value of how many questions had previously been answered correctly
     let wrong = scores[1]; //how many questions has been answered incorrectly?
-    scores[0] = oldScore + 1;
+    scores[0] = oldScore + 1; //update number of correctly answered questions
     currentLoop++;
-    scores[3] = currentLoop; //update the array with new values for how many correctly answered values as well as where in the loop we are
+    scores[3] = currentLoop; //update the array with where in the loop we are
     printScore(oldScore + 1, wrong, currentLoop); //print new score
     myQuestionsArray[currentQuestion].Answered = true; //mark the question as answered
 }
@@ -472,12 +458,12 @@ function updateScore() {
 function updateWrong() {
     //updates when the user answered incorrectly
     let currentQuestion = scores[2]; //used to update which question has been answered already
-    let currentLoop = scores[3]; //where in the loop are we?
+    let currentLoop = scores[3]; //where in the loop are we? Used to display which question is being answered
     let oldWrong = scores[1]; //oldWrong will be the value of how many questions had previously been answered incorrectly
     let score = scores[0]; //how many questions has been answered correctly?
-    scores[1] = oldWrong + 1;
+    scores[1] = oldWrong + 1; //update number of correctly answered questions
     currentLoop++;
-    scores[3] = currentLoop; //update the array with new values for how many incorrectly answered values as well as where in the loop we are
+    scores[3] = currentLoop; //update the array with where in the loop we are
     printScore(score, oldWrong + 1, currentLoop); //print new score
     myQuestionsArray[currentQuestion].Answered = true; //mark the question as answered
 }
@@ -530,6 +516,9 @@ function randomIntFromInterval(min, max) { // min and max included
  */
 function printScore(correct, incorrect, currentQ) {
     let myScore = "Current question:";
+    if (currentQ===11) {
+        currentQ--; //make sure the display never shows Current Question 11 (out of 10)
+    }
 
     myScore = myScore + currentQ; //what is the loop number of the question asked?
     myScore = myScore + " (out of " + maxQuestions + ")"; //add the max number of questions to the string
@@ -547,33 +536,23 @@ function printScore(correct, incorrect, currentQ) {
  */
 function turnOnHidden() {
     // turn off start image
-    let picElement = document.getElementById('quizImage');
-    picElement.style.display = "none"; //display=none equals hidden
+    document.getElementById('quizImage').style.display = "none"; //display=none equals hidden
     //turn of buttons and title to save screen estate
-    let gameTitle = document.getElementById('game-title');
-    gameTitle.style.display = "none"; //no title
-    let welcomeText = document.getElementById('welcome');
-    welcomeText.style.display = "none"; //no welcome-text
+    document.getElementById('game-title').style.display = "none"; //no title
+    document.getElementById('welcome').style.display = "none"; //no welcome-text
     document.getElementById('dbase').style.display = "none"; //no nr of questions in game displayed
-    let button1 = document.getElementById('myBtnAbout');
-    let button2 = document.getElementById('myBtnRules');
-    let button3 = document.getElementById('myBtnStart');
-    button1.style.display = "none";
-    button2.style.display = "none";
-    button3.style.display = "none"; //no buttons
+    document.getElementById('myBtnAbout').style.display = "none";
+    document.getElementById('myBtnRules').style.display = "none";
+    document.getElementById('myBtnStart').style.display = "none"; //no buttons
 
     // turns on the hidden elements. All of the below are hidden by default in the css file. This function enables the elements by altering the display property
-    let questionElement = document.getElementById("question");
-    questionElement.style.display = "block";
-    let scoreElement = document.getElementById('score');
-    scoreElement.style.display = "block";
-    let messageElement = document.getElementById('message');
-    messageElement.style.display = "block";
-    let answerButtons = document.getElementsByClassName('answers');
-    answerButtons[0].style.display = "block";
-    answerButtons[1].style.display = "block";
-    answerButtons[2].style.display = "block";
-    answerButtons[3].style.display = "block";
+    document.getElementById("question").style.display = "block";
+    document.getElementById('score').style.display = "block";
+    document.getElementById('message').style.display = "block";
+    document.getElementsByClassName('answers')[0].style.display = "block";
+    document.getElementsByClassName('answers')[1].style.display = "block";
+    document.getElementsByClassName('answers')[2].style.display = "block";
+    document.getElementsByClassName('answers')[3].style.display = "block";
 }
 
 /**
@@ -581,34 +560,24 @@ function turnOnHidden() {
  */
 
 function turnOffHidden() {
-    // turn on start image
-    let picElement = document.getElementById('quizImage');
-    picElement.style.display = "block"; //turns on the image again when the game is over
+    document.getElementById('quizImage').style.display = "block"; //turns on the image again when the game is over
     //turn on buttons and title again
-    let gameTitle = document.getElementById('game-title');
-    gameTitle.style.display = "block"; //title is back
-    let welcomeText = document.getElementById('welcome');
-    welcomeText.style.display = "block"; //welcome-text is back
+    document.getElementById('game-title').style.display = "block"; //title is back
+    document.getElementById('welcome').style.display = "block"; //welcome-text is back
     document.getElementById('dbase').style.display = "block"; //nr of questions in game displayed is back
-    let button1 = document.getElementById('myBtnAbout');
-    let button2 = document.getElementById('myBtnRules');
-    let button3 = document.getElementById('myBtnStart');
-    button1.style.display = "initial";
-    button2.style.display = "initial";
-    button3.style.display = "initial"; //buttons are back
+    
+    document.getElementById('myBtnAbout').style.display = "initial";
+    document.getElementById('myBtnRules').style.display = "initial";
+    document.getElementById('myBtnStart').style.display = "initial"; //buttons are back
 
     //All of the below are hidden by default in the css file, but enabled when the game starts. This function reverts that and goes back to hidden
-    let questionElement = document.getElementById("question");
-    questionElement.style.display = "none";
-    let scoreElement = document.getElementById('score');
-    scoreElement.style.display = "none";
-    let messageElement = document.getElementById('message');
-    messageElement.style.display = "none";
-    let answerButtons = document.getElementsByClassName('answers');
-    answerButtons[0].style.display = "none";
-    answerButtons[1].style.display = "none";
-    answerButtons[2].style.display = "none";
-    answerButtons[3].style.display = "none";
+    document.getElementById("question").style.display = "none";
+    document.getElementById('score').style.display = "none";
+    document.getElementById('message').style.display = "none";
+    document.getElementsByClassName('answers')[0].style.display = "none";
+    document.getElementsByClassName('answers')[1].style.display = "none";
+    document.getElementsByClassName('answers')[2].style.display = "none";
+    document.getElementsByClassName('answers')[3].style.display = "none";
 }
 
 /**
@@ -617,31 +586,28 @@ function turnOffHidden() {
 
 function setAllQuestionsToGold() {
     //make sure all answer boxes are gold when new question is started
-    let box1 = document.getElementById('option1');
-    box1.style.backgroundColor = "gold";
-    let box2 = document.getElementById('option2');
-    box2.style.backgroundColor = "gold";
-    let box3 = document.getElementById('option3');
-    box3.style.backgroundColor = "gold";
-    let box4 = document.getElementById('option4');
-    box4.style.backgroundColor = "gold";
+    document.getElementById('option1').style.backgroundColor = "gold";
+    document.getElementById('option2').style.backgroundColor = "gold";
+    document.getElementById('option3').style.backgroundColor = "gold";
+    document.getElementById('option4').style.backgroundColor = "gold";
 }
 
 /**
  * Display the score in the modal
  */
 function displayScore() {
-    let myRight = scores[0];
-    let myWrong = scores[1];
-    let myScoreMess;
-    let myAccumulated = (myRight * 50) - (myWrong * 70);
+    let myRight = scores[0]; //number of right answers
+    let myWrong = scores[1]; //number wrong answers
+    let myScoreMess; //empty message to begin with
+    let myAccumulated = (myRight * 50) - (myWrong * 70); //calculate accumulated score
 
     let myScore = '<span class="close">&times;</span><h1 class="center-text"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></h1>';
     myScore = myScore + '<h1 class="center-text">Game Over</h1>';
     myScore = myScore + '<h2 class="center-text">';
     myScore = myScore + '<i class="fa-solid fa-trophy"></i>';
     myScore = myScore + '<h2 class="center-text">';
-    myScore = myScore + 'You scored:' + myAccumulated + ' out of 500</h2>';
+    myScore = myScore + 'You scored:' + myAccumulated + ' out of 500</h2>'; //html added to variable
+    //if else if blocks below creates different end-game messages depending on how well the player did
     if (myAccumulated < 0) {
         myScoreMess = "Oh dear. A negative score. That is great for covid-tests, but not otherwise.";
     } else if (myAccumulated < 150 && myAccumulated >= 0) {
@@ -666,7 +632,7 @@ function displayScore() {
         //should never happen. Here as a fail-safe
     }
 
-    myScore = myScore + '<p class="center-text">' + myScoreMess + '</p>';
+    myScore = myScore + '<p class="center-text">' + myScoreMess + '</p>'; //add score to the variable with the html
 
     //score html for the modal
 
