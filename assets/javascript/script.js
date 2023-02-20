@@ -33,29 +33,30 @@ document.getElementById('dbase').innerText = "The game consists of " + myQuestio
 document.getElementById('dbase').style.color = "white"; //make number-of-questions in display white
 document.getElementsByClassName('modal-content')[0].innerHTML = myStartModal; //populate modal with rules-html
 
-var testQ=99;
+//test/debugging code that will be removed before submission
+//var testQ=99;
 //number is two less than the number in excel. 1 due to array start at 0. 1 due to heading-line
-var last=myQuestionsArray[myQuestionsArray.length-1].Question;
-var testQ2="Q nr: "+testQ+"<br>";
+//var last=myQuestionsArray[myQuestionsArray.length-1].Question;
+//var testQ2="Q nr: "+testQ+"<br>";
 
-testQ2=testQ2+"Out of: ";
-testQ2=testQ2+myQuestionsArray.length;
-testQ2=testQ2+"<br>Last question is: "+last;
-testQ2=testQ2+"<br>Question: ";
-testQ2=testQ2+myQuestionsArray[testQ].Question;
-testQ2=testQ2+"<br>Option 1: ";
-testQ2=testQ2+myQuestionsArray[testQ].Option1;
-testQ2=testQ2+"<br>Option 2: ";
-testQ2=testQ2+myQuestionsArray[testQ].Option2;
-testQ2=testQ2+"<br>Option 3: ";
-testQ2=testQ2+myQuestionsArray[testQ].Option3;
-testQ2=testQ2+"<br>Option 4: ";
-testQ2=testQ2+myQuestionsArray[testQ].Option4;
-testQ2=testQ2+"<br>Right: ";
-testQ2=testQ2+myQuestionsArray[testQ].Correct;
-testQ2=testQ2+"<br>Answered: ";
-testQ2=testQ2+myQuestionsArray[testQ].Answered;
-document.getElementById('len').innerHTML=testQ2;
+//testQ2=testQ2+"Out of: ";
+//testQ2=testQ2+myQuestionsArray.length;
+//testQ2=testQ2+"<br>Last question is: "+last;
+//testQ2=testQ2+"<br>Question: ";
+//testQ2=testQ2+myQuestionsArray[testQ].Question;
+//testQ2=testQ2+"<br>Option 1: ";
+//testQ2=testQ2+myQuestionsArray[testQ].Option1;
+//testQ2=testQ2+"<br>Option 2: ";
+//testQ2=testQ2+myQuestionsArray[testQ].Option2;
+//testQ2=testQ2+"<br>Option 3: ";
+//testQ2=testQ2+myQuestionsArray[testQ].Option3;
+//testQ2=testQ2+"<br>Option 4: ";
+//testQ2=testQ2+myQuestionsArray[testQ].Option4;
+//testQ2=testQ2+"<br>Right: ";
+//testQ2=testQ2+myQuestionsArray[testQ].Correct;
+//testQ2=testQ2+"<br>Answered: ";
+//testQ2=testQ2+myQuestionsArray[testQ].Answered;
+//document.getElementById('len').innerHTML=testQ2;
 
 // all functions starts here. No code should be outside functions from this point on
 
@@ -90,9 +91,7 @@ function createQuestionsFromFiles() {
 
     const Opt1TempArray = textfileContent.split("\n");
 
-
     //grab option2
-
     request = new XMLHttpRequest();
     request.open('GET', myPath + "option2.txt", false);
     request.send();
@@ -101,7 +100,6 @@ function createQuestionsFromFiles() {
     const Opt2TempArray = textfileContent.split("\n");
 
     //grab option3
-
     request = new XMLHttpRequest();
     request.open('GET', myPath + "option3.txt", false);
     request.send();
@@ -110,7 +108,6 @@ function createQuestionsFromFiles() {
     const Opt3TempArray = textfileContent.split("\n");
 
     //grab option4
-
     request = new XMLHttpRequest();
     request.open('GET', myPath + "option4.txt", false);
     request.send();
@@ -119,7 +116,6 @@ function createQuestionsFromFiles() {
     const Opt4TempArray = textfileContent.split("\n");
 
     //grab correct
-
     request = new XMLHttpRequest();
     request.open('GET', myPath + "right.txt", false);
     request.send();
@@ -128,7 +124,6 @@ function createQuestionsFromFiles() {
     const RightTempArray = textfileContent.split("\n");
 
     //combine arrays and add named property
-
     let nr_Q = qTempArray.length; //nr of questions in the questions array. The number (when the files are created correctly) is the same for option1, option2 etc
     let o1, q, o2, o3, o4, r, tmp;
 
@@ -198,9 +193,11 @@ function createEvtListeners() {
     document.addEventListener("DOMContentLoaded", function () {
         
         document.getElementById('myBtnStart').addEventListener('click', runGame);
+
         document.getElementById('welcome').addEventListener('mouseover', function () {
             document.getElementById('welcome').innerText = professor;
         });
+
         document.getElementById('welcome').addEventListener('mouseout', function () {
             document.getElementById('welcome').innerText = welcomePhrase;
         });
@@ -210,7 +207,6 @@ function createEvtListeners() {
         });
 
         let buttons = document.getElementsByClassName("answers");
-
         for (let button of buttons) {
             button.addEventListener("click", function () {
                 // loop thru all answer buttons and add a click-eventlistener to them
@@ -228,6 +224,7 @@ function createEvtListeners() {
                     this.style.backgroundColor = "aqua";
                 }
             });
+
             button.addEventListener('mouseout', function () {
                 // change background color back to gold on mouseout
                 if (this.style.backgroundColor === "red") {
@@ -260,7 +257,7 @@ function runGame() {
 
     printScore(scores[0], scores[1], scores[2]); // initial score display. 
 
-    setAllQuestionsToGold(); // set all boxes to green
+    setAllQuestionsToGold(); // set all boxes to gold
     printStatusMessage(message); //print initial statusmessage
     emptyArrayAtStart(); // set all questions to unanswered
     turnOnHidden(); //show the hidden elements. And remove the picture
@@ -548,9 +545,9 @@ function printScore(correct, incorrect, currentQ) {
 
     myScore = myScore + currentQ; //what is the loop number of the question asked?
     myScore = myScore + " (out of " + maxQuestions + ")"; //add the max number of questions to the string
-    myScore = myScore + "\nCorrect Answers: " + correct; //add how many of those are correct
+    myScore = myScore + "\nCorrect Answers: " + correct; //add how many of those are correct on a newline
     myScore = myScore + ", Incorrect Answers: " + incorrect; //add how many of those are incorrect
-    myScore = myScore + "\nAccumulated score:"; //and the accumulated score
+    myScore = myScore + "\nAccumulated score:"; //and the accumulated score. Again, with a linebreak
 
     let myAccumulatedScore = (correct * 50) - (incorrect * 70); //calculate new score. 1 correct answer=50 points, 1 incorrect answer=-70 points
 

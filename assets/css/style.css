@@ -40,7 +40,6 @@ body {
   text-align: center;
   font-style: italic;
   font-size: x-large;
-
   border-width: 3px;
   border-style: solid;
   border-color: black;
@@ -79,6 +78,7 @@ body {
   display: none;
   font-size: 24px;
 }
+
 #option2 {
   border-width: 3px;
   border-style: solid;
@@ -90,6 +90,7 @@ body {
   display: none;
   font-size: 24px;
 }
+
 #option3 {
   border-width: 3px;
   border-style: solid;
@@ -101,6 +102,7 @@ body {
   display: none;
   font-size: 24px;
 }
+
 #option4 {
   border-width: 3px;
   border-style: solid;
@@ -257,6 +259,7 @@ body {
   width: 30%;
   padding: 10px 32px;
 }
+
 #myBtnAbout {
   background-color: #00FF00;
   border: solid;
@@ -272,6 +275,7 @@ body {
   margin-left: 10%;
   padding: 10px 32px;
 }
+
 #myBtnStart {
   background-color: #00FF00;
   border: solid;
