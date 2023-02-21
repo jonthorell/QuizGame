@@ -29,8 +29,9 @@ The second one is when a game is in progress.
 # Design considerations (visual)
 
 1. White whenever there is text straight on the background. The title and a countdown timer only really.
-2. Everything with a green background is something the user can interact with.
-3. Everything with a goldish background is either a question to the user or feedback.
+2. Every field where there will be some form of user feedback has a goldish background with black text
+3. The answer options will be marked green when the user answers correctly and red when the user answers incorrectly.
+4. The score area will show how far into the game the user is and how he or she is doing.
 
 The site is fully responsive so can easily be used on any device. 
 
@@ -56,7 +57,17 @@ All code entered into its respective file from within gitpod.
 
 The source is hosted at github and deployed using the publicly availabe git-hube page of https://github.com/jonthorell/QuizGame
 
-That is done regularily using:
+## Deployment to GitHub Pages
+
+The site was deployed to GitHub pages. The steps to deploy are as follows:
+
+- In the GitHub repository, navigate to the Settings tab
+- From the menu on left select 'Pages'
+- From the source section drop-down menu, select the Branch: main
+- Click 'Save'
+- A live link will be displayed in a green banner when published successfully.
+
+Changes in the code is regularily pushed into the repository using:
 
 * git add .
 * git commit -m "commit message"
@@ -93,7 +104,7 @@ If you click rules, you should get a semi-transparant overlay on how scoring wor
 
 ![rules](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/rules-overlay.PNG?raw=true)
 
-Also works. If you click on the "x" button or outside of the overlay, it should close. That works too.
+Also works. If you click outside of the overlay, it should close. That works too.
 
 Finally, the start-button.
 
