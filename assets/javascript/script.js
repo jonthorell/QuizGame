@@ -15,9 +15,9 @@ const myStartModal = `<h1 class="center-text"><i class="fa-brands fa-quora"></i>
 <h2 class="center-text">Rules of the Game</h2>
 <p class="center-text">You will answer 10 randomly chosen questions regarding music.</p>
 <p class="center-text">The game is scored as follows:</p>
-<p class="center-text">1. Every question answered correctly will give you an added score of
+<p class="center-text">Every question answered correctly will give you an added score of
     50.</p>
-<p class="center-text">2. Every question answered incorrectly will deduct 70 points to discourage from just guessing.</p>
+<p class="center-text">Every question answered incorrectly will deduct 70 points to discourage from just guessing.</p>
 `; //start-value of the modal. Gets re-written into the innerHTML when user clicks on rules-button
 
 createEvtListeners(); // create event listeners for user interactivity
@@ -27,7 +27,7 @@ createQuestionsFromFiles(); // create array with quiz questions. WIll only run o
 document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
 document.getElementById('dbase').innerText = "The game consists of " + myQuestionsArray.length + " questions.";
-document.getElementById('dbase').style.color = "white"; //make number-of-questions in display white
+//document.getElementById('dbase').style.color = "white"; //make number-of-questions in display white
 document.getElementsByClassName('modal-target')[0].innerHTML = myStartModal; //populate modal with rules-html
 
 // all functions starts here. No code should be outside functions from this point on

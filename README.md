@@ -182,11 +182,11 @@ The folder hierarchy looks like this:
 
 ![folders](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/folder-hieararchy.PNG?raw=true)
 
-The css and javascript folders contain one file each. The readme-file folders only contain screenshots used for this documentation.
+The css and javascript folders contain one file each. The readme-file folders only contain screenshots used for this documentation. The question folder contains 6 text-files used to create the array of questions. It also has an excel-file. Not used by the game itself, but used to create the textfiles by cutting and pasting.
 
 # Bugs encountered and fixed
 
-1. The countdown timer initially only ran once, for the first question. Had forgotten to reset the timer to the initial value of ten. Once that was fixed, it runs for every question.
+1. The countdown timer initially only ran once, for the first question. Had forgotten to reset the timer to the initial value of six. Once that was fixed, it runs for every question.
 2. The text in the answer-buttons and the buttons in the top-row could sometimes spill over in lower resolutions. Fixed with some media-queries.
 3. Got some odd values in the function that retrieves the question values from the array. Turns out it was a mistake regarding variable scope. I refactored the entire code to remove all global variables.
 4. The functons that were present when the re-factoring took place are:
@@ -209,7 +209,6 @@ The css and javascript folders contain one file each. The readme-file folders on
     - printScore				works, no globals
     - turnOnHidden			works, no globals
     - setAllQuestionstogreen	works, no globals
-
 5. The refactoring led to a problem in the if-statements regarding the answer-buttons, meaning that they did not react as they should. The if/else logic needed to be redone slightly to compensate for that, but works again as it should.
 6. Some cases of missed semi-colons and spaces in the wrong places led to the display showing the placeholder values rather than the correct content. I.e. option1 in the button instead of the question. It was hard to see where the problem was at first but found the problem eventually.
 7. Not a bug strictly speaking, but an unwanted sideffect really. If the user has javascript disabled the site looks odd. The game will of course not work without javascript, but it should at least look decent anyway even if no user interaction can take place.
@@ -219,6 +218,7 @@ The css and javascript folders contain one file each. The readme-file folders on
     ![no-javascript](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/strange-look-w-no-javascript.PNG?raw=true)
 
     The 0 are altered by javascript so without javascript enabled, it looks ugly. Fixed by doing a redirect to no-javascript.html when the browser detects javascript is not available.
+8. The x-button in the modals did not work at first. The problem was that the innerHTML of the modal needed to be changed dynamically depending on where and when the modal should pop-up (for example, if it should display the rules or the end-score). To accomplish that, I am rewriting the innerHTML part of the span. When I used devtools everything looked like I expected, but the x-button did not do anything. But it was considered a span of the correct class so at first I could not understand why nothing happened. After some head-scratching I realized that my rewriting of the innerHTML overwrote the span itself (admiteddly with a new one) which broke the connection between the span and the eventhandler. Once I realized that, the solution was obvious. Add a secondary-span that could be targeted so the span that triggers the close-modal functionality was untouched.
 
 # Remaining bugs
 
@@ -227,6 +227,8 @@ None known
 # To note
 
 The WAVE tool complains about "very low contrast" for one element. That can safely be ignored since that element always has the diplay property set to none. The element is only used for the game-logic and is never displayed to the user.
+
+WAVE also complains about some possible headings, but I do not think they should be headings. One of them is the same element as the one mentioned above and is never displayed in the first place.
 
 # Validation
 
