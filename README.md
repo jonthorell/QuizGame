@@ -28,7 +28,7 @@ The second one is when a game is in progress.
 
 # Design considerations (visual)
 
-1. White whenever there is text straight on the background. The title and a countdown timer only really.
+1. White text whenever there is text straight on the background. The title and a countdown timer only really.
 2. Every field where there will be some form of user feedback has a goldish background with black text
 3. The answer options will be marked green when the user answers correctly and red when the user answers incorrectly.
 4. The score area will show how far into the game the user is and how he or she is doing.
