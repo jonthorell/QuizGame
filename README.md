@@ -9,7 +9,12 @@ The game is live
 
 # Background and use-case
 
-Apart from some image-files, the app only consists of 2 html-files, one css-file, and one javascript-file. One of the html-files is only used when the browser detects that javascript has been disabled. The index.html is the primary one and the only one that the javascript targets elements in. It might have been easier to use a game.html file for the game-proper, but since the focus is on javascript I decided against it. It was more worthwhile to use just one since it provided more of a challenge.
+The project is basically a small music quiz game that consists of 100 questions in a "database". For each game played, the player is asked 10 randomly chosen questions
+and gets scored according to how many are answered correctly.
+
+File-wise, the app only consists of 2 html-files, one css-file, and one javascript-file and 6 textfiles that defines the questions. 
+
+One of the html-files is only used when the browser detects that javascript has been disabled. The index.html is the primary one and the only one that the javascript targets elements in. It might have been easier to use a game.html file for the game-proper, but since the focus is on javascript I decided against it. It was more worthwhile to use just one since it provided more of a challenge.
 
 Basically, you will only ever see two different views.
 

@@ -19,7 +19,7 @@ const myStartModal = `<span class="close">&times;</span>
 <p class="center-text">1. Every question answered correctly will give you an added score of
     50.</p>
 <p class="center-text">2. Every question answered incorrectly will deduct 70 points to discourage from just guessing.</p>
-`; //start-value of the modal. Gets re-written into the innerHTML at appropiate times
+`; //start-value of the modal. Gets re-written into the innerHTML when user clicks on rules-button
 
 createEvtListeners(); // create event listeners for user interactivity
 createQuestionsFromFiles(); // create array with quiz questions. WIll only run once
