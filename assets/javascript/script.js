@@ -49,54 +49,53 @@ function createQuestionsFromFiles() {
 
     //Every 'grab' part grabs a textfile from within the assets folder and adds every line to a new row to an array
 
-    //grab questions
-    request = new XMLHttpRequest();
-    request.open('GET', myPath + "questions.txt", false);
-    request.send();
-    textfileContent = request.responseText;
-
-    const qTempArray = textfileContent.split("\n");
-
-    //grab option1
-    request = new XMLHttpRequest();
-    request.open('GET', myPath + "option1.txt", false);
-    request.send();
-    textfileContent = request.responseText;
-
-    const Opt1TempArray = textfileContent.split("\n");
-
-    //grab option2
-    request = new XMLHttpRequest();
-    request.open('GET', myPath + "option2.txt", false);
-    request.send();
-    textfileContent = request.responseText;
-
-    const Opt2TempArray = textfileContent.split("\n");
-
-    //grab option3
-    request = new XMLHttpRequest();
-    request.open('GET', myPath + "option3.txt", false);
-    request.send();
-    textfileContent = request.responseText;
-
-    const Opt3TempArray = textfileContent.split("\n");
-
-    //grab option4
-    request = new XMLHttpRequest();
-    request.open('GET', myPath + "option4.txt", false);
-    request.send();
-    textfileContent = request.responseText;
-
-    const Opt4TempArray = textfileContent.split("\n");
-
-    //grab correct
-    request = new XMLHttpRequest();
-    request.open('GET', myPath + "right.txt", false);
-    request.send();
-    textfileContent = request.responseText;
-
-    const RightTempArray = textfileContent.split("\n");
-
+     //grab questions
+     request = new XMLHttpRequest();
+     request.open('GET', myPath + "questions.txt", false);
+     request.send();
+     textfileContent = request.responseText;
+ 
+     const qTempArray = textfileContent.split("\n");
+ 
+     //grab option1
+     request = new XMLHttpRequest();
+     request.open('GET', myPath + "option1.txt", false);
+     request.send();
+     textfileContent = request.responseText;
+ 
+     const Opt1TempArray = textfileContent.split("\n");
+ 
+     //grab option2
+     request = new XMLHttpRequest();
+     request.open('GET', myPath + "option2.txt", false);
+     request.send();
+     textfileContent = request.responseText;
+ 
+     const Opt2TempArray = textfileContent.split("\n");
+ 
+     //grab option3
+     request = new XMLHttpRequest();
+     request.open('GET', myPath + "option3.txt", false);
+     request.send();
+     textfileContent = request.responseText;
+ 
+     const Opt3TempArray = textfileContent.split("\n");
+ 
+     //grab option4
+     request = new XMLHttpRequest();
+     request.open('GET', myPath + "option4.txt", false);
+     request.send();
+     textfileContent = request.responseText;
+ 
+     const Opt4TempArray = textfileContent.split("\n");
+ 
+     //grab correct
+     request = new XMLHttpRequest();
+     request.open('GET', myPath + "right.txt", false);
+     request.send();
+     textfileContent = request.responseText;
+ 
+     const RightTempArray = textfileContent.split("\n");
     //combine arrays and add named property
     let o1, q, o2, o3, o4, r, tmp;
 
