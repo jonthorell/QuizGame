@@ -147,7 +147,11 @@ Unless it is the last question. If it is, the countdown timer will change to thi
 
 ![last-question](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/in-progress4.PNG?raw=true)
 
-When it reaches zero, in that case, the game exits. The user will see a modal with the end-result. The same kind of modal as used by the rules and about buttons.
+When it reaches zero, in that case, the game exits. The user will see a modal with the end-result. 
+
+![score](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/display-score.PNG)
+
+The same kind of modal as used by the rules and about buttons.
 
 The gameplay has been tested in several ways, or in several stages might be a better way of putting it.
 
