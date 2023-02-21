@@ -92,23 +92,24 @@ The message below the buttons (marked in blue below) should change on mouseover,
 
 ![buttons](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/buttons.PNG?raw=true)
 
-If you hover over the three green buttons, the mouse pointer should change into a hand to indicate it is clickable. Works (but next to impossible to get a screenshot of)
+If you the user hover over the three green buttons, the mouse pointer should change into a hand to indicate it is clickable. Works (but next to impossible to get a screenshot of)
 
-If you click the about button, you should get a semi-transparant overlay with information about the programmer.
+If the user clicks the about button, they should get a semi-transparant overlay with information about the programmer.
 
 ![about](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/about.PNG?raw=true)
 
 Works. 
 
-If you click rules, you should get a semi-transparant overlay on how scoring works.
+If the user clicks on rules, they should get a semi-transparant overlay on how scoring works.
 
 ![rules](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/rules-overlay.PNG?raw=true)
 
-Also works. If you click outside of the overlay, it should close. That works too.
+Also works. If the user clicks outside of the overlay or on the x in the upper right-hand corner, it should close. That works too. Both for
+about and rules.
 
 Finally, the start-button.
 
-If you click it on the start-screen, the game should start like this:
+If the useers clicks it on the start-screen, the game should start like this:
 
 ![startgame](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/game-in-progress.PNG?raw=true)
 
@@ -116,18 +117,16 @@ Works.
 
 ### Game in progress
 
-When the game is first launched, you should get an image like this:
-
-![question-1](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/in-progress1.PNG?raw=true)
+When the game is first launched, it looks like above.
 
 The top row as well as the four green buttons are pulled from an array of questions, and added dynamically to the correct dom-element.
-The "welcome to the game" row is populated by a constant variable at start. 
+The "welcome to the game" row is populated by a constant at start. 
 The "current question" part is partially pulled from another array, and partially calculated (the accumulated score part).
 
-As long as the users has not answered this particular question, all answer buttons are green. When the mouse hovers over it, the background color
+As long as the users has not answered this particular question, all answer buttons are goldish. When the mouse hovers over it, the background color
 changes to blue.
 
-When an answer has been submitted, the color changes to either red (wrong) or yellow (right). At that point, the onhover part is disabled until the next
+When an answer has been submitted, the color changes to either red (wrong) or green (right). At that point, the onhover part is disabled until the next
 question has been revealed. Again, hard to get a screenshot of but works.
 
 When an answer has been submitted, it should look like this:
