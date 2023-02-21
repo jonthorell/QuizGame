@@ -314,7 +314,14 @@ As can be seen in the screenshot, the best practices score is only at 92 %.
 
 The reason is the following:
 
+![deprecated](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/deprecated_api.PNG?raw=true)
 
+I was not aware of that when I decided to use XMLHttpRequest() to grab data from external files. I only got aware of it when lighthouse complained about it.
+Something that needs adressing to be sure, but unfortunately I do not have the time to research and implement an alternative approach before deadline.
+
+It would not surprise me if the lower score in performance and best-practices go hand-in-hand, but I do not (yet) know how to pin-point where in my javascript where timing optimizations need to be put in place. There is surely a very good reason why XMLHttpRequest() is being deprecated.
+
+As of now, the code works. Although it is not future-proof.
 
 Lighthouse score for the no-javascript page:
 
@@ -322,7 +329,7 @@ Lighthouse score for the no-javascript page:
 
 # To-Do
 
-Remake the createQuestions function. It is hard to read as it is and difficult to maintain. My current idea is to create the array in question from a csv-file. I have postponed that since I wanted the game to work as-is first.
+Future-proof the fetching of data from external files.
 
 # Credits
 
