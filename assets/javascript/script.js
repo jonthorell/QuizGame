@@ -11,17 +11,15 @@ const message = "Welcome to the game! Please click an answer to proceed."; //sta
 const scores = []; // array that will hold four values: 0=current number of rights, 1=current number of wrongs, 2=current question on display. 3=value of where in loop. WIll be updated by scoring functions
 const myPath = "assets/questions/"; //base url for files used for the questions
 scores.push(0, 0, 1, 1); // make sure default values are there
-//const myStartModal = `<span class="close">&times;</span>
-//<h1 class="center-text"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></h1>
-//<h2 class="center-text">Rules of the Game</h2>
-//<p class="center-text">You will answer 10 randomly chosen questions regarding music.</p>
-//<p class="center-text">The game is scored as follows:</p>
-//<p class="center-text">1. Every question answered correctly will give you an added score of
-//    50.</p>
-//<p class="center-text">2. Every question answered incorrectly will deduct 70 points to discourage from just guessing.</p>
-//<span class="right-button">
-//<button id="closeModal">Close</button></span>
-//`; //start-value of the modal. Gets re-written into the innerHTML when user clicks on rules-button
+const myStartModal = `<h1 class="center-text"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></h1>
+<h2 class="center-text">Rules of the Game</h2>
+<p class="center-text">You will answer 10 randomly chosen questions regarding music.</p>
+<p class="center-text">The game is scored as follows:</p>
+<p class="center-text">1. Every question answered correctly will give you an added score of
+    50.</p>
+<p class="center-text">2. Every question answered incorrectly will deduct 70 points to discourage from just guessing.</p>
+<p class="center-text">Test</p>
+`; //start-value of the modal. Gets re-written into the innerHTML when user clicks on rules-button
 
 createEvtListeners(); // create event listeners for user interactivity
 createQuestionsFromFiles(); // create array with quiz questions. WIll only run once
@@ -31,7 +29,7 @@ document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
 document.getElementById('dbase').innerText = "The game consists of " + myQuestionsArray.length + " questions.";
 document.getElementById('dbase').style.color = "white"; //make number-of-questions in display white
-document.getElementsByClassName('modal-content')[0].innerHTML = myStartModal; //populate modal with rules-html
+document.getElementsByClassName('dummy')[0].innerHTML = myStartModal; //populate modal with rules-html
 
 // all functions starts here. No code should be outside functions from this point on
 
@@ -149,7 +147,7 @@ function createEvtListeners() {
 
     // When the user clicks on the button, open the modal
     btn.onclick = function () {
-        //document.getElementsByClassName('modal-content')[0].innerHTML = myStartModal; //populate modal with rules-html
+        document.getElementsByClassName('dummy')[0].innerHTML = myStartModal; //populate modal with rules-html
         //that is necessary since the modal used to display the score at the end of the game.
         //this makes sure the modal has the rules applied to it when the user actively clicks the button
         modal.style.display = "block";
@@ -602,7 +600,7 @@ function displayScore() {
     let myScoreMess; //empty message to begin with
     let myAccumulated = (myRight * 50) - (myWrong * 70); //calculate accumulated score
 
-    let myScore = '<span class="close">&times;</span><h1 class="center-text"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></h1>';
+    let myScore = '<h1 class="center-text"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></h1>';
     myScore = myScore + '<h1 class="center-text">Game Over</h1>';
     myScore = myScore + '<h2 class="center-text">';
     myScore = myScore + '<i class="fa-solid fa-trophy"></i>';
@@ -636,7 +634,6 @@ function displayScore() {
     myScore = myScore + '<p class="center-text">' + myScoreMess + '</p>'; //add score to the variable with the html
 
     //score html for the modal
-
-    document.getElementsByClassName('modal-content')[0].innerHTML = myScore; //populate modal with score
+    document.getElementsByClassName('dummy')[0].innerHTML = myScore; //populate modal with score
     document.getElementById('myModal').style.display = "block"; //display it
 }
