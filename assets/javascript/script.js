@@ -18,7 +18,6 @@ const myStartModal = `<h1 class="center-text"><i class="fa-brands fa-quora"></i>
 <p class="center-text">1. Every question answered correctly will give you an added score of
     50.</p>
 <p class="center-text">2. Every question answered incorrectly will deduct 70 points to discourage from just guessing.</p>
-<p class="center-text">Test</p>
 `; //start-value of the modal. Gets re-written into the innerHTML when user clicks on rules-button
 
 createEvtListeners(); // create event listeners for user interactivity
