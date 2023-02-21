@@ -94,9 +94,9 @@ The message below the buttons (marked in blue below) should change on mouseover,
 
 If you hover over the three green buttons, the mouse pointer should change into a hand to indicate it is clickable. Works (but next to impossible to get a screenshot of)
 
-If you click the about button, you should get a requstor with information about the programmer.
+If you click the about button, you should get a semi-transparant overlay with information about the programmer.
 
-![about](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/about-req.PNG?raw=true)
+![about](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/about.PNG?raw=true)
 
 Works. 
 
