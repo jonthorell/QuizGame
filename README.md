@@ -109,7 +109,7 @@ about and rules.
 
 Finally, the start-button.
 
-If the useers clicks it on the start-screen, the game should start like this:
+If the user clicks it on the start-screen, the game should start like this:
 
 ![startgame](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/game-in-progress.PNG?raw=true)
 
@@ -133,8 +133,7 @@ When an answer has been submitted, it should look like this:
 
 ![submitted-answer](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/in-progress2.PNG?raw=true)
 
-As can be seen, the clicked answer has been marked red (wrong). And a timer has started to count downwards before revealing the next question. The "answer box" has
-also been updated with a randomly chosen phrase.
+As can be seen, the clicked answer has been marked red (wrong). Another is blue, indicating that the mousepointer was over it when the screenshot was taken. And a timer has started to count downwards before revealing the next question. The "answer box" has also been updated with a randomly chosen phrase.
 
 The score has also been updated:
 
@@ -146,9 +145,9 @@ Unless it is the last question. If it is, the countdown timer will change to thi
 
 ![last-question](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/in-progress4.PNG?raw=true)
 
-When it reaches zero, in that case, the game exits and the user is back to the startpage.
+When it reaches zero, in that case, the game exits. The user will see a modal with the end-result. The same kind of modal as used by the rules and about buttons.
 
-This part has been tested in several ways, or in several stages might be a better way of putting it.
+The gameplay has been tested in several ways, or in several stages might be a better way of putting it.
 
 1. Did not use a "loop" or condition at first. It was hardcoded which question to use so you can see exactly what values would be assigned to which variable.
 2. Make conditions as easily compared as possible (like convert both parts of the equation into lowercase)
@@ -159,14 +158,14 @@ This part has been tested in several ways, or in several stages might be a bette
 
 Everything works as expected.
 
-1. Upon start, the top button row and the text-fields are removed. Partially to save screen-estate and partially to make it impossible for the user to start a new game when one is already in progress.
+1. Upon start, the top button row, the image, and the text-fields are removed (using display:none). Partially to save screen-estate and partially to make it impossible for the user to start a new game when one is already in progress.
 2. The game asks the user ten questions, randomly chosen.
-3. For each question, the question field (top yellow) is populated with the correct question. The green answer buttons are populated with the correct answer options.
+3. For each question, the question field is populated with the correct question. The answer buttons are populated with the correct answer options.
 4. When hovering over unanswered questions, the background color changes to blue.
-5. When answering a question, the score is updated and the user gets a random answer message to provide some variety. The answer-button is updated to either red (wrong) or yellow (right). The hover effect is disabled for that answer.
-6. A countdown from 10 to 0 starts.
+5. When answering a question, the score is updated and the user gets a random answer message to provide some variety. The answer-button is updated to either red (wrong) or green (right). The hover effect is disabled for that answer.
+6. A countdown from 6 to 0 starts.
 7. When the countdown reaches 0, a new question is shown and numbers 3-6 repeats.
-8. When 10 questions has been asked, the user is re-directed to the start page with the buttons shown again.
+8. When 10 questions has been asked, the user gets his/her score is re-directed to the start page with the buttons shown again.
 
 # File names and hierarchy
 
