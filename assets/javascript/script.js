@@ -11,8 +11,8 @@ const message = "Welcome to the game! Please click an answer to proceed."; //sta
 const scores = []; // array that will hold four values: 0=current number of rights, 1=current number of wrongs, 2=current question on display. 3=value of where in loop. WIll be updated by scoring functions
 const myPath = "assets/questions/"; //base url for files used for the questions
 scores.push(0, 0, 1, 1); // make sure default values are there
-const myStartModal = `<h1 class="center-text"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></h1>
-<h2 class="center-text">Rules of the Game</h2>
+const myStartModal = `<p class="largest"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></p>
+<p class="larger">Rules of the Game</p>
 <p class="center-text">You will answer 10 randomly chosen questions regarding music.</p>
 <p class="center-text">The game is scored as follows:</p>
 <p class="center-text">Every question answered correctly will give you an added score of
@@ -27,7 +27,6 @@ createQuestionsFromFiles(); // create array with quiz questions. WIll only run o
 document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
 document.getElementById('dbase').innerText = "The game consists of " + myQuestionsArray.length + " questions.";
-//document.getElementById('dbase').style.color = "white"; //make number-of-questions in display white
 document.getElementsByClassName('modal-target')[0].innerHTML = myStartModal; //populate modal with rules-html
 
 // all functions starts here. No code should be outside functions from this point on
@@ -636,8 +635,7 @@ function displayScore() {
 }
 
 function about() {
-    let myMess = '<h1 class="center-text"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></h1>';
-    myMess = myMess + '<h1 class="center-text">About</h1>';
+    let myMess = '<p class="largest"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></p>';
     myMess = myMess + '<p class="center-text">The game is written by:</p>';
     myMess=myMess+'<p class="center-text"><i class="fa-brands fa-itunes-note"></i> Jonas Thorell <i class="fa-brands fa-itunes-note"></i></p>';
     myMess = myMess + '<p class="center-text">AKA "The Mad Monkey"</p>';

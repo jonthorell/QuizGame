@@ -333,3 +333,13 @@ body {
   color: white;
   font-size: x-large;
 }
+
+.largest {
+  text-align: center;
+  font-size: xx-large;
+}
+
+.larger {
+  text-align: center;
+  font-size: x-large;
+}
