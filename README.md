@@ -308,6 +308,14 @@ Lighthouse score for main-page:
 The result may be slightly misleading. Misleading since the start-page and the main-game uses the same html-file, and I have not found a way to get lighthouse to
 create a report from when the game is in progress. It starts there, but reverts to default values after a while.
 
+Even with that caveat in mind, the performance value goes up and down by just creating a new report without altering anything in the source. I honestly do not know how to interpret that. 
+
+As can be seen in the screenshot, the best practices score is only at 92 %.
+
+The reason is the following:
+
+
+
 Lighthouse score for the no-javascript page:
 
 ![lighthouse-no-javascript](https://github.com/jonthorell/QuizGame/blob/main/assets/images/readme-files/lighthouse-no-javascript.PNG?raw=true)
