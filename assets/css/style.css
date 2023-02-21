@@ -328,15 +328,3 @@ body {
   text-align: center;
   font-size: xx-large;
 }
-
-#closeModal {
-  color:red;
-  background-color: rgba(0, 0, 0, 0.4);
-  border: none;
-}
-
-.right-button {
-  display: flex;
-  justify-content: right;
-  align-items: right;
-}

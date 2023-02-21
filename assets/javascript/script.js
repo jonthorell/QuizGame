@@ -28,7 +28,7 @@ document.getElementById('welcome').innerText = welcomePhrase;
 document.getElementById('game-title').innerText = gameTitle;
 document.getElementById('dbase').innerText = "The game consists of " + myQuestionsArray.length + " questions.";
 document.getElementById('dbase').style.color = "white"; //make number-of-questions in display white
-document.getElementsByClassName('dummy')[0].innerHTML = myStartModal; //populate modal with rules-html
+document.getElementsByClassName('modal-target')[0].innerHTML = myStartModal; //populate modal with rules-html
 
 // all functions starts here. No code should be outside functions from this point on
 
@@ -146,7 +146,7 @@ function createEvtListeners() {
 
     // When the user clicks on the button, open the modal
     btn.onclick = function () {
-        document.getElementsByClassName('dummy')[0].innerHTML = myStartModal; //populate modal with rules-html
+        document.getElementsByClassName('modal-target')[0].innerHTML = myStartModal; //populate modal with rules-html
         //that is necessary since the modal used to display the score at the end of the game.
         //this makes sure the modal has the rules applied to it when the user actively clicks the button
         modal.style.display = "block";
@@ -176,9 +176,7 @@ function createEvtListeners() {
             document.getElementById('welcome').innerText = welcomePhrase;
         });
 
-        document.getElementById('myBtnAbout').addEventListener('click', function () {
-            alert("The game is written by:\nJonas Thorell\nAKA \"The Mad Monkey\"");
-        });
+        document.getElementById('myBtnAbout').addEventListener('click', about);
 
         let buttons = document.getElementsByClassName("answers");
         for (let button of buttons) {
@@ -633,6 +631,18 @@ function displayScore() {
     myScore = myScore + '<p class="center-text">' + myScoreMess + '</p>'; //add score to the variable with the html
 
     //score html for the modal
-    document.getElementsByClassName('dummy')[0].innerHTML = myScore; //populate modal with score
+    document.getElementsByClassName('modal-target')[0].innerHTML = myScore; //populate modal with score
+    document.getElementById('myModal').style.display = "block"; //display it
+}
+
+function about() {
+    let myMess = '<h1 class="center-text"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></h1>';
+    myMess = myMess + '<h1 class="center-text">About</h1>';
+    myMess = myMess + '<p class="center-text">The game is written by:</p>';
+    myMess=myMess+'<p class="center-text"><i class="fa-brands fa-itunes-note"></i> Jonas Thorell <i class="fa-brands fa-itunes-note"></i></p>';
+    myMess = myMess + '<p class="center-text">AKA "The Mad Monkey"</p>';
+
+    //score html for the modal
+    document.getElementsByClassName('modal-target')[0].innerHTML = myMess; //populate modal with score
     document.getElementById('myModal').style.display = "block"; //display it
 }
