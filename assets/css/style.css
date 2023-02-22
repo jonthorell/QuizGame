@@ -330,16 +330,19 @@ body {
 }
 
 #dbase {
+  /* used for styling the "number of questions in database string */
   color: white;
   font-size: x-large;
 }
 
 .largest {
+  /* used for styling the "header" in the about and rules modals without using h1. That is, for size only and not as a header */
   text-align: center;
   font-size: xx-large;
 }
 
 .larger {
+  /* used for styling the "header" in the about and rules modals without using h2. That is, for size only and not as a header */
   text-align: center;
   font-size: x-large;
 }
