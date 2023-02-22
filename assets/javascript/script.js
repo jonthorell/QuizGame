@@ -47,53 +47,53 @@ function createQuestionsFromFiles() {
 
     //Every 'grab' part grabs a textfile from within the assets folder and adds every line to a new row to an array
 
-     //grab questions
-     request = new XMLHttpRequest();
-     request.open('GET', myPath + "questions.txt", false);
-     request.send();
-     textfileContent = request.responseText;
- 
-     const qTempArray = textfileContent.split("\n");
- 
-     //grab option1
-     request = new XMLHttpRequest();
-     request.open('GET', myPath + "option1.txt", false);
-     request.send();
-     textfileContent = request.responseText;
- 
-     const Opt1TempArray = textfileContent.split("\n");
- 
-     //grab option2
-     request = new XMLHttpRequest();
-     request.open('GET', myPath + "option2.txt", false);
-     request.send();
-     textfileContent = request.responseText;
- 
-     const Opt2TempArray = textfileContent.split("\n");
- 
-     //grab option3
-     request = new XMLHttpRequest();
-     request.open('GET', myPath + "option3.txt", false);
-     request.send();
-     textfileContent = request.responseText;
- 
-     const Opt3TempArray = textfileContent.split("\n");
- 
-     //grab option4
-     request = new XMLHttpRequest();
-     request.open('GET', myPath + "option4.txt", false);
-     request.send();
-     textfileContent = request.responseText;
- 
-     const Opt4TempArray = textfileContent.split("\n");
- 
-     //grab correct
-     request = new XMLHttpRequest();
-     request.open('GET', myPath + "right.txt", false);
-     request.send();
-     textfileContent = request.responseText;
- 
-     const RightTempArray = textfileContent.split("\n");
+    //grab questions
+    request = new XMLHttpRequest();
+    request.open('GET', myPath + "questions.txt", false);
+    request.send();
+    textfileContent = request.responseText;
+
+    const qTempArray = textfileContent.split("\n");
+
+    //grab option1
+    request = new XMLHttpRequest();
+    request.open('GET', myPath + "option1.txt", false);
+    request.send();
+    textfileContent = request.responseText;
+
+    const Opt1TempArray = textfileContent.split("\n");
+
+    //grab option2
+    request = new XMLHttpRequest();
+    request.open('GET', myPath + "option2.txt", false);
+    request.send();
+    textfileContent = request.responseText;
+
+    const Opt2TempArray = textfileContent.split("\n");
+
+    //grab option3
+    request = new XMLHttpRequest();
+    request.open('GET', myPath + "option3.txt", false);
+    request.send();
+    textfileContent = request.responseText;
+
+    const Opt3TempArray = textfileContent.split("\n");
+
+    //grab option4
+    request = new XMLHttpRequest();
+    request.open('GET', myPath + "option4.txt", false);
+    request.send();
+    textfileContent = request.responseText;
+
+    const Opt4TempArray = textfileContent.split("\n");
+
+    //grab correct
+    request = new XMLHttpRequest();
+    request.open('GET', myPath + "right.txt", false);
+    request.send();
+    textfileContent = request.responseText;
+
+    const RightTempArray = textfileContent.split("\n");
     //combine arrays and add named property
     let o1, q, o2, o3, o4, r, tmp;
 
@@ -131,36 +131,36 @@ function createQuestionsFromFiles() {
  */
 function createEvtListeners() {
 
-    // Get the modal
-    let modal = document.getElementById("myModal");
-
-    // Get the button that opens the modal
-    let btn = document.getElementById("myBtnRules");
-
-    // Get the <span> element that closes the modal
-    let span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on the button, open the modal
-    btn.onclick = function () {
-        document.getElementsByClassName('modal-target')[0].innerHTML = myStartModal; //populate modal with rules-html
-        //that is necessary since the modal used to display the score at the end of the game.
-        //this makes sure the modal has the rules applied to it when the user actively clicks the button
-        modal.style.display = "block";
-    };
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    };
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    };
-
     document.addEventListener("DOMContentLoaded", function () {
+
+        // Get the modal
+        let modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        let btn = document.getElementById("myBtnRules");
+
+        // Get the <span> element that closes the modal
+        let span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function () {
+            document.getElementsByClassName('modal-target')[0].innerHTML = myStartModal; //populate modal with rules-html
+            //that is necessary since the modal used to display the score at the end of the game.
+            //this makes sure the modal has the rules applied to it when the user actively clicks the button
+            modal.style.display = "block";
+        };
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        };
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
 
         document.getElementById('myBtnStart').addEventListener('click', runGame);
 
@@ -634,7 +634,7 @@ function displayScore() {
 function about() {
     let myMess = '<p class="largest"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></p>';
     myMess = myMess + '<p class="center-text">The game is written by:</p>';
-    myMess=myMess+'<p class="center-text"><i class="fa-brands fa-itunes-note"></i> Jonas Thorell <i class="fa-brands fa-itunes-note"></i></p>';
+    myMess = myMess + '<p class="center-text"><i class="fa-brands fa-itunes-note"></i> Jonas Thorell <i class="fa-brands fa-itunes-note"></i></p>';
     myMess = myMess + '<p class="center-text">AKA "The Mad Monkey"</p>';
 
     //score html for the modal
