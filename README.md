@@ -119,7 +119,7 @@ Works.
 
 When the game is first launched, it looks like above.
 
-The top row as well as the four green buttons are pulled from an array of questions, and added dynamically to the correct dom-element.
+The top row as well as the four buttons in the middle (the ones in a grid) are pulled from an array of questions, and added dynamically to the correct dom-element.
 The "welcome to the game" row is populated by a constant at start. The array of questions is created by reading values from 6 different text-files.
 One for the question, one for each possible answer (option1, option2 and so on) and one with the correct answer. These are then pulled together in an array with named properties.
 
