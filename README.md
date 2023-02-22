@@ -171,7 +171,7 @@ Everything works as expected.
 5. When answering a question, the score is updated and the user gets a random answer message to provide some variety. The answer-button is updated to either red (wrong) or green (right). The hover effect is disabled for that answer.
 6. A countdown from 6 to 0 starts.
 7. When the countdown reaches 0, a new question is shown and numbers 3-6 repeats.
-8. When 10 questions has been asked, the user gets his/her score is re-directed to the start page with the buttons shown again.
+8. When 10 questions has been asked, the user gets his/her score and is re-directed to the start page with the buttons shown again.
 
 # File names and hierarchy
 

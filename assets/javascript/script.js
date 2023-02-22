@@ -113,6 +113,7 @@ function createQuestionsFromFiles() {
         //the above in the for-loop strips away any leading and trailing spaces. Essentially to make sure there are no \n or similar in the source text-files
         //that can screw things up.
         let myQuestion = {
+            //add a named property for quesion, the alternatives, the correct answer, and answered.
             Question: q,
             Option1: o1,
             Option2: o2,
@@ -146,7 +147,7 @@ function createEvtListeners() {
         btn.onclick = function () {
             document.getElementsByClassName('modal-target')[0].innerHTML = myStartModal; //populate modal with rules-html
             //that is necessary since the modal used to display the score at the end of the game.
-            //this makes sure the modal has the rules applied to it when the user actively clicks the button
+            //this makes sure the modal has the rules-html applied to it when the user actively clicks the button
             modal.style.display = "block";
         };
 
@@ -249,7 +250,7 @@ function emptyArrayAtStart() {
 
 function checkAnswer(buttonClicked) {
     let currentQuestion = scores[2];
-    let myCurr = myQuestionsArray[currentQuestion].Answered;
+    let myCurr = myQuestionsArray[currentQuestion].Answered; //has the current question been answered already?
     if (myCurr === false) { // don't allow answer if already answered
         buttonClicked = buttonClicked.toLowerCase(); //which button was clicked? Converted to lowercase for easy comparison
         let correct = myQuestionsArray[currentQuestion].Correct; //what is the correct answer?
@@ -533,7 +534,7 @@ function turnOnHidden() {
     document.getElementById('dbase').style.display = "none"; //no nr of questions in game displayed
     document.getElementById('myBtnAbout').style.display = "none";
     document.getElementById('myBtnRules').style.display = "none";
-    document.getElementById('myBtnStart').style.display = "none"; //no buttons
+    document.getElementById('myBtnStart').style.display = "none"; //no button row
 
     // turns on the hidden elements. All of the below are hidden by default in the css file. This function enables the elements by altering the display property
     document.getElementById("question").style.display = "block";
@@ -590,7 +591,7 @@ function displayScore() {
     let myWrong = scores[1]; //number wrong answers
     let myScoreMess; //empty message to begin with
     let myAccumulated = (myRight * 50) - (myWrong * 70); //calculate accumulated score
-
+    //create variable to hold html-code to be pushed into modal
     let myScore = '<h1 class="center-text"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></h1>';
     myScore = myScore + '<h1 class="center-text">Game Over</h1>';
     myScore = myScore + '<h2 class="center-text">';
@@ -630,12 +631,12 @@ function displayScore() {
 }
 
 function about() {
+    //about-message html for the modal
     let myMess = '<p class="largest"><i class="fa-brands fa-quora"></i>uiz Master <i class="fa-solid fa-registered fa-2xs"></i></p>';
     myMess = myMess + '<p class="center-text">The game is written by:</p>';
     myMess = myMess + '<p class="center-text"><i class="fa-brands fa-itunes-note"></i> Jonas Thorell <i class="fa-brands fa-itunes-note"></i></p>';
     myMess = myMess + '<p class="center-text">AKA "The Mad Monkey"</p>';
 
-    //score html for the modal
-    document.getElementsByClassName('modal-target')[0].innerHTML = myMess; //populate modal with score
+    document.getElementsByClassName('modal-target')[0].innerHTML = myMess; //populate modal with message
     document.getElementById('myModal').style.display = "block"; //display it
 }
