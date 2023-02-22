@@ -242,8 +242,6 @@ function emptyArrayAtStart() {
     }
 }
 
-
-
 /**
  * Checks if the clicked answer corresponds with the correct answer using the Correct: property.
  * Update the answered: property to true so the question can not be selected again.

@@ -308,7 +308,7 @@ Lighthouse score for main-page:
 The result may be slightly misleading. Misleading since the start-page and the main-game uses the same html-file, and I have not found a way to get lighthouse to
 create a report from when the game is in progress. It starts there, but reverts to default values after a while.
 
-Even with that caveat in mind, the performance value goes up and down by just creating a new report without altering anything in the source. I honestly do not know how to interpret that. 
+Even with that caveat in mind, the performance value goes up and down by just creating a new report without altering anything in the source. I honestly do not know how to interpret that. It averages at 92%.
 
 As can be seen in the screenshot, the best practices score is only at 92 %.
 
@@ -319,9 +319,9 @@ The reason is the following:
 I was not aware of that when I decided to use XMLHttpRequest() to grab data from external files. I only got aware of it when lighthouse complained about it.
 Something that needs adressing to be sure, but unfortunately I do not have the time to research and implement an alternative approach before deadline.
 
-It would not surprise me if the lower score in performance and best-practices go hand-in-hand, but I do not (yet) know how to pin-point where in my javascript where timing optimizations need to be put in place. There is surely a very good reason why XMLHttpRequest() is being deprecated.
+It would not surprise me if the lower score in performance and best-practices go hand-in-hand, but I do not (yet) know how to pin-point where in my javascript where timing optimizations need to be put in place. There is surely a very good reason why XMLHttpRequest() is being deprecated so that is why I would not be surprised if that could affect the performance score as well.
 
-As of now, the code works. Although it is not future-proof.
+As of now, the code works, although it is not future-proof.
 
 Lighthouse score for the no-javascript page:
 
@@ -342,7 +342,7 @@ The modal used for the rules-button was "stolen" from:
 
 [How to make a modal box](https://www.w3schools.com/howto/howto_css_modals.asp)
 
-and adapted for my use.
+and adapted for my use. The code in question is also highlighted with comments in the code-files.
 
 
 
